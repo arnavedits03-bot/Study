@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5: State and Society up to 1000 CE - Let's Study Now</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlack: '#1E1E1E',
+            brandYellow: '#FACC15',
+            brandYellowLight: '#FEF08A',
+            brandBlue: '#38BDF8',
+            brandBlueDark: '#0EA5E9',
+            brandPink: '#F472B6',
+            brandGreen: '#34D399',
+            brandLime: '#A3E635',
+            brandPurple: '#C084FC',
+            brandOrange: '#FB923C'
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'cartoon-sm': '3px 3px 0px #1E1E1E',
+            'cartoon': '5px 5px 0px #1E1E1E',
+            'cartoon-lg': '8px 8px 0px #1E1E1E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #1E1E1E;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Neo-Brutalist Border Utility Classes */
+    .border-cartoon {
+      border: 3.5px solid #1E1E1E;
+    }
+    .border-cartoon-thin {
+      border: 2px solid #1E1E1E;
+    }
+
+    /* Tactile Hover Effects */
+    .hover-pop {
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.2s ease;
+    }
+    .hover-pop:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0px #1E1E1E;
+    }
+    .hover-pop:active {
+      transform: translateY(2px) translateX(2px);
+      box-shadow: 2px 2px 0px #1E1E1E;
+    }
+
+    /* Polka Dot Cartoon Background Pattern */
+    .bg-cartoon-dots {
+      background-image: radial-gradient(#1E1E1E 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-color: #F8FAFC;
+    }
+
+    /* Floating Mascot Container */
+    #mascot-container {
+      position: fixed;
+      pointer-events: none !important;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    /* Cursor Sparkle Particles */
+    .particle {
+      position: fixed;
+      pointer-events: none !important;
+      animation: particleFade 0.75s forwards ease-out;
+      z-index: 9998;
+    }
+    @keyframes particleFade {
+      0% { opacity: 1; transform: scale(1) translate(0, 0); }
+      100% { opacity: 0; transform: scale(0.2) translate(var(--tx), var(--ty)); }
+    }
+
+    /* 3D Flashcard Flip Setup */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Custom Neo-Brutalist Scrollbar */
+    ::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FACC15;
+      border: 2px solid #1E1E1E;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E1E1E;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cartoon-dots min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <!-- Mascot Cursor Follower -->
+  <div id="mascot-container" class="hidden md:flex flex-col items-center justify-center pointer-events-none">
+    <div id="mascot-bubble" class="bg-white border-cartoon px-3 py-1 rounded-xl text-[10px] font-black shadow-cartoon-sm mb-1 text-brandBlack animate-bounce whitespace-nowrap">
+      Welcome to Chapter 5! 👑
+    </div>
+    <div class="relative w-14 h-14 bg-brandPurple border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center">
+      <!-- Pupil Tracking Eyes -->
+      <div class="flex space-x-1.5">
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-left" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-right" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+      </div>
+      <!-- Crown / Mouth -->
+      <div class="absolute bottom-2 w-3.5 h-1.5 border-b-2 border-brandBlack rounded-full"></div>
+      <div class="absolute -top-3 w-6 h-3 bg-brandYellow border-cartoon-thin rounded-t-md flex items-center justify-around px-0.5">
+        <span class="w-1 h-1 bg-brandPink rounded-full"></span>
+        <span class="w-1 h-1 bg-brandBlue rounded-full"></span>
+        <span class="w-1 h-1 bg-brandGreen rounded-full"></span>
+      </div>
+    </div>
+    <span class="mt-1 bg-brandBlack text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">
+      StudyBuddy 🤖
+    </span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-white border-b-4 border-brandBlack shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+          <i class="fa-solid fa-crown text-xl text-brandBlack"></i>
+        </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-brandBlack block leading-none">Let's Study Now</span>
+          <span class="text-[10px] sm:text-[11px] font-extrabold text-brandBlueDark uppercase tracking-wider">Class 9th SST • Ch 5</span>
+        </div>
+      </a>
+
+      <!-- Controls & Navigation Links -->
+      <div class="flex items-center space-x-2">
+        <a href="select.html" class="px-3 py-2 bg-brandGreen text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="hidden sm:inline">SST Select</span>
+        </a>
+
+        <a href="../index.html" class="px-3 py-2 bg-brandPurple text-white font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-house"></i>
+          <span class="hidden sm:inline">Home</span>
+        </a>
+
+        <button id="sound-btn" onclick="toggleAudioFX()" class="px-3 py-2 bg-brandYellow text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span class="hidden sm:inline" id="sound-status-text">Sound ON</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Hero Banner Header -->
+    <section class="bg-brandYellow border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+        
+        <div class="space-y-3 max-w-3xl">
+          <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3 py-1 rounded-full shadow-cartoon-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse"></span>
+            <span class="text-xs font-black text-brandBlack uppercase tracking-wide">
+              Ancient & Early Medieval History
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-brandBlack leading-tight">
+            Chapter 5: State and Society up to 1000 CE 👑
+          </h1>
+
+          <p class="text-sm sm:text-base font-bold text-slate-800 bg-white/80 p-3 rounded-2xl border-cartoon-thin shadow-cartoon-sm">
+            Explore the evolution of ancient Indian polities, empires, local governance, social structures, economic guilds, and cultural achievements! 🏛️📜
+          </p>
+        </div>
+
+        <!-- Overall Chapter Mastery Tracker -->
+        <div class="w-full lg:w-72 bg-white border-cartoon p-4 rounded-2xl shadow-cartoon shrink-0 space-y-2">
+          <div class="flex items-center justify-between text-xs font-black">
+            <span>Chapter Mastery</span>
+            <span id="mastery-percentage" class="text-brandBlueDark text-sm">0%</span>
+          </div>
+          <div class="w-full h-4 bg-slate-200 rounded-full border-cartoon-thin overflow-hidden p-0.5">
+            <div id="mastery-bar" class="h-full bg-brandGreen rounded-full transition-all duration-500 w-0"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-600 pt-1">
+            <span id="notes-read-count">0/18 Notes Read</span>
+            <span id="quiz-score-count">Quiz: --</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- One-Line Revision Chain Section -->
+    <section class="bg-white border-cartoon rounded-3xl p-5 shadow-cartoon space-y-3">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center space-x-2">
+          <span class="w-7 h-7 bg-brandPurple text-white border-cartoon-thin rounded-xl flex items-center justify-center text-xs font-black">🔗</span>
+          <h2 class="text-base sm:text-lg font-black text-brandBlack">One-Line Revision Chain</h2>
+        </div>
+        <span class="text-[11px] font-bold text-slate-500">Tap any node to jump directly to its visual topic!</span>
+      </div>
+
+      <div class="overflow-x-auto pb-2 pt-1 scrollbar-thin">
+        <div id="revision-chain-container" class="flex items-center space-x-2 min-w-max">
+          <!-- Flowchart Nodes Injected by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs & Search Controls -->
+    <section class="space-y-4">
+      
+      <!-- Quick Navigation Tabs -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <button id="tab-btn-notes" onclick="switchTab('notes')" class="tab-btn active px-4 py-2.5 bg-brandBlue text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>📖 Visual Notes</span>
+          <span class="bg-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">18 Topics</span>
+        </button>
+
+        <button id="tab-btn-flashcards" onclick="switchTab('flashcards')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎴 Flashcards</span>
+          <span class="bg-brandYellow border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">3D Flip</span>
+        </button>
+
+        <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎯 Practice Quiz</span>
+          <span class="bg-brandPink text-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">18 MCQs</span>
+        </button>
+
+        <button id="tab-btn-glossary" onclick="switchTab('glossary')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🏷️ Key Terms</span>
+          <span class="bg-brandGreen border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">Glossary</span>
+        </button>
+      </div>
+
+      <!-- Real-time Search & Category Quick Filter -->
+      <div id="search-bar-container" class="bg-white border-cartoon rounded-2xl p-3 shadow-cartoon flex flex-col sm:flex-row items-center justify-between gap-3">
+        
+        <div class="relative w-full sm:w-80">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="topic-search-input" oninput="handleSearch(this.value)" placeholder="Search topics, Ashoka, Chola, Guilds, Bhakti..." class="w-full pl-9 pr-8 py-2 bg-slate-50 border-cartoon-thin rounded-xl text-xs font-bold text-brandBlack focus:outline-none focus:bg-yellow-50">
+          <button onclick="clearSearch()" id="clear-search-btn" class="hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-brandBlack">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Category Badges -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+          <span class="text-xs font-black mr-1 text-slate-500">Filter:</span>
+          <button onclick="filterCategory('all')" class="cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black">All</button>
+          <button onclick="filterCategory('polity')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100">State & Polity</button>
+          <button onclick="filterCategory('empire')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-blue-100">Empire & Admin</button>
+          <button onclick="filterCategory('society')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-pink-100">Society & Life</button>
+          <button onclick="filterCategory('culture')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-purple-100">Culture & Economy</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 1: VISUAL NOTES SECTION -->
+    <section id="notes-tab-content" class="tab-content space-y-6">
+      <div id="notes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 18 Topic Cards Injected by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: FLASHCARDS SECTION -->
+    <section id="flashcards-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-2xl mx-auto space-y-6">
+        
+        <!-- Flashcard Control Bar -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between text-xs font-black">
+          <div class="flex items-center space-x-2">
+            <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl">Card <span id="card-index-num">1</span> of 18</span>
+            <span id="card-mastered-badge" class="hidden bg-brandGreen border-cartoon-thin px-2 py-1 rounded-xl text-[10px]">Mastered ✅</span>
+          </div>
+
+          <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-brandPurple text-white border-cartoon rounded-xl shadow-cartoon-sm hover-pop">
+            <i class="fa-solid fa-shuffle mr-1"></i> Shuffle
+          </button>
+        </div>
+
+        <!-- 3D Flip Card Scene -->
+        <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipFlashcard()">
+          <div id="flashcard-inner" class="relative w-full h-full transform-style-3d transition-transform duration-500 rounded-3xl border-cartoon shadow-cartoon-lg">
+            
+            <!-- Front Face -->
+            <div class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-between backface-hidden border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Concept Front</span>
+                <i class="fa-solid fa-rotate text-slate-400 text-lg"></i>
+              </div>
+              
+              <div class="text-center space-y-3">
+                <div id="card-front-icon" class="text-5xl">🏛️</div>
+                <h3 id="card-front-title" class="text-2xl font-black text-brandBlack">1. Society and the State</h3>
+                <p id="card-front-prompt" class="text-xs font-bold text-slate-500">Tap card to flip & reveal full summary & keywords!</p>
+              </div>
+
+              <div class="text-center text-[11px] font-black text-brandBlueDark uppercase tracking-wider">
+                Tap anywhere to flip 🔄
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div class="absolute inset-0 bg-brandYellowLight rounded-3xl p-8 flex flex-col justify-between backface-hidden rotate-y-180 border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandGreen border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Explanation</span>
+                <span class="text-xs font-bold text-slate-600">Chapter 5 Concept</span>
+              </div>
+
+              <div class="space-y-3 overflow-y-auto max-h-48 pr-1">
+                <h4 id="card-back-title" class="text-xl font-black text-brandBlack">Society and the State</h4>
+                <p id="card-back-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+                  Society refers to groups of people living together with shared customs. A state is a political organisation with territory and government.
+                </p>
+                <div id="card-back-keywords" class="flex flex-wrap gap-1 pt-2">
+                  <!-- Keywords injected here -->
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-300">
+                <button onclick="event.stopPropagation(); toggleCardMastered()" id="mastered-toggle-btn" class="px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100">
+                  Mark as Mastered 🌟
+                </button>
+                <span class="text-[10px] font-black text-slate-500">Tap to flip back</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between gap-4">
+          <button onclick="prevFlashcard()" class="flex-1 py-3 bg-white border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <button onclick="flipFlashcard()" class="px-6 py-3 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+            Flip 🔄
+          </button>
+
+          <button onclick="nextFlashcard()" class="flex-1 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: PRACTICE QUIZ SECTION -->
+    <section id="quiz-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- Quiz Header Scoreboard -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs font-black text-slate-500 block">Self-Evaluating MCQ Practice</span>
+            <h3 class="text-lg font-black text-brandBlack">Question <span id="quiz-curr-q">1</span> of 18</h3>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <div class="bg-brandGreen border-cartoon-thin px-3 py-1.5 rounded-xl font-black text-xs">
+              Score: <span id="quiz-score">0</span>/18
+            </div>
+            <button onclick="resetQuiz()" class="px-3 py-1.5 bg-slate-100 border-cartoon-thin rounded-xl font-black text-xs hover:bg-yellow-100">
+              <i class="fa-solid fa-rotate-right"></i> Restart
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Card Box -->
+        <div id="quiz-card-box" class="bg-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg space-y-6">
+          <div class="space-y-2">
+            <span id="quiz-topic-tag" class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black inline-block">
+              Topic: Society and the State
+            </span>
+            <h3 id="quiz-question-text" class="text-xl sm:text-2xl font-black text-brandBlack leading-snug">
+              What defines a political organisation with a territory, government and authority?
+            </h3>
+          </div>
+
+          <!-- Options Container -->
+          <div id="quiz-options-container" class="space-y-3">
+            <!-- Options injected dynamically -->
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="quiz-explanation-box" class="hidden bg-yellow-50 border-cartoon p-4 rounded-2xl space-y-2">
+            <div class="flex items-center space-x-2 text-brandBlack font-black text-xs uppercase">
+              <i class="fa-solid fa-circle-info text-brandBlueDark"></i>
+              <span>Explanation & Note Summary</span>
+            </div>
+            <p id="quiz-explanation-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+              A state is defined as a political organisation possessing territory, government, and authority.
+            </p>
+          </div>
+
+          <!-- Next Question Action Button -->
+          <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden w-full py-3.5 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop text-brandBlack">
+            Next Question 🚀
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: GLOSSARY SECTION -->
+    <section id="glossary-tab-content" class="tab-content hidden space-y-6">
+      
+      <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+          <div>
+            <h3 class="text-2xl font-black text-brandBlack">Key Terms & Concept Glossary 🏷️</h3>
+            <p class="text-xs font-bold text-slate-600 mt-1">Tap any key term below to jump directly to its topic in Visual Notes!</p>
+          </div>
+          <span id="glossary-count-badge" class="bg-brandYellow border-cartoon font-black px-3 py-1 rounded-xl text-xs w-max">
+            Keyword Index
+          </span>
+        </div>
+
+        <!-- Glossary Tag Grid -->
+        <div id="glossary-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+          <!-- Glossary Items injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Next Module Banner -->
+    <section class="bg-brandBlack text-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center sm:text-left">
+        <span class="bg-brandYellow text-brandBlack border-cartoon-thin text-[10px] font-black px-2.5 py-0.5 rounded-full inline-block">
+          MODULE COMPLETE
+        </span>
+        <h3 class="text-xl sm:text-2xl font-black">Ready for Next Chapter or Revision?</h3>
+        <p class="text-xs font-bold text-slate-300">Return to SST dashboard to select another topic or review Chapter 5!</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="select.html" onclick="playSound('pop')" class="px-6 py-3 bg-brandGreen text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm flex items-center space-x-2">
+          <span>SST Dashboard →</span>
+        </a>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-3 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t-4 border-brandBlack mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex items-center justify-center space-x-3">
+        <div class="w-10 h-10 bg-brandYellow border-cartoon rounded-xl flex items-center justify-center text-xl shadow-cartoon-sm">
+          🎓
+        </div>
+        <span class="text-2xl font-black text-brandBlack">Let's Study Now</span>
+      </div>
+
+      <p class="text-sm sm:text-base font-black text-brandBlack">
+        Made with ❤️ by Class 9th Students for Class 9th Students
+      </p>
+
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Supported by Ashva Group
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Developer - Arnav Shrivastava
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Data Manager - Ishi Chourasia
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs font-bold text-slate-500 flex flex-wrap items-center justify-between gap-4">
+        <span>© 2026 Let's Study Now. Completely Free for Students.</span>
+        <a href="https://wa.me/919425361092" target="_blank" rel="noopener noreferrer" class="hover:underline text-brandBlack font-black">
+          WhatsApp Support (+91 9425361092)
+        </a>
+      </div>
+
+    </div>
+  </footer>  
+  <script>
+    /* --------------------------------------------------------------------------
+       1. DATASET: ALL 18 TOPICS FOR CHAPTER 5
+       -------------------------------------------------------------------------- */
+    const CHAPTER_TOPICS = [
+      {
+        id: "topic-1",
+        category: "polity",
+        icon: "🏛️",
+        title: "1. Society and the State",
+        summary: "Society refers to groups living together with shared customs, while a state is a political organisation with territory, government and authority.",
+        keyPoints: [
+          "Society refers to groups of people living together with shared relationships, customs and institutions.",
+          "A state is a political organisation with a territory, government and authority.",
+          "Studying both helps us understand how people lived and how political systems developed in ancient India."
+        ],
+        keywords: ["Society", "State", "territory", "government", "authority", "institutions"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-2",
+        category: "polity",
+        icon: "👥",
+        title: "2. From Kula and Jana to Janapadas",
+        summary: "Early communities expanded from family groups (kula) and tribes (jana) into settled territorial Janapadas and Mahajanapadas.",
+        keyPoints: [
+          "Early communities were organised around kula (family) and jana (tribe/community).",
+          "As populations grew and groups settled in particular territories, janapadas emerged.",
+          "Some janapadas became powerful mahajanapadas, leading to larger political organisations."
+        ],
+        keywords: ["Kula", "Jana", "Janapada", "Mahajanapada", "territory", "political organisation"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-3",
+        category: "polity",
+        icon: "👑",
+        title: "3. Kingdoms and Republics",
+        summary: "Ancient India featured both monarchies centered around kings and republics (gana-sanghas) ruled by assemblies.",
+        keyPoints: [
+          "Ancient India had different forms of political organisation, including monarchies and republics (gana-sanghas).",
+          "In monarchies, power was generally centred around a king.",
+          "In republics, important decisions were taken by assemblies or groups of rulers."
+        ],
+        keywords: ["Kingdom", "monarchy", "republic", "gana-sangha", "king", "assembly"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-4",
+        category: "empire",
+        icon: "🐘",
+        title: "4. Mauryan Empire",
+        summary: "Founded by Chandragupta Maurya and expanded by Ashoka, featuring organized administration and dhamma edicts.",
+        keyPoints: [
+          "The Mauryan Empire was one of the largest empires of ancient India.",
+          "It was founded by Chandragupta Maurya, expanded greatly under Ashoka, and had an organised administration.",
+          "Ashoka's edicts provide important evidence about his rule and ideas of dhamma."
+        ],
+        keywords: ["Mauryan Empire", "Chandragupta Maurya", "Ashoka", "administration", "edicts", "dhamma"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-5",
+        category: "empire",
+        icon: "🪙",
+        title: "5. Gupta Empire and Regional Kingdoms",
+        summary: "The Gupta golden age blossomed in culture and science, followed by strong regional powers like Pallavas and Cholas.",
+        keyPoints: [
+          "The Gupta period saw important developments in administration, culture, literature, science and art.",
+          "After the Guptas, several regional kingdoms became powerful across India.",
+          "Notable regional dynasties included the Pallavas, Chalukyas, Rashtrakutas, Gurjara-Pratiharas and Palas."
+        ],
+        keywords: ["Guptas", "regional kingdoms", "Pallavas", "Chalukyas", "Rashtrakutas", "Palas"],
+        color: "bg-purple-100"
+      },
+      {
+        id: "topic-6",
+        category: "polity",
+        icon: "⚖️",
+        title: "6. Kingship and Dharma",
+        summary: "The ruler (rājā) was bound by duty (dharma) to protect subjects and maintain justice rather than wield arbitrary power.",
+        keyPoints: [
+          "The rājā (king) was expected to protect his people and maintain order according to dharma.",
+          "Ancient Indian political ideas emphasised the ruler's duties and responsibilities.",
+          "Kingship was viewed as a sacred duty rather than simply personal power."
+        ],
+        keywords: ["Rājā", "kingship", "Dharma", "duties", "protection", "justice"],
+        color: "bg-lime-100"
+      },
+      {
+        id: "topic-7",
+        category: "polity",
+        icon: "☸️",
+        title: "7. Chakravarti and Saptanga",
+        summary: "Chakravarti denoted a universal ruler, while the Saptanga theory described seven vital elements of the state.",
+        keyPoints: [
+          "The idea of a Chakravarti referred to an ideal universal ruler.",
+          "The Saptanga theory described the state as having seven important elements.",
+          "Elements included ruler, ministers, territory/people, fortifications, treasury, army and allies."
+        ],
+        keywords: ["Chakravarti", "Saptanga", "ruler", "ministers", "treasury", "army", "allies"],
+        color: "bg-pink-100"
+      },
+      {
+        id: "topic-8",
+        category: "empire",
+        icon: "📜",
+        title: "8. Administration and Local Government",
+        summary: "States managed taxation, law and defense, while villages maintained active local self-governance.",
+        keyPoints: [
+          "Ancient states developed systems for tax collection, law and order, defence and administration.",
+          "At the local level, villages played an important role in daily governance.",
+          "Local communities actively participated in managing their own affairs and resources."
+        ],
+        keywords: ["Administration", "taxation", "defence", "villages", "local government", "officials"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-9",
+        category: "empire",
+        icon: "🗳️",
+        title: "9. Chola Administration and Kudavolai",
+        summary: "The Cholas created remarkable village democracy using palm-leaf lot draws (Kudavolai) to elect committees.",
+        keyPoints: [
+          "The Cholas developed a well-organised system of local administration in South India.",
+          "In some villages, committees were selected through the democratic Kudavolai system.",
+          "Candidate names were written on palm leaves and selected fairly by drawing lots."
+        ],
+        keywords: ["Cholas", "local administration", "village assemblies", "committees", "Kudavolai"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-10",
+        category: "society",
+        icon: "🧘",
+        title: "10. Varna and Jati",
+        summary: "Social classification existed as four broad Varnas and numerous occupation-based occupational groups called Jatis.",
+        keyPoints: [
+          "Ancient Indian society developed systems of social classification such as varna and jati.",
+          "Varna was a broad four-fold classification (Brahmana, Kshatriya, Vaishya, Shudra).",
+          "Jati referred to numerous social groups often connected with occupation, community and local traditions."
+        ],
+        keywords: ["Varna", "Jati", "Brahmana", "Kshatriya", "Vaishya", "Shudra", "social groups"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-11",
+        category: "society",
+        icon: "🏡",
+        title: "11. Kula, Gotra and Ashrama",
+        summary: "Kula and Gotra defined lineage, while the Ashrama system outlined four stages of human life.",
+        keyPoints: [
+          "Kula referred to family or lineage, while gotra indicated a broader lineage associated with a common ancestor.",
+          "The ashrama system described four stages of life.",
+          "The stages were brahmacharya (student), grihastha (householder), vanaprastha (hermit) and sannyasa (renunciate)."
+        ],
+        keywords: ["Kula", "Gotra", "Ashrama", "Brahmacharya", "Grihastha", "Vanaprastha", "Sannyasa"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-12",
+        category: "society",
+        icon: "🎯",
+        title: "12. Purushartha",
+        summary: "Purushartha defines four noble human goals: moral duty, economic wealth, pleasure, and spiritual liberation.",
+        keyPoints: [
+          "The concept of Purushartha describes four important goals of human life.",
+          "The four goals are dharma (duty/morality), artha (wealth), kama (desire) and moksha (liberation).",
+          "These connected moral duties, material well-being, desires and spiritual liberation."
+        ],
+        keywords: ["Purushartha", "Dharma", "Artha", "Kama", "Moksha", "goals of life"],
+        color: "bg-purple-100"
+      },
+      {
+        id: "topic-13",
+        category: "society",
+        icon: "👩‍🌾",
+        title: "13. Women and Society",
+        summary: "Women engaged in agriculture, family, crafts, and scholarship, with varying roles across regions and eras.",
+        keyPoints: [
+          "Women played different roles in family, agriculture, crafts, education and religious life.",
+          "Their social position varied according to time, region and social group.",
+          "Historical sources provide evidence of both significant opportunities and social restrictions."
+        ],
+        keywords: ["Women", "family", "agriculture", "crafts", "education", "social position"],
+        color: "bg-pink-100"
+      },
+      {
+        id: "topic-14",
+        category: "culture",
+        icon: "📚",
+        title: "14. Education and Centres of Learning",
+        summary: "Knowledge was transmitted via Guru-Shishya tradition and world-renowned residential universities like Nalanda.",
+        keyPoints: [
+          "Education was transmitted through traditions such as the guru–shishya relationship and formal institutions.",
+          "Famous international learning centres included Nalanda, Takshashila, Vikramashila and Vallabhi.",
+          "Scholars studied diverse subjects including philosophy, astronomy, medicine, logic, and mathematics."
+        ],
+        keywords: ["Education", "Guru-Shishya", "Nalanda", "Takshashila", "Vikramashila", "Vallabhi"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-15",
+        category: "culture",
+        icon: "🌾",
+        title: "15. Agriculture, Crafts and Occupations",
+        summary: "Agriculture formed the economic backbone, supported by specialized craftspeople and urban trade centers.",
+        keyPoints: [
+          "Agriculture was the main economic activity in ancient and early medieval India.",
+          "People worked in diverse occupations as craftspeople, traders, merchants, weavers, and metalworkers.",
+          "Growth of specialized craft occupations supported urban expansion and vibrant town life."
+        ],
+        keywords: ["Agriculture", "crafts", "artisans", "merchants", "occupations", "towns"],
+        color: "bg-lime-100"
+      },
+      {
+        id: "topic-16",
+        category: "culture",
+        icon: "⛵",
+        title: "16. Trade and Guilds",
+        summary: "Trade routes spanned land and sea, organized by powerful merchant guilds called Shrenis.",
+        keyPoints: [
+          "Trade connected different regions through extensive land and maritime sea routes.",
+          "Merchants organized into guilds called shrenis, which regulated standards, banking, and trade laws.",
+          "Exchanged high-value goods like textiles, spices, precious metals, gems, and crafts."
+        ],
+        keywords: ["Trade", "merchants", "guilds", "Shreni", "trade routes", "goods"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-17",
+        category: "culture",
+        icon: "🪕",
+        title: "17. Bhakti, Alvars and Nayanmars",
+        summary: "Devotional Bhakti movement emphasized personal love to God, led by Alvars (Vishnu) and Nayanmars (Shiva).",
+        keyPoints: [
+          "The Bhakti tradition emphasized intense personal devotion to a chosen deity.",
+          "In South India, 12 Alvars were devoted to Vishnu and 63 Nayanmars were devoted to Shiva.",
+          "Their rich devotional poetry democratized religion and transformed cultural life."
+        ],
+        keywords: ["Bhakti", "devotion", "Alvars", "Nayanmars", "Vishnu", "Shiva", "devotional poetry"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-18",
+        category: "culture",
+        icon: "🛕",
+        title: "18. Temples, Literature and Inscriptions",
+        summary: "Temples served as socio-economic hubs, while literature and stone inscriptions record ancient history.",
+        keyPoints: [
+          "Temples grew into vital centres of religious, social, educational, and economic activity.",
+          "Literature in Sanskrit, Tamil, and regional languages provides historical insights.",
+          "Inscriptions on copper plates and temple walls give solid evidence about land grants and kings."
+        ],
+        keywords: ["Temples", "literature", "inscriptions", "evidence", "religion", "society", "administration"],
+        color: "bg-purple-100"
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       2. REVISION CHAIN FLOWCHART STEPS
+       -------------------------------------------------------------------------- */
+    const REVISION_CHAIN = [
+      { label: "Kula", topicId: "topic-2" },
+      { label: "Jana", topicId: "topic-2" },
+      { label: "Janapada", topicId: "topic-2" },
+      { label: "Mahajanapada", topicId: "topic-2" },
+      { label: "Kingdoms/Republics", topicId: "topic-3" },
+      { label: "Empires", topicId: "topic-4" },
+      { label: "Administration", topicId: "topic-8" },
+      { label: "Society", topicId: "topic-10" },
+      { label: "Economy & Trade", topicId: "topic-16" },
+      { label: "Education", topicId: "topic-14" },
+      { label: "Religion & Culture", topicId: "topic-17" },
+      { label: "1000 CE", topicId: "topic-18" }
+    ];
+
+    /* --------------------------------------------------------------------------
+       3. PRACTICE QUIZ DATASET (18 MCQs - 1 per topic)
+       -------------------------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        topic: "Society and the State",
+        question: "What defines a political organisation possessing a territory, government and authority?",
+        options: ["Society", "State", "Guild", "Ashrama"],
+        correct: 1,
+        explanation: "A state is defined as a political organisation with a specified territory, administrative government, and sovereign authority."
+      },
+      {
+        topic: "Kula to Janapadas",
+        question: "What was the early social unit representing family or lineage in ancient India?",
+        options: ["Janapada", "Kula", "Shreni", "Mahajanapada"],
+        correct: 1,
+        explanation: "Kula referred to family or lineage, which evolved into jana (community/tribe) and later settled Janapadas."
+      },
+      {
+        topic: "Kingdoms & Republics",
+        question: "In ancient Indian political systems, what were republics governed by assemblies called?",
+        options: ["Monarchies", "Gana-sanghas", "Saptangas", "Kudavolai"],
+        correct: 1,
+        explanation: "Gana-sanghas were republican political setups where power was shared among an assembly of rulers/representatives."
+      },
+      {
+        topic: "Mauryan Empire",
+        question: "Who was the founder of the Mauryan Empire?",
+        options: ["Ashoka", "Chandragupta Maurya", "Samudragupta", "Harsha"],
+        correct: 1,
+        explanation: "Chandragupta Maurya founded the Mauryan Empire with the help of Chanakya (Kautilya)."
+      },
+      {
+        topic: "Gupta Empire",
+        question: "Which South Indian dynasty is famous for cave architecture and regional power after the Guptas?",
+        options: ["Pallavas", "Mauryas", "Nandas", "Sungas"],
+        correct: 0,
+        explanation: "The Pallavas, along with Chalukyas and Rashtrakutas, were prominent regional dynasties after the Gupta period."
+      },
+      {
+        topic: "Kingship & Dharma",
+        question: "What was expected of an ancient Indian Rājā regarding governance?",
+        options: [
+          "Exercise absolute personal tyranny",
+          "Protect people and maintain order according to Dharma",
+          "Abolish all local villages",
+          "Ignore tax administration"
+        ],
+        correct: 1,
+        explanation: "An ideal ruler (Rājā) was bound by Dharma to protect subjects, ensure justice, and fulfill duties toward society."
+      },
+      {
+        topic: "Chakravarti & Saptanga",
+        question: "According to the Saptanga theory, how many essential elements make up a state?",
+        options: ["Three", "Five", "Seven", "Nine"],
+        correct: 2,
+        explanation: "Saptanga theory describes seven elements of a state: ruler, ministers, territory/people, fort, treasury, army, and allies."
+      },
+      {
+        topic: "Local Government",
+        question: "Which unit played the most critical role in local administration in ancient India?",
+        options: ["Royal palace", "Villages", "Distant ports", "Army barracks"],
+        correct: 1,
+        explanation: "Villages were the primary units of self-governance, managing local resources, disputes, and tax collection."
+      },
+      {
+        topic: "Chola Kudavolai System",
+        question: "How were committee members chosen in Chola village assemblies under the Kudavolai system?",
+        options: [
+          "Inherited hereditary posts",
+          "Drawing palm-leaf lots from a pot",
+          "Chosen by foreign merchants",
+          "Appointed by the army general"
+        ],
+        correct: 1,
+        explanation: "Kudavolai was a lot-drawing system where candidate names on palm leaves were picked from an earthenware pot."
+      },
+      {
+        topic: "Varna & Jati",
+        question: "What did 'Jati' primarily refer to in ancient Indian society?",
+        options: [
+          "Four broad social orders",
+          "Numerous social groups connected with specific occupations & communities",
+          "Royal army regiments",
+          "University degrees"
+        ],
+        correct: 1,
+        explanation: "While Varna was a 4-fold broad social order, Jati represented detailed occupational and community groups."
+      },
+      {
+        topic: "Ashrama System",
+        question: "In the Ashrama system, which stage represents the life of a married householder?",
+        options: ["Brahmacharya", "Grihastha", "Vanaprastha", "Sannyasa"],
+        correct: 1,
+        explanation: "Grihastha ashrama represents the householder stage dedicated to family, economic duty, and civic responsibilities."
+      },
+      {
+        topic: "Purushartha",
+        question: "Which Purushartha represents spiritual liberation as a goal of human life?",
+        options: ["Dharma", "Artha", "Kama", "Moksha"],
+        correct: 3,
+        explanation: "The four Purusharthas are Dharma (duty), Artha (wealth), Kama (desire), and Moksha (spiritual liberation)."
+      },
+      {
+        topic: "Women in Society",
+        question: "What do historical sources indicate regarding women's roles in ancient India?",
+        options: [
+          "Women had zero involvement in any work",
+          "Roles spanned family, crafts, agriculture, education and religion",
+          "Women only lived in universities",
+          "Women were strictly prohibited from all social activities everywhere"
+        ],
+        correct: 1,
+        explanation: "Historical records show women participated in agriculture, family, education, crafts, and religious life across eras."
+      },
+      {
+        topic: "Centres of Learning",
+        question: "Which famous ancient university was a world-renowned centre of higher learning in ancient India?",
+        options: ["Nalanda", "Carthage", "Alexandria", "Athens"],
+        correct: 0,
+        explanation: "Nalanda (along with Takshashila, Vikramashila, Vallabhi) was a celebrated residential university attracting international scholars."
+      },
+      {
+        topic: "Agriculture & Crafts",
+        question: "What formed the primary backbone of the economy in ancient India?",
+        options: ["Shipbuilding alone", "Agriculture", "Importing food", "Mining diamonds only"],
+        correct: 1,
+        explanation: "Agriculture was the primary economic activity, supporting urban centers, trade, and state revenue."
+      },
+      {
+        topic: "Trade & Guilds",
+        question: "What were ancient Indian merchant and craft guilds called?",
+        options: ["Gana", "Shreni", "Ashrama", "Gotra"],
+        correct: 1,
+        explanation: "Shrenis were professional guilds of craftsmen and merchants that regulated production, prices, and trade ethics."
+      },
+      {
+        topic: "Bhakti Tradition",
+        question: "In South Indian Bhakti tradition, who were the 63 saint-poets devoted to Lord Shiva?",
+        options: ["Alvars", "Nayanmars", "Guru-Shishya", "Pharaohs"],
+        correct: 1,
+        explanation: "The Nayanmars were 63 Shaivite devotional saints, while the 12 Alvars were devoted to Lord Vishnu."
+      },
+      {
+        topic: "Temples & Inscriptions",
+        question: "Why are ancient inscriptions on stone and copper plates historically important?",
+        options: [
+          "They served as paper money",
+          "They provide reliable authentic evidence about rulers, land grants, and society",
+          "They were used for cooking",
+          "They contain only fictional stories"
+        ],
+        correct: 1,
+        explanation: "Inscriptions on temple walls and copper plates are primary historical evidence recording royal decrees, grants, and administration."
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       4. WEB AUDIO SYNTHESIZER (No external audio files)
+       -------------------------------------------------------------------------- */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(420, now);
+          osc.frequency.exponentialRampToValueAtTime(840, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'flip') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(260, now);
+          osc.frequency.exponentialRampToValueAtTime(520, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'correct') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.09); // E5
+          osc.frequency.setValueAtTime(783.99, now + 0.18); // G5
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'wrong') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(190, now);
+          osc.frequency.setValueAtTime(140, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        }
+      } catch (e) {}
+    }
+
+    function toggleAudioFX() {
+      soundEnabled = !soundEnabled;
+      const statusText = document.getElementById('sound-status-text');
+      const soundIcon = document.getElementById('sound-icon');
+      if (soundEnabled) {
+        if (statusText) statusText.innerText = 'Sound ON';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        playSound('pop');
+      } else {
+        if (statusText) statusText.innerText = 'Sound OFF';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    }
+
+    /* Text to Speech Narration */
+    function readAloud(text) {
+      if (!soundEnabled) return;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+        playSound('pop');
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       5. MASCOT CURSOR TRACKING & SPARKLES
+       -------------------------------------------------------------------------- */
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let mascotX = mouseX;
+    let mascotY = mouseY;
+
+    const mascot = document.getElementById('mascot-container');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.88) spawnParticle(mouseX, mouseY);
+    });
+
+    function spawnParticle(x, y) {
+      const p = document.createElement('div');
+      p.className = 'particle font-black text-brandYellow text-xs select-none pointer-events-none';
+      p.innerText = ['✨', '⭐', '👑', '📜', '☸️'][Math.floor(Math.random() * 5)];
+      p.style.left = `${x}px`;
+      p.style.top = `${y}px`;
+
+      const tx = (Math.random() - 0.5) * 40;
+      const ty = (Math.random() - 0.5) * 40;
+      p.style.setProperty('--tx', `${tx}px`);
+      p.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 750);
+    }
+
+    function animateMascot() {
+      mascotX += (mouseX - mascotX) * 0.12;
+      mascotY += (mouseY - mascotY) * 0.12;
+
+      if (mascot && window.innerWidth >= 768) {
+        mascot.style.transform = `translate3d(${mascotX + 16}px, ${mascotY + 16}px, 0)`;
+
+        const rect = mascot.getBoundingClientRect();
+        const mascotCenterX = rect.left + rect.width / 2;
+        const mascotCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - mascotCenterY, mouseX - mascotCenterX);
+        const dist = Math.min(2.5, Math.hypot(mouseX - mascotCenterX, mouseY - mascotCenterY) / 30);
+
+        const px = Math.cos(angle) * dist;
+        const py = Math.sin(angle) * dist;
+
+        if (pupilLeft && pupilRight) {
+          pupilLeft.style.transform = `translate(${px}px, ${py}px)`;
+          pupilRight.style.transform = `translate(${px}px, ${py}px)`;
+        }
+      }
+
+      requestAnimationFrame(animateMascot);
+    }
+
+    /* --------------------------------------------------------------------------
+       6. STATE MANAGEMENT & PROGRESS TRACKER
+       -------------------------------------------------------------------------- */
+    let readNotes = new Set();
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function toggleNoteRead(topicId) {
+      playSound('pop');
+      if (readNotes.has(topicId)) {
+        readNotes.delete(topicId);
+      } else {
+        readNotes.add(topicId);
+      }
+      updateNoteCardUI(topicId);
+      updateMasteryUI();
+    }
+
+    function updateNoteCardUI(topicId) {
+      const card = document.getElementById(`card-${topicId}`);
+      const btn = document.getElementById(`read-btn-${topicId}`);
+      if (!card || !btn) return;
+
+      if (readNotes.has(topicId)) {
+        card.classList.add('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-brandGreen text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>Learned ✅</span>`;
+      } else {
+        card.classList.remove('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-regular fa-circle"></i> <span>Mark as Learned</span>`;
+      }
+    }
+
+    function updateMasteryUI() {
+      const total = CHAPTER_TOPICS.length;
+      const count = readNotes.size;
+      const percentage = Math.round((count / total) * 100);
+
+      const bar = document.getElementById('mastery-bar');
+      const text = document.getElementById('mastery-percentage');
+      const countText = document.getElementById('notes-read-count');
+
+      if (bar) bar.style.width = `${percentage}%`;
+      if (text) text.innerText = `${percentage}%`;
+      if (countText) countText.innerText = `${count}/${total} Notes Read`;
+    }
+
+    /* --------------------------------------------------------------------------
+       7. TAB SWITCHING LOGIC
+       -------------------------------------------------------------------------- */
+    function switchTab(tabName) {
+      playSound('pop');
+      const tabs = ['notes', 'flashcards', 'quiz', 'glossary'];
+      
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`${t}-tab-content`);
+        if (btn && content) {
+          if (t === tabName) {
+            btn.className = "tab-btn active px-4 py-2.5 bg-brandBlue text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.remove('hidden');
+          } else {
+            btn.className = "tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.add('hidden');
+          }
+        }
+      });
+
+      // Mascot bubble update
+      const bubble = document.getElementById('mascot-bubble');
+      if (bubble) {
+        if (tabName === 'notes') bubble.innerText = "Explore all 18 Visual Notes! 📖";
+        if (tabName === 'flashcards') bubble.innerText = "Tap cards to flip & test memory! 🎴";
+        if (tabName === 'quiz') bubble.innerText = "Test your knowledge with 18 MCQs! 🎯";
+        if (tabName === 'glossary') bubble.innerText = "Key terms & concept definitions! 🏷️";
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       8. ONE-LINE REVISION CHAIN FLOWCHART RENDERER
+       -------------------------------------------------------------------------- */
+    function renderRevisionChain() {
+      const container = document.getElementById('revision-chain-container');
+      if (!container) return;
+
+      container.innerHTML = REVISION_CHAIN.map((item, idx) => `
+        <button onclick="jumpToNote('${item.topicId}')" class="px-3.5 py-1.5 bg-yellow-100 hover:bg-brandYellow border-cartoon rounded-xl text-xs font-black text-brandBlack hover-pop flex items-center space-x-1.5 shrink-0 transition-colors">
+          <span>${item.label}</span>
+          ${idx < REVISION_CHAIN.length - 1 ? '<span class="text-brandBlueDark ml-1">➔</span>' : '🏁'}
+        </button>
+      `).join('');
+    }
+
+    /* --------------------------------------------------------------------------
+       9. VISUAL NOTES RENDERER & FILTERS
+       -------------------------------------------------------------------------- */
+    function renderVisualNotes() {
+      const container = document.getElementById('notes-grid');
+      if (!container) return;
+
+      const filtered = CHAPTER_TOPICS.filter(t => {
+        const matchesCat = currentCategory === 'all' || t.category === currentCategory;
+        const matchesQuery = searchQuery === '' || 
+          t.title.toLowerCase().includes(searchQuery) ||
+          t.summary.toLowerCase().includes(searchQuery) ||
+          t.keywords.some(k => k.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-white border-cartoon rounded-3xl p-8 text-center space-y-3">
+            <div class="text-4xl">🔍</div>
+            <h3 class="text-xl font-black text-brandBlack">No topics found!</h3>
+            <p class="text-xs font-bold text-slate-600">Try clearing your search query or picking a different filter category.</p>
+            <button onclick="clearSearch()" class="px-4 py-2 bg-brandYellow border-cartoon rounded-xl font-black text-xs hover-pop">
+              Clear Search Filter
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(t => `
+        <div id="card-${t.id}" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between group relative overflow-hidden">
+          
+          <div class="space-y-3">
+            <!-- Header Icon & Narration TTS -->
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 ${t.color} border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+                ${t.icon}
+              </div>
+              
+              <button onclick="readAloud('${t.title}. ${t.summary}')" title="Listen Narration" class="w-9 h-9 bg-brandYellow border-cartoon-thin rounded-xl shadow-cartoon-sm flex items-center justify-center text-brandBlack hover:bg-brandBlue transition-colors">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+
+            <!-- Title & Summary -->
+            <div class="space-y-1">
+              <h3 class="text-lg font-black text-brandBlack leading-snug">${t.title}</h3>
+              <p class="text-xs font-bold text-slate-600 leading-relaxed">${t.summary}</p>
+            </div>
+
+            <!-- Bullet Points -->
+            <ul class="space-y-2 pt-2 border-t border-slate-200">
+              ${t.keyPoints.map(pt => `
+                <li class="flex items-start space-x-2 text-xs font-bold text-slate-800">
+                  <span class="text-brandBlueDark font-black mt-0.5">•</span>
+                  <span>${pt}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Keyword Badges & Read Toggle Button -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <div class="flex flex-wrap gap-1">
+              ${t.keywords.map(kw => `
+                <span class="bg-slate-100 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded-lg text-slate-700">
+                  #${kw}
+                </span>
+              `).join('')}
+            </div>
+
+            <button id="read-btn-${t.id}" onclick="toggleNoteRead('${t.id}')" class="w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>Mark as Learned</span>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+
+      // Refresh check states for rendered cards
+      filtered.forEach(t => updateNoteCardUI(t.id));
+    }
+
+    function filterCategory(cat) {
+      playSound('pop');
+      currentCategory = cat;
+      
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
+          btn.className = "cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black";
+        } else {
+          btn.className = "cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100";
+        }
+      });
+
+      renderVisualNotes();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) {
+        if (searchQuery.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      renderVisualNotes();
+    }
+
+    function clearSearch() {
+      playSound('pop');
+      const input = document.getElementById('topic-search-input');
+      if (input) input.value = '';
+      searchQuery = '';
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      renderVisualNotes();
+    }
+
+    /* --------------------------------------------------------------------------
+       10. 3D FLASHCARDS ENGINE
+       -------------------------------------------------------------------------- */
+    let currentCardIdx = 0;
+    let isFlipped = false;
+    let masteredCards = new Set();
+    let flashcardDeck = [...CHAPTER_TOPICS];
+
+    function updateFlashcardUI() {
+      isFlipped = false;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) inner.classList.remove('rotate-y-180');
+
+      const card = flashcardDeck[currentCardIdx];
+      if (!card) return;
+
+      document.getElementById('card-index-num').innerText = currentCardIdx + 1;
+      document.getElementById('card-front-icon').innerText = card.icon;
+      document.getElementById('card-front-title').innerText = card.title;
+      document.getElementById('card-back-title').innerText = card.title;
+      document.getElementById('card-back-text').innerText = card.summary + ' ' + card.keyPoints.join(' ');
+
+      // Mastered indicator badge
+      const badge = document.getElementById('card-mastered-badge');
+      const masteredBtn = document.getElementById('mastered-toggle-btn');
+      
+      if (masteredCards.has(card.id)) {
+        if (badge) badge.classList.remove('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mastered ✅";
+          masteredBtn.className = "px-3 py-1 bg-brandGreen border-cartoon-thin rounded-xl text-xs font-black";
+        }
+      } else {
+        if (badge) badge.classList.add('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mark as Mastered 🌟";
+          masteredBtn.className = "px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100";
+        }
+      }
+
+      // Keywords on back face
+      const kwBox = document.getElementById('card-back-keywords');
+      if (kwBox) {
+        kwBox.innerHTML = card.keywords.map(kw => `
+          <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-brandBlack">#${kw}</span>
+        `).join('');
+      }
+    }
+
+    function flipFlashcard() {
+      playSound('flip');
+      isFlipped = !isFlipped;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) {
+        if (isFlipped) inner.classList.add('rotate-y-180');
+        else inner.classList.remove('rotate-y-180');
+      }
+    }
+
+    function nextFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx + 1) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx - 1 + flashcardDeck.length) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function shuffleFlashcards() {
+      playSound('pop');
+      flashcardDeck.sort(() => Math.random() - 0.5);
+      currentCardIdx = 0;
+      updateFlashcardUI();
+    }
+
+    function toggleCardMastered() {
+      playSound('pop');
+      const card = flashcardDeck[currentCardIdx];
+      if (masteredCards.has(card.id)) {
+        masteredCards.delete(card.id);
+      } else {
+        masteredCards.add(card.id);
+      }
+      updateFlashcardUI();
+    }
+
+    /* Keyboard navigation support for flashcards */
+    document.addEventListener('keydown', (e) => {
+      const flashTab = document.getElementById('flashcards-tab-content');
+      if (flashTab && !flashTab.classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') nextFlashcard();
+        if (e.key === 'ArrowLeft') prevFlashcard();
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          flipFlashcard();
+        }
+      }
+    });
+
+    /* --------------------------------------------------------------------------
+       11. PRACTICE QUIZ ENGINE
+       -------------------------------------------------------------------------- */
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let answered = false;
+
+    function renderQuizQuestion() {
+      answered = false;
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      if (!q) return;
+
+      document.getElementById('quiz-curr-q').innerText = currentQuizIdx + 1;
+      document.getElementById('quiz-topic-tag').innerText = `Topic: ${q.topic}`;
+      document.getElementById('quiz-question-text').innerText = q.question;
+
+      const container = document.getElementById('quiz-options-container');
+      const expBox = document.getElementById('quiz-explanation-box');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (expBox) expBox.classList.add('hidden');
+      if (nextBtn) nextBtn.classList.add('hidden');
+
+      if (container) {
+        container.innerHTML = q.options.map((opt, idx) => `
+          <button id="opt-btn-${idx}" onclick="selectQuizOption(${idx})" class="w-full text-left p-4 bg-white hover:bg-yellow-50 border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack hover-pop transition-colors flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 bg-brandYellow border-cartoon-thin rounded-xl flex items-center justify-center text-xs shrink-0">${String.fromCharCode(65 + idx)}</span>
+              <span>${opt}</span>
+            </div>
+            <i id="opt-icon-${idx}" class="fa-regular fa-circle text-slate-300"></i>
+          </button>
+        `).join('');
+      }
+    }
+
+    function selectQuizOption(selectedIdx) {
+      if (answered) return;
+      answered = true;
+
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      const expBox = document.getElementById('quiz-explanation-box');
+      const expText = document.getElementById('quiz-explanation-text');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (selectedIdx === q.correct) {
+        playSound('correct');
+        quizScore++;
+        document.getElementById('quiz-score').innerText = quizScore;
+        
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      } else {
+        playSound('wrong');
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-red-400 text-white border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-xmark text-white text-lg";
+        }
+
+        // Highlight correct answer in green
+        const correctBtn = document.getElementById(`opt-btn-${q.correct}`);
+        if (correctBtn) {
+          correctBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${q.correct}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      }
+
+      // Show explanation
+      if (expBox && expText) {
+        expText.innerText = q.explanation;
+        expBox.classList.remove('hidden');
+      }
+
+      if (nextBtn) {
+        if (currentQuizIdx === QUIZ_QUESTIONS.length - 1) {
+          nextBtn.innerText = "Finish Quiz 🎉";
+        } else {
+          nextBtn.innerText = "Next Question 🚀";
+        }
+        nextBtn.classList.remove('hidden');
+      }
+
+      // Update Header Score summary
+      const scoreBadge = document.getElementById('quiz-score-count');
+      if (scoreBadge) scoreBadge.innerText = `Quiz: ${quizScore}/18`;
+    }
+
+    function nextQuestion() {
+      playSound('pop');
+      if (currentQuizIdx < QUIZ_QUESTIONS.length - 1) {
+        currentQuizIdx++;
+        renderQuizQuestion();
+      } else {
+        // Quiz Complete Summary
+        const box = document.getElementById('quiz-card-box');
+        if (box) {
+          const scorePercent = Math.round((quizScore / QUIZ_QUESTIONS.length) * 100);
+          box.innerHTML = `
+            <div class="text-center space-y-4 py-6">
+              <div class="text-6xl animate-bounce">👑</div>
+              <h3 class="text-3xl font-black text-brandBlack">Quiz Completed!</h3>
+              <p class="text-base font-bold text-slate-700">You scored <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl text-brandBlack">${quizScore} out of ${QUIZ_QUESTIONS.length}</span> (${scorePercent}%)</p>
+              <div class="pt-2">
+                <button onclick="resetQuiz()" class="px-6 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+                  Try Quiz Again 🔄
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function resetQuiz() {
+      playSound('pop');
+      currentQuizIdx = 0;
+      quizScore = 0;
+      document.getElementById('quiz-score').innerText = 0;
+      
+      const box = document.getElementById('quiz-card-box');
+      if (box && !box.querySelector('#quiz-question-text')) {
+        location.reload(); // Quick restore if summary was active
+        return;
+      }
+      renderQuizQuestion();
+    }
+
+    /* --------------------------------------------------------------------------
+       12. KEY TERMS GLOSSARY RENDERER
+       -------------------------------------------------------------------------- */
+    function renderGlossary() {
+      const container = document.getElementById('glossary-grid');
+      if (!container) return;
+
+      const allKeywords = [];
+      CHAPTER_TOPICS.forEach(t => {
+        t.keywords.forEach(kw => {
+          allKeywords.push({ keyword: kw, topicTitle: t.title, topicId: t.id, icon: t.icon });
+        });
+      });
+
+      const badge = document.getElementById('glossary-count-badge');
+      if (badge) badge.innerText = `${allKeywords.length} Key Terms`;
+
+      container.innerHTML = allKeywords.map(item => `
+        <div onclick="jumpToNote('${item.topicId}')" class="bg-slate-50 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between group">
+          <div class="flex items-center space-x-2.5">
+            <span class="text-xl">${item.icon}</span>
+            <div>
+              <span class="font-black text-xs sm:text-sm text-brandBlack block">#${item.keyword}</span>
+              <span class="text-[10px] font-bold text-slate-500 block truncate max-w-[160px]">${item.topicTitle}</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-brandBlack group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      `).join('');
+    }
+
+    function jumpToNote(topicId) {
+      switchTab('notes');
+      setTimeout(() => {
+        const el = document.getElementById(`card-${topicId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add('ring-4', 'ring-brandYellow');
+          setTimeout(() => el.classList.remove('ring-4', 'ring-brandYellow'), 2000);
+        }
+      }, 150);
+    }
+    window.addEventListener('load', () => {
+      animateMascot();
+      renderRevisionChain();
+      renderVisualNotes();
+      updateFlashcardUI();
+      renderQuizQuestion();
+      renderGlossary();
+    });
+  </script>
+</body>
+</html>

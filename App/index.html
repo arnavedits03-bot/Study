@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's Study Now - Class 9th Visual Learning Treasure</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlack: '#1E1E1E',
+            brandYellow: '#FACC15',
+            brandYellowLight: '#FEF08A',
+            brandBlue: '#38BDF8',
+            brandBlueDark: '#0EA5E9',
+            brandPink: '#F472B6',
+            brandGreen: '#34D399',
+            brandLime: '#A3E635',
+            brandPurple: '#C084FC',
+            brandOrange: '#FB923C'
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'cartoon-sm': '3px 3px 0px #1E1E1E',
+            'cartoon': '5px 5px 0px #1E1E1E',
+            'cartoon-lg': '8px 8px 0px #1E1E1E',
+            'cartoon-hover': '8px 8px 0px #1E1E1E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #1E1E1E;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Neo-Brutalist Border Classes */
+    .border-cartoon {
+      border: 3.5px solid #1E1E1E;
+    }
+    .border-cartoon-thin {
+      border: 2px solid #1E1E1E;
+    }
+
+    /* Interactive Tactile Hover Effects */
+    .hover-pop {
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.2s ease;
+    }
+    .hover-pop:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0px #1E1E1E;
+    }
+    .hover-pop:active {
+      transform: translateY(2px) translateX(2px);
+      box-shadow: 2px 2px 0px #1E1E1E;
+    }
+
+    /* Polka Dot Cartoon Background Pattern */
+    .bg-cartoon-dots {
+      background-image: radial-gradient(#1E1E1E 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-color: #F8FAFC;
+    }
+
+    /* Mascot Cursor Follower - Strictly Non-Interactive to Prevent Click Block */
+    #mascot-container {
+      position: fixed;
+      pointer-events: none !important;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    /* Cursor Star Sparkles */
+    .particle {
+      position: fixed;
+      pointer-events: none !important;
+      animation: particleFade 0.75s forwards ease-out;
+      z-index: 9998;
+    }
+    @keyframes particleFade {
+      0% { opacity: 1; transform: scale(1) translate(0, 0); }
+      100% { opacity: 0; transform: scale(0.2) translate(var(--tx), var(--ty)); }
+    }
+
+    /* Floating Cartoon Animations */
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    .animate-float {
+      animation: floatGentle 4s ease-in-out infinite;
+    }
+    .animate-float-delayed {
+      animation: floatGentle 5s ease-in-out infinite 2s;
+    }
+
+    /* 3D Flip Card System */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Standard Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FACC15;
+      border-left: 3px solid #1E1E1E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E1E1E;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cartoon-dots min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <div id="mascot-container" class="hidden md:flex flex-col items-center justify-center pointer-events-none">
+    <div class="relative w-14 h-14 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center">
+      <!-- Pupil Tracking Eyes -->
+      <div class="flex space-x-1.5">
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-left" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-right" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+      </div>
+      <!-- Mouth -->
+      <div class="absolute bottom-2 w-3.5 h-1.5 border-b-2 border-brandBlack rounded-full"></div>
+      <!-- Antenna -->
+      <div class="absolute -top-2.5 w-1 h-2.5 bg-brandBlack rounded-full"></div>
+      <div class="absolute -top-3.5 w-3 h-3 bg-brandBlue border-cartoon-thin rounded-full animate-pulse"></div>
+    </div>
+    <span class="mt-1 bg-brandBlack text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">
+      StudyBuddy 🤖
+    </span>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-white border-b-4 border-brandBlack shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+          <i class="fa-solid fa-graduation-cap text-xl text-brandBlack"></i>
+        </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-brandBlack block leading-none">Let's Study Now</span>
+          <span class="text-[10px] sm:text-[11px] font-extrabold text-brandBlueDark uppercase tracking-wider">Visual Learning Hub</span>
+        </div>
+      </a>
+
+      <!-- Header Action Utilities -->
+      <div class="flex items-center space-x-2">
+        <!-- Sound Effect Toggle -->
+        <button id="sound-btn" onclick="toggleAudioFX()" class="px-3 py-2 bg-brandYellow text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span class="hidden sm:inline" id="sound-status-text">Sound ON</span>
+        </button>
+
+        <!-- WhatsApp Link Pill -->
+        <a href="https://wa.me/919425361092?text=Hi!%20I%20am%20visiting%20Let's%20Study%20Now!" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-brandGreen text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span class="hidden sm:inline">+91 9425361092</span>
+          <span class="sm:hidden">WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    
+    <!-- Hero Banner Card -->
+    <section class="bg-brandYellow border-cartoon rounded-3xl p-6 sm:p-10 shadow-cartoon-lg relative overflow-hidden">
+      <!-- Background Graphic Decor -->
+      <div class="absolute -right-6 -bottom-8 opacity-15 pointer-events-none animate-float">
+        <i class="fa-solid fa-book-open-reader text-[220px] text-brandBlack"></i>
+      </div>
+      <div class="absolute right-1/3 top-4 text-2xl opacity-30 animate-float-delayed pointer-events-none">✏️</div>
+      <div class="absolute left-1/4 bottom-4 text-2xl opacity-30 animate-float pointer-events-none">💡</div>
+
+      <div class="max-w-3xl space-y-6 relative z-10">
+        
+        <!-- Badge -->
+        <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3.5 py-1.5 rounded-full shadow-cartoon-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse"></span>
+          <span class="text-xs font-black text-brandBlack uppercase tracking-wide">
+            Created by Class 9th Students • Completely Free • Supported by Ashva Group
+          </span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-3xl sm:text-5xl font-black text-brandBlack leading-tight">
+          Treasure for Class 9th Students! 🎒✨
+        </h1>
+
+        <!-- Banner Subtitle Box -->
+        <p class="text-base sm:text-xl font-black text-brandBlack bg-white p-4 rounded-2xl border-cartoon shadow-cartoon-sm leading-relaxed">
+          "Study and learn boring subjects in an interesting visual way!"
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <!-- SST Hyperlink Directly to relative path -->
+          <a href="SST/select.html" class="bg-brandBlue text-brandBlack border-cartoon px-6 py-3.5 rounded-2xl font-black text-base shadow-cartoon hover-pop inline-flex items-center space-x-2">
+            <span>Start Studying SST Now 🚀</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="credits.html" target="_blank" class="bg-brandBlue text-brandBlack border-cartoon px-6 py-3.5 rounded-2xl font-black text-base shadow-cartoon hover-pop inline-flex items-center space-x-2">
+            <span>See Credits 💻</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#want-to-study" class="bg-white text-brandBlack border-cartoon px-6 py-3.5 rounded-2xl font-black text-base shadow-cartoon hover-pop inline-flex items-center space-x-2">
+            <span>Browse All Subjects 🎒</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="want-to-study" class="space-y-6 scroll-mt-24">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+        <div>
+          <h2 class="text-2xl sm:text-4xl font-black text-brandBlack flex items-center space-x-2">
+            <span>Want to study -</span>
+            <span>🎒</span>
+          </h2>
+          <p class="text-xs sm:text-sm font-bold text-slate-700">Select a subject to open visual notes, practice flashcards & revision sheets!</p>
+        </div>
+        <span class="bg-brandPink text-white border-cartoon font-black px-3.5 py-1 rounded-2xl text-xs shadow-cartoon-sm w-max">
+          1 Available • 5 Locked
+        </span>
+      </div>
+
+      <!-- 6 Subject Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 1. SST (Social Science) - AVAILABLE NOW -->
+        <a href="SST/select.html" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer relative overflow-hidden group flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-brandYellow border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              🌍
+            </div>
+            <span class="bg-brandGreen text-brandBlack border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm">
+              AVAILABLE NOW! 🟢
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-brandBlack">Social Science (SST)</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Geography, Civics, History & Economics with comic notes, memory cards & recap sheets!
+            </p>
+          </div>
+
+          <div class="w-full bg-brandYellow group-hover:bg-brandBlue transition-colors border-cartoon py-3 rounded-2xl font-black text-sm shadow-cartoon-sm flex items-center justify-center space-x-2 text-brandBlack">
+            <span>Enter SST Hub</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- 2. HINDI - LOCKED -->
+        <div onclick="showLockedToast('Hindi')" class="bg-slate-100 border-cartoon rounded-3xl p-6 shadow-cartoon opacity-85 hover-pop cursor-pointer flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-slate-200 border-cartoon rounded-2xl flex items-center justify-center text-2xl">
+              📖
+            </div>
+            <span class="bg-slate-300 text-slate-800 border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm flex items-center space-x-1">
+              <i class="fa-solid fa-lock text-[10px]"></i>
+              <span>Not available now</span>
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-slate-700">Hindi (हिंदी)</h3>
+            <p class="text-xs font-bold text-slate-500 leading-relaxed">
+              Kshitij & Sparsh comic chapter summaries coming soon. Support us to release faster!
+            </p>
+          </div>
+
+          <div class="bg-slate-200 border-cartoon rounded-2xl py-2.5 text-center font-extrabold text-xs text-slate-600 shadow-cartoon-sm">
+            Locked • Need Support
+          </div>
+        </div>
+
+        <!-- 3. ENGLISH - LOCKED -->
+        <div onclick="showLockedToast('English')" class="bg-slate-100 border-cartoon rounded-3xl p-6 shadow-cartoon opacity-85 hover-pop cursor-pointer flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-slate-200 border-cartoon rounded-2xl flex items-center justify-center text-2xl">
+              ✍️
+            </div>
+            <span class="bg-slate-300 text-slate-800 border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm flex items-center space-x-1">
+              <i class="fa-solid fa-lock text-[10px]"></i>
+              <span>Not available now</span>
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-slate-700">English Language</h3>
+            <p class="text-xs font-bold text-slate-500 leading-relaxed">
+              Beehive & Moments visual roadmaps & grammar cards in preparation.
+            </p>
+          </div>
+
+          <div class="bg-slate-200 border-cartoon rounded-2xl py-2.5 text-center font-extrabold text-xs text-slate-600 shadow-cartoon-sm">
+            Locked • Need Support
+          </div>
+        </div>
+
+        <!-- 4. MATHS - LOCKED -->
+        <div onclick="showLockedToast('Maths')" class="bg-slate-100 border-cartoon rounded-3xl p-6 shadow-cartoon opacity-85 hover-pop cursor-pointer flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-slate-200 border-cartoon rounded-2xl flex items-center justify-center text-2xl">
+              📐
+            </div>
+            <span class="bg-slate-300 text-slate-800 border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm flex items-center space-x-1">
+              <i class="fa-solid fa-lock text-[10px]"></i>
+              <span>Not available now</span>
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-slate-700">Mathematics</h3>
+            <p class="text-xs font-bold text-slate-500 leading-relaxed">
+              Interactive formula flip cards & step-by-step theorem proofs coming soon.
+            </p>
+          </div>
+
+          <div class="bg-slate-200 border-cartoon rounded-2xl py-2.5 text-center font-extrabold text-xs text-slate-600 shadow-cartoon-sm">
+            Locked • Need Support
+          </div>
+        </div>
+
+        <!-- 5. SCIENCE - LOCKED -->
+        <div onclick="showLockedToast('Science')" class="bg-slate-100 border-cartoon rounded-3xl p-6 shadow-cartoon opacity-85 hover-pop cursor-pointer flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-slate-200 border-cartoon rounded-2xl flex items-center justify-center text-2xl">
+              🧪
+            </div>
+            <span class="bg-slate-300 text-slate-800 border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm flex items-center space-x-1">
+              <i class="fa-solid fa-lock text-[10px]"></i>
+              <span>Not available now</span>
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-slate-700">Science</h3>
+            <p class="text-xs font-bold text-slate-500 leading-relaxed">
+              Physics, Chemistry & Biology animated flowcharts & cheatsheets.
+            </p>
+          </div>
+
+          <div class="bg-slate-200 border-cartoon rounded-2xl py-2.5 text-center font-extrabold text-xs text-slate-600 shadow-cartoon-sm">
+            Locked • Need Support
+          </div>
+        </div>
+
+        <!-- 6. SANSKRIT - LOCKED -->
+        <div onclick="showLockedToast('Sanskrit')" class="bg-slate-100 border-cartoon rounded-3xl p-6 shadow-cartoon opacity-85 hover-pop cursor-pointer flex flex-col justify-between space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 bg-slate-200 border-cartoon rounded-2xl flex items-center justify-center text-2xl">
+              🪔
+            </div>
+            <span class="bg-slate-300 text-slate-800 border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm flex items-center space-x-1">
+              <i class="fa-solid fa-lock text-[10px]"></i>
+              <span>Not available now</span>
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-2xl font-black text-slate-700">Sanskrit (संस्कृतम्)</h3>
+            <p class="text-xs font-bold text-slate-500 leading-relaxed">
+              Sanskrit shloka meanings, shabd roop memory tricks & chapter guides.
+            </p>
+          </div>
+
+          <div class="bg-slate-200 border-cartoon rounded-2xl py-2.5 text-center font-extrabold text-xs text-slate-600 shadow-cartoon-sm">
+            Locked • Need Support
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="bg-brandBlue border-cartoon rounded-3xl p-6 sm:p-10 shadow-cartoon relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+        
+        <div class="space-y-3 max-w-2xl text-center lg:text-left">
+          <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3 py-1 rounded-full shadow-cartoon-sm">
+            <span class="text-xs font-black text-brandBlack">💬 Community Support Drive</span>
+          </div>
+          
+          <h3 class="text-xl sm:text-3xl font-black text-brandBlack leading-tight">
+            To see all subjects available, we want more support! Support or suggest on WhatsApp no. +91 9425361092
+          </h3>
+          
+          <p class="text-xs sm:text-sm font-bold text-slate-900 leading-relaxed">
+            Help us unlock Hindi, Maths, Science, English & Sanskrit visual notes for every Class 9th student!
+          </p>
+        </div>
+
+        <div class="shrink-0 text-center">
+          <a href="https://wa.me/919425361092?text=Hi!%20I%20want%20to%20support/suggest%20for%20Let's%20Study%20Now" target="_blank" rel="noopener noreferrer" class="bg-brandGreen text-brandBlack border-cartoon px-6 py-3.5 rounded-2xl font-black text-sm sm:text-base shadow-cartoon hover-pop inline-flex items-center space-x-2">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span>Support or Suggest on WhatsApp</span>
+          </a>
+          <p class="text-xs font-extrabold text-brandBlack mt-2">Supported by Ashva Group</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="space-y-8">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="bg-brandYellow border-cartoon text-xs font-black px-3.5 py-1 rounded-full shadow-cartoon-sm inline-block">
+          ✨ POWERFUL STUDY TOOLS
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-brandBlack">Our Main Features ⚡</h2>
+        <p class="text-xs sm:text-sm font-bold text-slate-600">Designed by Class 9th students to make learning effortless and fast!</p>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Feature 1: Study -->
+        <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandYellow border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm">
+              📚
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Study</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Visual & Animated Explanations replacing boring long paragraphs with color-coded comic summaries.
+            </p>
+          </div>
+          <div class="bg-yellow-50 border-cartoon-thin p-2.5 rounded-xl text-[11px] font-bold text-slate-800">
+            💡 Visual Interactive Notes
+          </div>
+        </div>
+
+        <!-- Feature 2: Practice Questions -->
+        <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandPink text-white border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm">
+              ❓
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Practice Questions</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Interactive Self-Quizzes with collapsible answer keys to check your readiness before exams.
+            </p>
+          </div>
+          <div class="bg-pink-50 border-cartoon-thin p-2.5 rounded-xl text-[11px] font-bold text-slate-800">
+            🎯 Self-Evaluating Quizzes
+          </div>
+        </div>
+
+        <!-- Feature 3: Rapid Revisions -->
+        <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandBlue border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm">
+              ⚡
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Rapid Revisions</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Quick Summary Cards wrapping up whole chapters in under 5 minutes for morning revisions.
+            </p>
+          </div>
+          <div class="bg-sky-50 border-cartoon-thin p-2.5 rounded-xl text-[11px] font-bold text-slate-800">
+            ⏱️ 5-Minute Bullet Recaps
+          </div>
+        </div>
+
+        <!-- Feature 4: Question Cards -->
+        <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandGreen border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm">
+              🎴
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Question Cards</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Bite-sized Visual Flashcards with tap-to-reveal answers for high-yield active recall.
+            </p>
+          </div>
+          <div class="bg-emerald-50 border-cartoon-thin p-2.5 rounded-xl text-[11px] font-bold text-slate-800">
+            🔄 Tap-to-Reveal Active Recall
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature Tagline Note -->
+      <div class="text-center pt-2">
+        <p class="text-base sm:text-lg font-black text-brandBlack bg-white border-cartoon px-5 py-2.5 rounded-2xl inline-block shadow-cartoon-sm">
+          ...and many more interesting things! 🌟✨
+        </p>
+      </div>
+
+    </section>
+
+    <section class="bg-brandYellow/30 border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon space-y-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div>
+          <span class="bg-brandBlack text-white text-[11px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider">
+            TRY IT NOW LIVE
+          </span>
+          <h3 class="text-2xl font-black text-brandBlack mt-1">Interactive Flashcards Demo</h3>
+        </div>
+        <span class="text-xs font-extrabold text-slate-800">Tap card to flip answer! 👇</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        
+        <!-- Interactive Card 1 -->
+        <div onclick="toggleCardFlip(this)" class="flip-card h-44 cursor-pointer perspective-1000 hover-pop">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl border-cartoon shadow-cartoon">
+            <!-- Front -->
+            <div class="flip-card-front absolute inset-0 bg-brandYellow rounded-2xl p-5 flex flex-col justify-between">
+              <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded w-max">QUESTION</span>
+              <p class="text-sm sm:text-base font-black text-brandBlack text-center">What is Minimum Support Price (MSP)?</p>
+              <span class="text-xs font-extrabold text-slate-800 text-center">🔄 Tap to Flip Answer</span>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back absolute inset-0 bg-white rounded-2xl p-5 flex flex-col justify-between border-cartoon">
+              <span class="bg-brandGreen border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded w-max">ANSWER</span>
+              <p class="text-xs font-bold text-slate-800 leading-relaxed text-center">
+                Pre-announced price paid by FCI to farmers to guarantee fair crop income.
+              </p>
+              <span class="text-[10px] font-black text-emerald-600 text-center">✓ Chapter 4 Economics</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Card 2 -->
+        <div onclick="toggleCardFlip(this)" class="flip-card h-44 cursor-pointer perspective-1000 hover-pop">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl border-cartoon shadow-cartoon">
+            <!-- Front -->
+            <div class="flip-card-front absolute inset-0 bg-brandBlue rounded-2xl p-5 flex flex-col justify-between">
+              <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded w-max">QUESTION</span>
+              <p class="text-sm sm:text-base font-black text-brandBlack text-center">What are 'Loo' winds?</p>
+              <span class="text-xs font-extrabold text-slate-800 text-center">🔄 Tap to Flip Answer</span>
+            </div>
+            <!-- Back -->
+            <div class="flip-card-back absolute inset-0 bg-white rounded-2xl p-5 flex flex-col justify-between border-cartoon">
+              <span class="bg-brandBlue border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded w-max">ANSWER</span>
+              <p class="text-xs font-bold text-slate-800 leading-relaxed text-center">
+                Hot, dry, gusty summer winds blowing across northern plains of India.
+              </p>
+              <span class="text-[10px] font-black text-brandBlueDark text-center">✓ Chapter 4 Geography</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-white border-t-4 border-brandBlack mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex items-center justify-center space-x-3">
+        <div class="w-10 h-10 bg-brandYellow border-cartoon rounded-xl flex items-center justify-center text-xl shadow-cartoon-sm">
+          🎓
+        </div>
+        <span class="text-2xl font-black text-brandBlack">Let's Study Now</span>
+      </div>
+
+      <p class="text-sm sm:text-base font-black text-brandBlack">
+        Made with ❤️ by Class 9th Students for Class 9th Students
+      </p>
+
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Supported by Ashva Group
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Developer - Arnav Shrivastava
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Data Manager - Ishi Chourasia
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs font-bold text-slate-500 flex flex-wrap items-center justify-between gap-4">
+        <span>© 2026 Let's Study Now. Completely Free for Students.</span>
+        <a href="https://wa.me/919425361092" target="_blank" rel="noopener noreferrer" class="hover:underline text-brandBlack font-black">
+          WhatsApp Support (+91 9425361092)
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <div id="toast-modal" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-brandYellow border-cartoon p-4 rounded-2xl shadow-cartoon-lg flex items-center space-x-3 max-w-sm">
+      <div class="w-10 h-10 bg-white border-cartoon rounded-xl flex items-center justify-center text-xl shrink-0">
+        🚀
+      </div>
+      <div>
+        <h4 id="toast-title" class="font-black text-brandBlack text-sm">Subject Locked!</h4>
+        <p id="toast-body" class="text-xs font-bold text-slate-800">Not available now! Support us on WhatsApp to unlock this subject faster!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* --------------------------------------------------------------------------
+       1. SYNTHESIZED WEB AUDIO SOUND GENERATOR (100% self-contained, no URLs)
+       -------------------------------------------------------------------------- */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(350, now);
+          osc.frequency.exponentialRampToValueAtTime(700, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'flip') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.exponentialRampToValueAtTime(440, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        } else if (type === 'lock') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(200, now);
+          osc.frequency.setValueAtTime(140, now + 0.08);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        }
+      } catch (e) {
+        // Audio fallback safely ignored if blocked by browser policy
+      }
+    }
+
+    function toggleAudioFX() {
+      soundEnabled = !soundEnabled;
+      const statusText = document.getElementById('sound-status-text');
+      const soundIcon = document.getElementById('sound-icon');
+
+      if (soundEnabled) {
+        if (statusText) statusText.innerText = 'Sound ON';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        playSound('pop');
+      } else {
+        if (statusText) statusText.innerText = 'Sound OFF';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       2. MASCOT "StudyBuddy" CURSOR FOLLOW & STAR DUST PARTICLES
+       -------------------------------------------------------------------------- */
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let mascotX = mouseX;
+    let mascotY = mouseY;
+
+    const mascot = document.getElementById('mascot-container');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.85) {
+        spawnStarParticle(mouseX, mouseY);
+      }
+    });
+
+    function spawnStarParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'particle font-black text-brandYellow text-xs select-none pointer-events-none';
+      particle.innerText = ['✨', '⭐', '⚡', '🌟'][Math.floor(Math.random() * 4)];
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+
+      const tx = (Math.random() - 0.5) * 40;
+      const ty = (Math.random() - 0.5) * 40;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 750);
+    }
+
+    function animateMascot() {
+      mascotX += (mouseX - mascotX) * 0.12;
+      mascotY += (mouseY - mascotY) * 0.12;
+
+      if (mascot && window.innerWidth >= 768) {
+        mascot.style.transform = `translate3d(${mascotX + 16}px, ${mascotY + 16}px, 0)`;
+
+        const rect = mascot.getBoundingClientRect();
+        const mascotCenterX = rect.left + rect.width / 2;
+        const mascotCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - mascotCenterY, mouseX - mascotCenterX);
+        const dist = Math.min(2.5, Math.hypot(mouseX - mascotCenterX, mouseY - mascotCenterY) / 30);
+
+        const px = Math.cos(angle) * dist;
+        const py = Math.sin(angle) * dist;
+
+        if (pupilLeft && pupilRight) {
+          pupilLeft.style.transform = `translate(${px}px, ${py}px)`;
+          pupilRight.style.transform = `translate(${px}px, ${py}px)`;
+        }
+      }
+
+      requestAnimationFrame(animateMascot);
+    }
+
+    /* --------------------------------------------------------------------------
+       3. INTERACTIVE UI UTILITIES (Toast Popup & Card Flip)
+       -------------------------------------------------------------------------- */
+    let toastTimeout = null;
+
+    function showLockedToast(subjectName) {
+      playSound('lock');
+      const toast = document.getElementById('toast-modal');
+      const title = document.getElementById('toast-title');
+      const body = document.getElementById('toast-body');
+
+      if (toast && title && body) {
+        title.innerText = `${subjectName} is Locked! 🔒`;
+        body.innerText = `Not available now! Support us on WhatsApp to unlock this subject faster! 🚀`;
+        
+        toast.classList.remove('translate-y-32', 'opacity-0');
+        
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.add('translate-y-32', 'opacity-0');
+        }, 3200);
+      }
+    }
+
+    function toggleCardFlip(element) {
+      playSound('flip');
+      element.classList.toggle('flipped');
+    }
+
+    window.addEventListener('load', () => {
+      animateMascot();
+    });
+  </script>
+</body>
+</html>

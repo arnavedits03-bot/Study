@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6: Understanding Democracy - Let's Study Now</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlack: '#1E1E1E',
+            brandYellow: '#FACC15',
+            brandYellowLight: '#FEF08A',
+            brandBlue: '#38BDF8',
+            brandBlueDark: '#0EA5E9',
+            brandPink: '#F472B6',
+            brandGreen: '#34D399',
+            brandLime: '#A3E635',
+            brandPurple: '#C084FC',
+            brandOrange: '#FB923C'
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'cartoon-sm': '3px 3px 0px #1E1E1E',
+            'cartoon': '5px 5px 0px #1E1E1E',
+            'cartoon-lg': '8px 8px 0px #1E1E1E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #1E1E1E;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Neo-Brutalist Border Utility Classes */
+    .border-cartoon {
+      border: 3.5px solid #1E1E1E;
+    }
+    .border-cartoon-thin {
+      border: 2px solid #1E1E1E;
+    }
+
+    /* Tactile Hover Effects */
+    .hover-pop {
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.2s ease;
+    }
+    .hover-pop:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0px #1E1E1E;
+    }
+    .hover-pop:active {
+      transform: translateY(2px) translateX(2px);
+      box-shadow: 2px 2px 0px #1E1E1E;
+    }
+
+    /* Polka Dot Cartoon Background Pattern */
+    .bg-cartoon-dots {
+      background-image: radial-gradient(#1E1E1E 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-color: #F8FAFC;
+    }
+
+    /* Floating Mascot Container */
+    #mascot-container {
+      position: fixed;
+      pointer-events: none !important;
+      z-index: 9999;
+      bottom: 20px;
+      right: 20px;
+      will-change: transform;
+    }
+
+    /* Cursor Sparkle Particles */
+    .particle {
+      position: fixed;
+      pointer-events: none !important;
+      animation: particleFade 0.75s forwards ease-out;
+      z-index: 9998;
+    }
+    @keyframes particleFade {
+      0% { opacity: 1; transform: scale(1) translate(0, 0); }
+      100% { opacity: 0; transform: scale(0.2) translate(var(--tx), var(--ty)); }
+    }
+
+    /* 3D Flashcard Flip Setup */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Custom Neo-Brutalist Scrollbar */
+    ::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FACC15;
+      border: 2px solid #1E1E1E;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E1E1E;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cartoon-dots min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <!-- Mascot Cursor Follower -->
+  <div id="mascot-container" class="hidden md:flex flex-col items-center justify-center pointer-events-none">
+    <div id="mascot-bubble" class="bg-white border-cartoon px-3 py-1 rounded-xl text-[10px] font-black shadow-cartoon-sm mb-1 text-brandBlack animate-bounce whitespace-nowrap">
+      Welcome to Democracy! 🗳️
+    </div>
+    <div class="relative w-14 h-14 bg-brandBlue border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center">
+      <!-- Pupil Tracking Eyes -->
+      <div class="flex space-x-1.5">
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-left" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-right" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+      </div>
+      <!-- Crown / Mouth -->
+      <div class="absolute bottom-2 w-3.5 h-1.5 border-b-2 border-brandBlack rounded-full"></div>
+      <div class="absolute -top-3 w-6 h-3 bg-brandYellow border-cartoon-thin rounded-t-md flex items-center justify-around px-0.5">
+        <span class="w-1 h-1 bg-brandPink rounded-full"></span>
+        <span class="w-1 h-1 bg-brandBlue rounded-full"></span>
+        <span class="w-1 h-1 bg-brandGreen rounded-full"></span>
+      </div>
+    </div>
+    <span class="mt-1 bg-brandBlack text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">
+      StudyBuddy 🤖
+    </span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-white border-b-4 border-brandBlack shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo & Breadcrumb -->
+      <div class="flex items-center space-x-3">
+        <a href="../index.html" class="flex items-center space-x-2 group">
+          <div class="w-11 h-11 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+            <i class="fa-solid fa-check-to-slot text-xl text-brandBlack"></i>
+          </div>
+          <div class="hidden sm:block">
+            <span class="text-xl font-black tracking-tight text-brandBlack block leading-none">Let's Study Now</span>
+            <span class="text-[10px] font-extrabold text-brandBlueDark uppercase tracking-wider">Class 9th SST • Ch 6</span>
+          </div>
+        </a>
+
+        <!-- Breadcrumb Links -->
+        <nav class="hidden md:flex items-center space-x-1 text-xs font-black pl-3 border-l-2 border-slate-200">
+          <a href="../index.html" class="hover:underline text-slate-600">Home</a>
+          <span class="text-slate-400">/</span>
+          <a href="select.html" class="hover:underline text-slate-600">SST Select</a>
+          <span class="text-slate-400">/</span>
+          <span class="text-brandBlack bg-brandYellowLight px-2 py-0.5 rounded-md border-cartoon-thin text-[11px]">Ch 6</span>
+        </nav>
+      </div>
+
+      <!-- Chapter Prev/Next & Audio Controls -->
+      <div class="flex items-center space-x-2">
+        <a href="Ch-5.html" class="px-2.5 py-1.5 bg-white text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1 hover-pop" title="Previous Chapter">
+          <i class="fa-solid fa-chevron-left"></i>
+          <span class="hidden sm:inline">Ch 5</span>
+        </a>
+
+        <a href="select.html" class="px-3 py-1.5 bg-brandGreen text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-border-all"></i>
+          <span class="hidden sm:inline">SST Select</span>
+        </a>
+
+        <a href="Ch-7.html" class="px-2.5 py-1.5 bg-white text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1 hover-pop" title="Next Chapter">
+          <span class="hidden sm:inline">Ch 7</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+
+        <button id="sound-btn" onclick="toggleAudioFX()" class="px-3 py-1.5 bg-brandYellow text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span class="hidden sm:inline" id="sound-status-text">Sound ON</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Hero Banner Header -->
+    <section class="bg-brandBlue border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+        
+        <div class="space-y-3 max-w-3xl">
+          <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3 py-1 rounded-full shadow-cartoon-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse"></span>
+            <span class="text-xs font-black text-brandBlack uppercase tracking-wide">
+              Democratic Politics & Governance
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-brandBlack leading-tight">
+            Chapter 6: Understanding Democracy 🗳️
+          </h1>
+
+          <p class="text-sm sm:text-base font-bold text-slate-800 bg-white/80 p-3 rounded-2xl border-cartoon-thin shadow-cartoon-sm">
+            Discover the foundational principles of democracy: popular participation, political equality, free elections, rights, institutions, and accountability! 🏛️⚖️
+          </p>
+        </div>
+
+        <!-- Overall Chapter Mastery Tracker -->
+        <div class="w-full lg:w-72 bg-white border-cartoon p-4 rounded-2xl shadow-cartoon shrink-0 space-y-2">
+          <div class="flex items-center justify-between text-xs font-black">
+            <span>Chapter Mastery</span>
+            <span id="mastery-percentage" class="text-brandBlueDark text-sm">0%</span>
+          </div>
+          <div class="w-full h-4 bg-slate-200 rounded-full border-cartoon-thin overflow-hidden p-0.5">
+            <div id="mastery-bar" class="h-full bg-brandGreen rounded-full transition-all duration-500 w-0"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-600 pt-1">
+            <span id="notes-read-count">0/14 Notes Read</span>
+            <span id="quiz-score-count">Quiz: --</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- One-Line Revision Chain Section -->
+    <section class="bg-white border-cartoon rounded-3xl p-5 shadow-cartoon space-y-3">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center space-x-2">
+          <span class="w-7 h-7 bg-brandYellow text-brandBlack border-cartoon-thin rounded-xl flex items-center justify-center text-xs font-black">🔗</span>
+          <h2 class="text-base sm:text-lg font-black text-brandBlack">One-Line Revision Chain</h2>
+        </div>
+        <span class="text-[11px] font-bold text-slate-500">Tap any node to jump directly to its topic!</span>
+      </div>
+
+      <div class="overflow-x-auto pb-2 pt-1 scrollbar-thin">
+        <div id="revision-chain-container" class="flex items-center space-x-2 min-w-max">
+          <!-- Flowchart Nodes Injected by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs & Search Controls -->
+    <section class="space-y-4">
+      
+      <!-- Quick Navigation Tabs -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <button id="tab-btn-notes" onclick="switchTab('notes')" class="tab-btn active px-4 py-2.5 bg-brandYellow text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>📖 Visual Notes</span>
+          <span class="bg-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">14 Topics</span>
+        </button>
+
+        <button id="tab-btn-flashcards" onclick="switchTab('flashcards')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎴 Flashcards</span>
+          <span class="bg-brandBlue border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">3D Flip</span>
+        </button>
+
+        <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎯 Practice Quiz</span>
+          <span class="bg-brandPink text-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">MCQs</span>
+        </button>
+
+        <button id="tab-btn-glossary" onclick="switchTab('glossary')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🏷️ Key Terms</span>
+          <span class="bg-brandGreen border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">Glossary</span>
+        </button>
+      </div>
+
+      <!-- Real-time Search & Category Quick Filter -->
+      <div id="search-bar-container" class="bg-white border-cartoon rounded-2xl p-3 shadow-cartoon flex flex-col sm:flex-row items-center justify-between gap-3">
+        
+        <div class="relative w-full sm:w-80">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="topic-search-input" oninput="handleSearch(this.value)" placeholder="Search elections, rights, rule of law..." class="w-full pl-9 pr-8 py-2 bg-slate-50 border-cartoon-thin rounded-xl text-xs font-bold text-brandBlack focus:outline-none focus:bg-yellow-50">
+          <button onclick="clearSearch()" id="clear-search-btn" class="hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-brandBlack">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Category Badges -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+          <span class="text-xs font-black mr-1 text-slate-500">Filter:</span>
+          <button onclick="filterCategory('all')" class="cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black">All</button>
+          <button onclick="filterCategory('core')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100">Core Concepts</button>
+          <button onclick="filterCategory('rights')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-pink-100">Rights & Freedom</button>
+          <button onclick="filterCategory('governance')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-blue-100">Governance & Law</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 1: VISUAL NOTES SECTION -->
+    <section id="notes-tab-content" class="tab-content space-y-6">
+      <div id="notes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 14 Topic Cards Injected by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: FLASHCARDS SECTION -->
+    <section id="flashcards-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-2xl mx-auto space-y-6">
+        
+        <!-- Flashcard Control Bar -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between text-xs font-black">
+          <div class="flex items-center space-x-2">
+            <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl">Card <span id="card-index-num">1</span> of 14</span>
+            <span id="card-mastered-badge" class="hidden bg-brandGreen border-cartoon-thin px-2 py-1 rounded-xl text-[10px]">Mastered ✅</span>
+          </div>
+
+          <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-brandPurple text-white border-cartoon rounded-xl shadow-cartoon-sm hover-pop">
+            <i class="fa-solid fa-shuffle mr-1"></i> Shuffle
+          </button>
+        </div>
+
+        <!-- 3D Flip Card Scene -->
+        <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipFlashcard()">
+          <div id="flashcard-inner" class="relative w-full h-full transform-style-3d transition-transform duration-500 rounded-3xl border-cartoon shadow-cartoon-lg">
+            
+            <!-- Front Face -->
+            <div class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-between backface-hidden border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Concept Front</span>
+                <i class="fa-solid fa-rotate text-slate-400 text-lg"></i>
+              </div>
+              
+              <div class="text-center space-y-3">
+                <div id="card-front-icon" class="text-5xl">🗳️</div>
+                <h3 id="card-front-title" class="text-2xl font-black text-brandBlack">1. Meaning of Democracy</h3>
+                <p id="card-front-prompt" class="text-xs font-bold text-slate-500">Tap card to flip & reveal key summary!</p>
+              </div>
+
+              <div class="text-center text-[11px] font-black text-brandBlueDark uppercase tracking-wider">
+                Tap anywhere to flip 🔄
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div class="absolute inset-0 bg-brandYellowLight rounded-3xl p-8 flex flex-col justify-between backface-hidden rotate-y-180 border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandGreen border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Explanation</span>
+                <span class="text-xs font-bold text-slate-600">Chapter 6 Concept</span>
+              </div>
+
+              <div class="space-y-3 overflow-y-auto max-h-48 pr-1">
+                <h4 id="card-back-title" class="text-xl font-black text-brandBlack">Meaning of Democracy</h4>
+                <p id="card-back-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+                  Democracy is a system where people choose their representatives and influence governance.
+                </p>
+                <div id="card-back-keywords" class="flex flex-wrap gap-1 pt-2">
+                  <!-- Keywords injected here -->
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-300">
+                <button onclick="event.stopPropagation(); toggleCardMastered()" id="mastered-toggle-btn" class="px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100">
+                  Mark as Mastered 🌟
+                </button>
+                <span class="text-[10px] font-black text-slate-500">Tap to flip back</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between gap-4">
+          <button onclick="prevFlashcard()" class="flex-1 py-3 bg-white border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <button onclick="flipFlashcard()" class="px-6 py-3 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+            Flip 🔄
+          </button>
+
+          <button onclick="nextFlashcard()" class="flex-1 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: PRACTICE QUIZ SECTION -->
+    <section id="quiz-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- Quiz Header Scoreboard -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs font-black text-slate-500 block">Self-Evaluating MCQ Practice</span>
+            <h3 class="text-lg font-black text-brandBlack">Question <span id="quiz-curr-q">1</span> of 10</h3>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <div class="bg-brandGreen border-cartoon-thin px-3 py-1.5 rounded-xl font-black text-xs">
+              Score: <span id="quiz-score">0</span>/10
+            </div>
+            <button onclick="resetQuiz()" class="px-3 py-1.5 bg-slate-100 border-cartoon-thin rounded-xl font-black text-xs hover:bg-yellow-100">
+              <i class="fa-solid fa-rotate-right"></i> Restart
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Card Box -->
+        <div id="quiz-card-box" class="bg-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg space-y-6">
+          <div class="space-y-2">
+            <span id="quiz-topic-tag" class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black inline-block">
+              Topic: Meaning of Democracy
+            </span>
+            <h3 id="quiz-question-text" class="text-xl sm:text-2xl font-black text-brandBlack leading-snug">
+              What is the fundamental basis of democracy?
+            </h3>
+          </div>
+
+          <!-- Options Container -->
+          <div id="quiz-options-container" class="space-y-3">
+            <!-- Options injected dynamically -->
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="quiz-explanation-box" class="hidden bg-yellow-50 border-cartoon p-4 rounded-2xl space-y-2">
+            <div class="flex items-center space-x-2 text-brandBlack font-black text-xs uppercase">
+              <i class="fa-solid fa-circle-info text-brandBlueDark"></i>
+              <span>Explanation & Note Summary</span>
+            </div>
+            <p id="quiz-explanation-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+              Democracy relies on popular participation, political equality, and accountability of government to the people.
+            </p>
+          </div>
+
+          <!-- Next Question Action Button -->
+          <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden w-full py-3.5 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop text-brandBlack">
+            Next Question 🚀
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: GLOSSARY SECTION -->
+    <section id="glossary-tab-content" class="tab-content hidden space-y-6">
+      
+      <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+          <div>
+            <h3 class="text-2xl font-black text-brandBlack">Key Terms & Concept Glossary 🏷️</h3>
+            <p class="text-xs font-bold text-slate-600 mt-1">Tap any key term below to jump directly to its topic in Visual Notes!</p>
+          </div>
+          <span id="glossary-count-badge" class="bg-brandYellow border-cartoon font-black px-3 py-1 rounded-xl text-xs w-max">
+            Keyword Index
+          </span>
+        </div>
+
+        <!-- Glossary Tag Grid -->
+        <div id="glossary-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+          <!-- Glossary Items injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Next Module Banner -->
+    <section class="bg-brandBlack text-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center sm:text-left">
+        <span class="bg-brandYellow text-brandBlack border-cartoon-thin text-[10px] font-black px-2.5 py-0.5 rounded-full inline-block">
+          MODULE COMPLETE
+        </span>
+        <h3 class="text-xl sm:text-2xl font-black">Ready for Next Chapter or Revision?</h3>
+        <p class="text-xs font-bold text-slate-300">Proceed to Chapter 7 or return to the SST dashboard!</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="Ch-7.html" class="px-6 py-3 bg-brandGreen text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm flex items-center space-x-2">
+          <span>Next: Chapter 7 →</span>
+        </a>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-3 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t-4 border-brandBlack mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex items-center justify-center space-x-3">
+        <div class="w-10 h-10 bg-brandYellow border-cartoon rounded-xl flex items-center justify-center text-xl shadow-cartoon-sm">
+          🎓
+        </div>
+        <span class="text-2xl font-black text-brandBlack">Let's Study Now</span>
+      </div>
+
+      <p class="text-sm sm:text-base font-black text-brandBlack">
+        Made with ❤️ by Class 9th Students for Class 9th Students
+      </p>
+
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Supported by Ashva Group
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Developer - Arnav Shrivastava
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Data Manager - Ishi Chourasia
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs font-bold text-slate-500 flex flex-wrap items-center justify-between gap-4">
+        <span>© 2026 Let's Study Now. Completely Free for Students.</span>
+        <a href="https://wa.me/919425361092" target="_blank" rel="noopener noreferrer" class="hover:underline text-brandBlack font-black">
+          WhatsApp Support (+91 9425361092)
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* --------------------------------------------------------------------------
+       1. DATASET: ALL 14 TOPICS FOR CHAPTER 6
+       -------------------------------------------------------------------------- */
+    const CHAPTER_TOPICS = [
+      {
+        id: "topic-1",
+        category: "core",
+        icon: "🗳️",
+        title: "1. Meaning of Democracy",
+        summary: "Democracy is a form of government in which people have a role in choosing their representatives and influencing how they are governed. It is based on popular participation, political equality and accountability.",
+        keyPoints: [
+          "People choose their representatives directly or indirectly through popular participation.",
+          "Political equality ensures every adult citizen has an equal voice.",
+          "Governments remain accountable and answerable to the citizens."
+        ],
+        keywords: ["Democracy", "people", "representatives", "participation", "political equality", "accountability"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-2",
+        category: "core",
+        icon: "⚖️",
+        title: "2. Key Features of Democracy",
+        summary: "A democracy is based on free and fair elections, political equality, rule of law and citizen participation. Citizens have the right to choose their representatives, and governments are expected to remain accountable to the people.",
+        keyPoints: [
+          "Free and fair elections provide real choice to voters.",
+          "Rule of law protects citizens from arbitrary power.",
+          "Citizen participation keeps democratic processes dynamic and legitimate."
+        ],
+        keywords: ["Free and fair elections", "equality", "rule of law", "participation", "accountability"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-3",
+        category: "core",
+        icon: "💡",
+        title: "3. Why Democracy?",
+        summary: "Democracy allows citizens to participate in decision-making and provides peaceful ways to change governments. It can promote accountability, discussion, representation and protection of rights.",
+        keyPoints: [
+          "Enables peaceful transitions of power through ballots instead of violence.",
+          "Encourages open debate and deliberation in public policy.",
+          "Protects individual rights and provides mechanisms to correct mistakes."
+        ],
+        keywords: ["Participation", "decision-making", "accountability", "representation", "rights", "peaceful change"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-4",
+        category: "rights",
+        icon: "🤝",
+        title: "4. Democracy and Equality",
+        summary: "Political equality is an important principle of democracy. Citizens should have equal political rights, including the right to participate in elections, while equality before law ensures that laws apply to people without unfair legal privilege.",
+        keyPoints: [
+          "Universal Adult Suffrage ensures one person, one vote, one value.",
+          "Equality before the law guarantees equal protection under legal codes.",
+          "Prevents special legal privileges based on birth, wealth, or status."
+        ],
+        keywords: ["Political equality", "equal rights", "voting", "equality before law", "citizens"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-5",
+        category: "rights",
+        icon: "🕊️",
+        title: "5. Democracy and Freedom",
+        summary: "Democracy protects important freedoms, such as freedom of expression, association and participation in public affairs. These freedoms allow citizens to discuss issues, express opinions and take part in democratic processes within the framework of law.",
+        keyPoints: [
+          "Freedom of expression allows open speech and independent journalism.",
+          "Freedom of association lets citizens form unions, parties, and groups.",
+          "Public participation occurs freely within legal and constitutional bounds."
+        ],
+        keywords: ["Freedom", "expression", "association", "participation", "opinions", "law"],
+        color: "bg-purple-100"
+      },
+      {
+        id: "topic-6",
+        category: "governance",
+        icon: "🏛️",
+        title: "6. Institutions in a Democracy",
+        summary: "Democratic governments function through institutions such as the legislature, executive and judiciary. The legislature makes laws, the executive implements policies and laws, and the judiciary interprets laws and helps uphold justice and constitutional principles.",
+        keyPoints: [
+          "Legislature: Formulates and enacts laws representing public will.",
+          "Executive: Enforces laws, policies, and administrative duties.",
+          "Judiciary: Safeguards rights, interprets laws, and maintains constitutional order."
+        ],
+        keywords: ["Legislature", "executive", "judiciary", "laws", "policies", "justice"],
+        color: "bg-lime-100"
+      },
+      {
+        id: "topic-7",
+        category: "governance",
+        icon: "🗳️",
+        title: "7. Elections in a Democracy",
+        summary: "Elections allow citizens to choose their representatives. For elections to serve democratic purposes, they should provide meaningful choices and be conducted through a free and fair electoral process.",
+        keyPoints: [
+          "Periodic elections ensure rulers remain answerable to citizens.",
+          "Independent electoral machinery conducts impartial voting.",
+          "Multiple parties offer voters authentic political choices."
+        ],
+        keywords: ["Elections", "voters", "representatives", "choice", "free and fair elections"],
+        color: "bg-pink-100"
+      },
+      {
+        id: "topic-8",
+        category: "rights",
+        icon: "🛡️",
+        title: "8. Majority Rule and Minority Rights",
+        summary: "Democratic decisions often follow the principle of majority rule, but democracy also requires respect for minority rights. The majority cannot simply remove the basic rights and freedoms of minority groups.",
+        keyPoints: [
+          "Majority decisions guide policymaking without turning into tyranny.",
+          "Constitutional safeguards protect religious, linguistic, and cultural minorities.",
+          "True democracy balances majority preference with equal minority rights."
+        ],
+        keywords: ["Majority", "minority", "rights", "equality", "representation", "protection"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-9",
+        category: "governance",
+        icon: "📜",
+        title: "9. Rule of Law",
+        summary: "The rule of law means that everyone, including those in government, is subject to the law. Government power must operate within the Constitution and legal framework, helping prevent arbitrary use of authority.",
+        keyPoints: [
+          "No individual or leader is above the law of the land.",
+          "Government powers are limited by constitutional statutes.",
+          "Prevents arbitrary decisions and ensures predictable, fair justice."
+        ],
+        keywords: ["Rule of law", "Constitution", "law", "government", "authority", "equality"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-10",
+        category: "governance",
+        icon: "🔍",
+        title: "10. Accountability and Transparency",
+        summary: "Accountability means that people in public office and government institutions are answerable for their decisions and actions. Transparency helps citizens understand how public decisions are made and how government functions.",
+        keyPoints: [
+          "Public officials must explain and justify actions to citizens.",
+          "Open access to information enables public scrutiny.",
+          "Reduces corruption and builds trust between public and state."
+        ],
+        keywords: ["Accountability", "transparency", "government", "responsibility", "public institutions"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-11",
+        category: "rights",
+        icon: "📜",
+        title: "11. Rights and Democracy",
+        summary: "Democracy is closely connected with the protection of rights and freedoms. Constitutional and legal safeguards help protect citizens and create conditions in which people can participate meaningfully in public life.",
+        keyPoints: [
+          "Fundamental rights empower citizens against state high-handedness.",
+          "Legal remedies enable enforcement of rights in courts.",
+          "Rights create the baseline environment required for democratic life."
+        ],
+        keywords: ["Rights", "freedoms", "Constitution", "safeguards", "citizens", "participation"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-12",
+        category: "core",
+        icon: "📣",
+        title: "12. Citizen Participation",
+        summary: "Citizens participate in democracy not only through voting, but also through public discussion, community activities, expressing opinions and holding public authorities accountable. Active participation helps connect citizens with government.",
+        keyPoints: [
+          "Voting is just one part of continuous democratic engagement.",
+          "Public debates, peaceful protests, and media express citizen voice.",
+          "Community initiatives strengthen grassroots democratic spirit."
+        ],
+        keywords: ["Citizen participation", "voting", "discussion", "community", "opinions", "accountability"],
+        color: "bg-purple-100"
+      },
+      {
+        id: "topic-13",
+        category: "core",
+        icon: "⛰️",
+        title: "13. Challenges to Democracy",
+        summary: "Democratic systems can face challenges such as social and economic inequality, discrimination, lack of participation and concentration of power. Strong institutions, awareness and citizen participation are important for addressing such challenges.",
+        keyPoints: [
+          "Socio-economic inequality can distort genuine political equality.",
+          "Concentration of wealth or authority undermines democracy.",
+          "Active vigilance and civic education help overcome challenges."
+        ],
+        keywords: ["Inequality", "discrimination", "participation", "concentration of power", "institutions"],
+        color: "bg-pink-100"
+      },
+      {
+        id: "topic-14",
+        category: "core",
+        icon: "🇮🇳",
+        title: "14. Democracy in India",
+        summary: "India is a democratic republic governed according to the Constitution. Citizens elect representatives, democratic institutions exercise public authority, and constitutional rights and principles provide the framework for governance.",
+        keyPoints: [
+          "World's largest democracy driven by the Indian Constitution.",
+          "Periodic multi-party elections at Union, State, and local Panchayat levels.",
+          "Constitutional values like liberty, equality, and fraternity guide governance."
+        ],
+        keywords: ["India", "democratic republic", "Constitution", "elections", "representatives", "democratic institutions"],
+        color: "bg-lime-100"
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       2. REVISION CHAIN FLOWCHART STEPS
+       -------------------------------------------------------------------------- */
+    const REVISION_CHAIN = [
+      { label: "People", topicId: "topic-1" },
+      { label: "Participation", topicId: "topic-12" },
+      { label: "Elections", topicId: "topic-7" },
+      { label: "Representation", topicId: "topic-2" },
+      { label: "Equality", topicId: "topic-4" },
+      { label: "Freedom", topicId: "topic-5" },
+      { label: "Rights", topicId: "topic-11" },
+      { label: "Institutions", topicId: "topic-6" },
+      { label: "Rule of Law", topicId: "topic-9" },
+      { label: "Accountability", topicId: "topic-10" },
+      { label: "Democracy", topicId: "topic-14" }
+    ];
+
+    /* --------------------------------------------------------------------------
+       3. PRACTICE QUIZ DATASET (10 MCQs)
+       -------------------------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        topic: "Meaning of Democracy",
+        question: "What is the core basis of a democratic form of government?",
+        options: [
+          "Hereditary monarchy rules without citizens' input",
+          "Popular participation, political equality, and accountability",
+          "Rules decided exclusively by military leaders",
+          "Governance by wealthy landowners only"
+        ],
+        correct: 1,
+        explanation: "Democracy rests on popular participation in electing leaders, political equality among citizens, and government accountability."
+      },
+      {
+        topic: "Key Features of Democracy",
+        question: "Which of the following is a essential key feature of democracy?",
+        options: [
+          "Single-party permanent rule",
+          "Free and fair elections and rule of law",
+          "Complete control of newspapers by rulers",
+          "Abolition of voting rights for citizens"
+        ],
+        correct: 1,
+        explanation: "Free and fair periodic elections, rule of law, and citizen participation form the foundation of democratic systems."
+      },
+      {
+        topic: "Why Democracy?",
+        question: "Why is democracy considered superior to non-democratic regimes for resolving conflicts?",
+        options: [
+          "It suppresses all opposing opinions by force",
+          "It provides peaceful constitutional ways to discuss and change governments",
+          "It never allows public discussion",
+          "It abolishes legal courts"
+        ],
+        correct: 1,
+        explanation: "Democracy offers peaceful, institutionalized ways to settle conflicts and change leadership through voting and debate."
+      },
+      {
+        topic: "Democracy and Equality",
+        question: "What does political equality imply under 'Universal Adult Suffrage'?",
+        options: [
+          "Rich voters get 5 votes while poor voters get 1",
+          "Every adult citizen has 1 vote with equal value",
+          "Only property owners are allowed to vote",
+          "Only government servants can cast votes"
+        ],
+        correct: 1,
+        explanation: "Political equality mandates 'one person, one vote, one value' regardless of wealth, gender, or social background."
+      },
+      {
+        topic: "Institutions in a Democracy",
+        question: "Which organ of government is primarily responsible for making laws in a democracy?",
+        options: ["Judiciary", "Executive", "Legislature", "Armed forces"],
+        correct: 2,
+        explanation: "The legislature (Parliament/Assembly) is the representative body tasked with enacting laws."
+      },
+      {
+        topic: "Majority Rule & Minority Rights",
+        question: "How does a true democracy deal with minority groups?",
+        options: [
+          "The majority can strip away basic minority rights",
+          "Minority rights are protected by constitutional safeguards",
+          "Minorities are banned from voting",
+          "Minorities must follow whatever the majority orders without question"
+        ],
+        correct: 1,
+        explanation: "While decisions follow majority preference, democracy strictly protects basic rights and freedoms of minority groups."
+      },
+      {
+        topic: "Rule of Law",
+        question: "What does 'Rule of Law' signify in a democratic nation?",
+        options: [
+          "The King or President is above all legal codes",
+          "Everyone, including rulers, is subject to the same law",
+          "Laws apply only to common citizens, not officials",
+          "Judges make rules without consulting the Constitution"
+        ],
+        correct: 1,
+        explanation: "Rule of law means that all individuals and public authorities operate strictly under the law and Constitution."
+      },
+      {
+        topic: "Accountability & Transparency",
+        question: "How does transparency benefit democratic governance?",
+        options: [
+          "It keeps all state decisions completely secret",
+          "It allows citizens to see how decisions are made and hold leaders answerable",
+          "It removes responsibility from government officials",
+          "It eliminates public elections"
+        ],
+        correct: 1,
+        explanation: "Transparency enables citizens to examine official actions, preventing corruption and ensuring government accountability."
+      },
+      {
+        topic: "Citizen Participation",
+        question: "How can citizens participate in a democracy beyond just voting on election day?",
+        options: [
+          "By staying quiet on public issues",
+          "Through public debates, community action, and expressing opinions",
+          "By letting government officials make all choices unchecked",
+          "By boycotting all social discussions"
+        ],
+        correct: 1,
+        explanation: "Active citizenship includes participating in public debates, community initiatives, peaceful petitions, and media expression."
+      },
+      {
+        topic: "Democracy in India",
+        question: "India is described as a 'Democratic Republic'. What provides the overarching framework for Indian governance?",
+        options: [
+          "Foreign treaties",
+          "The Constitution of India",
+          "Decisions of private corporations",
+          "Unwritten traditional customs only"
+        ],
+        correct: 1,
+        explanation: "The Constitution of India establishes the supreme legal framework governing Indian democracy, rights, and institutions."
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       4. WEB AUDIO SYNTHESIZER (No external audio files)
+       -------------------------------------------------------------------------- */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'flip') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(280, now);
+          osc.frequency.exponentialRampToValueAtTime(560, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'correct') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.09); // E5
+          osc.frequency.setValueAtTime(783.99, now + 0.18); // G5
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'wrong') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(200, now);
+          osc.frequency.setValueAtTime(150, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        }
+      } catch (e) {}
+    }
+
+    function toggleAudioFX() {
+      soundEnabled = !soundEnabled;
+      const statusText = document.getElementById('sound-status-text');
+      const soundIcon = document.getElementById('sound-icon');
+      if (soundEnabled) {
+        if (statusText) statusText.innerText = 'Sound ON';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        playSound('pop');
+      } else {
+        if (statusText) statusText.innerText = 'Sound OFF';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    }
+
+    /* Text to Speech Narration */
+    function readAloud(text) {
+      if (!soundEnabled) return;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+        playSound('pop');
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       5. MASCOT CURSOR TRACKING & SPARKLES
+       -------------------------------------------------------------------------- */
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let mascotX = mouseX;
+    let mascotY = mouseY;
+
+    const mascot = document.getElementById('mascot-container');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.88) spawnParticle(mouseX, mouseY);
+    });
+
+    function spawnParticle(x, y) {
+      const p = document.createElement('div');
+      p.className = 'particle font-black text-brandYellow text-xs select-none pointer-events-none';
+      p.innerText = ['✨', '⭐', '🗳️', '📜', '⚖️'][Math.floor(Math.random() * 5)];
+      p.style.left = `${x}px`;
+      p.style.top = `${y}px`;
+
+      const tx = (Math.random() - 0.5) * 40;
+      const ty = (Math.random() - 0.5) * 40;
+      p.style.setProperty('--tx', `${tx}px`);
+      p.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 750);
+    }
+
+    function animateMascot() {
+      mascotX += (mouseX - mascotX) * 0.12;
+      mascotY += (mouseY - mascotY) * 0.12;
+
+      if (mascot && window.innerWidth >= 768) {
+        const rect = mascot.getBoundingClientRect();
+        const mascotCenterX = rect.left + rect.width / 2;
+        const mascotCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - mascotCenterY, mouseX - mascotCenterX);
+        const dist = Math.min(2.5, Math.hypot(mouseX - mascotCenterX, mouseY - mascotCenterY) / 30);
+
+        const px = Math.cos(angle) * dist;
+        const py = Math.sin(angle) * dist;
+
+        if (pupilLeft && pupilRight) {
+          pupilLeft.style.transform = `translate(${px}px, ${py}px)`;
+          pupilRight.style.transform = `translate(${px}px, ${py}px)`;
+        }
+      }
+
+      requestAnimationFrame(animateMascot);
+    }
+
+    /* --------------------------------------------------------------------------
+       6. STATE MANAGEMENT & PROGRESS TRACKER
+       -------------------------------------------------------------------------- */
+    let readNotes = new Set();
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function toggleNoteRead(topicId) {
+      playSound('pop');
+      if (readNotes.has(topicId)) {
+        readNotes.delete(topicId);
+      } else {
+        readNotes.add(topicId);
+      }
+      updateNoteCardUI(topicId);
+      updateMasteryUI();
+    }
+
+    function updateNoteCardUI(topicId) {
+      const card = document.getElementById(`card-${topicId}`);
+      const btn = document.getElementById(`read-btn-${topicId}`);
+      if (!card || !btn) return;
+
+      if (readNotes.has(topicId)) {
+        card.classList.add('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-brandGreen text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>Learned ✅</span>`;
+      } else {
+        card.classList.remove('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-regular fa-circle"></i> <span>Mark as Learned</span>`;
+      }
+    }
+
+    function updateMasteryUI() {
+      const total = CHAPTER_TOPICS.length;
+      const count = readNotes.size;
+      const percentage = Math.round((count / total) * 100);
+
+      const bar = document.getElementById('mastery-bar');
+      const text = document.getElementById('mastery-percentage');
+      const countText = document.getElementById('notes-read-count');
+
+      if (bar) bar.style.width = `${percentage}%`;
+      if (text) text.innerText = `${percentage}%`;
+      if (countText) countText.innerText = `${count}/${total} Notes Read`;
+    }
+
+    /* --------------------------------------------------------------------------
+       7. TAB SWITCHING LOGIC
+       -------------------------------------------------------------------------- */
+    function switchTab(tabName) {
+      playSound('pop');
+      const tabs = ['notes', 'flashcards', 'quiz', 'glossary'];
+      
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`${t}-tab-content`);
+        if (btn && content) {
+          if (t === tabName) {
+            btn.className = "tab-btn active px-4 py-2.5 bg-brandYellow text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.remove('hidden');
+          } else {
+            btn.className = "tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.add('hidden');
+          }
+        }
+      });
+
+      // Mascot bubble update
+      const bubble = document.getElementById('mascot-bubble');
+      if (bubble) {
+        if (tabName === 'notes') bubble.innerText = "Explore all 14 Visual Notes! 📖";
+        if (tabName === 'flashcards') bubble.innerText = "Tap cards to flip & test memory! 🎴";
+        if (tabName === 'quiz') bubble.innerText = "Test your knowledge with MCQs! 🎯";
+        if (tabName === 'glossary') bubble.innerText = "Key terms & concept definitions! 🏷️";
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       8. ONE-LINE REVISION CHAIN FLOWCHART RENDERER
+       -------------------------------------------------------------------------- */
+    function renderRevisionChain() {
+      const container = document.getElementById('revision-chain-container');
+      if (!container) return;
+
+      container.innerHTML = REVISION_CHAIN.map((item, idx) => `
+        <button onclick="jumpToNote('${item.topicId}')" class="px-3.5 py-1.5 bg-yellow-100 hover:bg-brandYellow border-cartoon rounded-xl text-xs font-black text-brandBlack hover-pop flex items-center space-x-1.5 shrink-0 transition-colors">
+          <span>${item.label}</span>
+          ${idx < REVISION_CHAIN.length - 1 ? '<span class="text-brandBlueDark ml-1">➔</span>' : '🏁'}
+        </button>
+      `).join('');
+    }
+
+    /* --------------------------------------------------------------------------
+       9. VISUAL NOTES RENDERER & FILTERS
+       -------------------------------------------------------------------------- */
+    function renderVisualNotes() {
+      const container = document.getElementById('notes-grid');
+      if (!container) return;
+
+      const filtered = CHAPTER_TOPICS.filter(t => {
+        const matchesCat = currentCategory === 'all' || t.category === currentCategory;
+        const matchesQuery = searchQuery === '' || 
+          t.title.toLowerCase().includes(searchQuery) ||
+          t.summary.toLowerCase().includes(searchQuery) ||
+          t.keywords.some(k => k.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-white border-cartoon rounded-3xl p-8 text-center space-y-3">
+            <div class="text-4xl">🔍</div>
+            <h3 class="text-xl font-black text-brandBlack">No topics found!</h3>
+            <p class="text-xs font-bold text-slate-600">Try clearing your search query or picking a different filter category.</p>
+            <button onclick="clearSearch()" class="px-4 py-2 bg-brandYellow border-cartoon rounded-xl font-black text-xs hover-pop">
+              Clear Search Filter
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(t => `
+        <div id="card-${t.id}" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between group relative overflow-hidden">
+          
+          <div class="space-y-3">
+            <!-- Header Icon & Narration TTS -->
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 ${t.color} border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+                ${t.icon}
+              </div>
+              
+              <button onclick="readAloud('${t.title}. ${t.summary}')" title="Listen Narration" class="w-9 h-9 bg-brandYellow border-cartoon-thin rounded-xl shadow-cartoon-sm flex items-center justify-center text-brandBlack hover:bg-brandBlue transition-colors">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+
+            <!-- Title & Summary -->
+            <div class="space-y-1">
+              <h3 class="text-lg font-black text-brandBlack leading-snug">${t.title}</h3>
+              <p class="text-xs font-bold text-slate-600 leading-relaxed">${t.summary}</p>
+            </div>
+
+            <!-- Bullet Points -->
+            <ul class="space-y-2 pt-2 border-t border-slate-200">
+              ${t.keyPoints.map(pt => `
+                <li class="flex items-start space-x-2 text-xs font-bold text-slate-800">
+                  <span class="text-brandBlueDark font-black mt-0.5">•</span>
+                  <span>${pt}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Keyword Badges & Read Toggle Button -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <div class="flex flex-wrap gap-1">
+              ${t.keywords.map(kw => `
+                <span class="bg-slate-100 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded-lg text-slate-700">
+                  #${kw}
+                </span>
+              `).join('')}
+            </div>
+
+            <button id="read-btn-${t.id}" onclick="toggleNoteRead('${t.id}')" class="w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>Mark as Learned</span>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+
+      // Refresh check states for rendered cards
+      filtered.forEach(t => updateNoteCardUI(t.id));
+    }
+
+    function filterCategory(cat) {
+      playSound('pop');
+      currentCategory = cat;
+      
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
+          btn.className = "cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black";
+        } else {
+          btn.className = "cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100";
+        }
+      });
+
+      renderVisualNotes();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) {
+        if (searchQuery.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      renderVisualNotes();
+    }
+
+    function clearSearch() {
+      playSound('pop');
+      const input = document.getElementById('topic-search-input');
+      if (input) input.value = '';
+      searchQuery = '';
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      renderVisualNotes();
+    }
+
+    /* --------------------------------------------------------------------------
+       10. 3D FLASHCARDS ENGINE
+       -------------------------------------------------------------------------- */
+    let currentCardIdx = 0;
+    let isFlipped = false;
+    let masteredCards = new Set();
+    let flashcardDeck = [...CHAPTER_TOPICS];
+
+    function updateFlashcardUI() {
+      isFlipped = false;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) inner.classList.remove('rotate-y-180');
+
+      const card = flashcardDeck[currentCardIdx];
+      if (!card) return;
+
+      document.getElementById('card-index-num').innerText = currentCardIdx + 1;
+      document.getElementById('card-front-icon').innerText = card.icon;
+      document.getElementById('card-front-title').innerText = card.title;
+      document.getElementById('card-back-title').innerText = card.title;
+      document.getElementById('card-back-text').innerText = card.summary + ' ' + card.keyPoints.join(' ');
+
+      // Mastered indicator badge
+      const badge = document.getElementById('card-mastered-badge');
+      const masteredBtn = document.getElementById('mastered-toggle-btn');
+      
+      if (masteredCards.has(card.id)) {
+        if (badge) badge.classList.remove('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mastered ✅";
+          masteredBtn.className = "px-3 py-1 bg-brandGreen border-cartoon-thin rounded-xl text-xs font-black";
+        }
+      } else {
+        if (badge) badge.classList.add('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mark as Mastered 🌟";
+          masteredBtn.className = "px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100";
+        }
+      }
+
+      // Keywords on back face
+      const kwBox = document.getElementById('card-back-keywords');
+      if (kwBox) {
+        kwBox.innerHTML = card.keywords.map(kw => `
+          <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-brandBlack">#${kw}</span>
+        `).join('');
+      }
+    }
+
+    function flipFlashcard() {
+      playSound('flip');
+      isFlipped = !isFlipped;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) {
+        if (isFlipped) inner.classList.add('rotate-y-180');
+        else inner.classList.remove('rotate-y-180');
+      }
+    }
+
+    function nextFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx + 1) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx - 1 + flashcardDeck.length) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function shuffleFlashcards() {
+      playSound('pop');
+      flashcardDeck.sort(() => Math.random() - 0.5);
+      currentCardIdx = 0;
+      updateFlashcardUI();
+    }
+
+    function toggleCardMastered() {
+      playSound('pop');
+      const card = flashcardDeck[currentCardIdx];
+      if (masteredCards.has(card.id)) {
+        masteredCards.delete(card.id);
+      } else {
+        masteredCards.add(card.id);
+      }
+      updateFlashcardUI();
+    }
+
+    /* Keyboard navigation support for flashcards */
+    document.addEventListener('keydown', (e) => {
+      const flashTab = document.getElementById('flashcards-tab-content');
+      if (flashTab && !flashTab.classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') nextFlashcard();
+        if (e.key === 'ArrowLeft') prevFlashcard();
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          flipFlashcard();
+        }
+      }
+    });
+
+    /* --------------------------------------------------------------------------
+       11. PRACTICE QUIZ ENGINE
+       -------------------------------------------------------------------------- */
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let answered = false;
+
+    function renderQuizQuestion() {
+      answered = false;
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      if (!q) return;
+
+      document.getElementById('quiz-curr-q').innerText = currentQuizIdx + 1;
+      document.getElementById('quiz-topic-tag').innerText = `Topic: ${q.topic}`;
+      document.getElementById('quiz-question-text').innerText = q.question;
+
+      const container = document.getElementById('quiz-options-container');
+      const expBox = document.getElementById('quiz-explanation-box');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (expBox) expBox.classList.add('hidden');
+      if (nextBtn) nextBtn.classList.add('hidden');
+
+      if (container) {
+        container.innerHTML = q.options.map((opt, idx) => `
+          <button id="opt-btn-${idx}" onclick="selectQuizOption(${idx})" class="w-full text-left p-4 bg-white hover:bg-yellow-50 border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack hover-pop transition-colors flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 bg-brandYellow border-cartoon-thin rounded-xl flex items-center justify-center text-xs shrink-0">${String.fromCharCode(65 + idx)}</span>
+              <span>${opt}</span>
+            </div>
+            <i id="opt-icon-${idx}" class="fa-regular fa-circle text-slate-300"></i>
+          </button>
+        `).join('');
+      }
+    }
+
+    function selectQuizOption(selectedIdx) {
+      if (answered) return;
+      answered = true;
+
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      const expBox = document.getElementById('quiz-explanation-box');
+      const expText = document.getElementById('quiz-explanation-text');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (selectedIdx === q.correct) {
+        playSound('correct');
+        quizScore++;
+        document.getElementById('quiz-score').innerText = quizScore;
+        
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      } else {
+        playSound('wrong');
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-red-400 text-white border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-xmark text-white text-lg";
+        }
+
+        // Highlight correct answer in green
+        const correctBtn = document.getElementById(`opt-btn-${q.correct}`);
+        if (correctBtn) {
+          correctBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${q.correct}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      }
+
+      // Show explanation
+      if (expBox && expText) {
+        expText.innerText = q.explanation;
+        expBox.classList.remove('hidden');
+      }
+
+      if (nextBtn) {
+        if (currentQuizIdx === QUIZ_QUESTIONS.length - 1) {
+          nextBtn.innerText = "Finish Quiz 🎉";
+        } else {
+          nextBtn.innerText = "Next Question 🚀";
+        }
+        nextBtn.classList.remove('hidden');
+      }
+
+      // Update Header Score summary
+      const scoreBadge = document.getElementById('quiz-score-count');
+      if (scoreBadge) scoreBadge.innerText = `Quiz: ${quizScore}/10`;
+    }
+
+    function nextQuestion() {
+      playSound('pop');
+      if (currentQuizIdx < QUIZ_QUESTIONS.length - 1) {
+        currentQuizIdx++;
+        renderQuizQuestion();
+      } else {
+        // Quiz Complete Summary
+        const box = document.getElementById('quiz-card-box');
+        if (box) {
+          const scorePercent = Math.round((quizScore / QUIZ_QUESTIONS.length) * 100);
+          box.innerHTML = `
+            <div class="text-center space-y-4 py-6">
+              <div class="text-6xl animate-bounce">🗳️</div>
+              <h3 class="text-3xl font-black text-brandBlack">Quiz Completed!</h3>
+              <p class="text-base font-bold text-slate-700">You scored <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl text-brandBlack">${quizScore} out of ${QUIZ_QUESTIONS.length}</span> (${scorePercent}%)</p>
+              <div class="pt-2">
+                <button onclick="resetQuiz()" class="px-6 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+                  Try Quiz Again 🔄
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function resetQuiz() {
+      playSound('pop');
+      currentQuizIdx = 0;
+      quizScore = 0;
+      document.getElementById('quiz-score').innerText = 0;
+      
+      const box = document.getElementById('quiz-card-box');
+      if (box && !box.querySelector('#quiz-question-text')) {
+        location.reload(); // Quick restore if summary was active
+        return;
+      }
+      renderQuizQuestion();
+    }
+
+    /* --------------------------------------------------------------------------
+       12. KEY TERMS GLOSSARY RENDERER
+       -------------------------------------------------------------------------- */
+    function renderGlossary() {
+      const container = document.getElementById('glossary-grid');
+      if (!container) return;
+
+      const allKeywords = [];
+      CHAPTER_TOPICS.forEach(t => {
+        t.keywords.forEach(kw => {
+          allKeywords.push({ keyword: kw, topicTitle: t.title, topicId: t.id, icon: t.icon });
+        });
+      });
+
+      const badge = document.getElementById('glossary-count-badge');
+      if (badge) badge.innerText = `${allKeywords.length} Key Terms`;
+
+      container.innerHTML = allKeywords.map(item => `
+        <div onclick="jumpToNote('${item.topicId}')" class="bg-slate-50 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between group">
+          <div class="flex items-center space-x-2.5">
+            <span class="text-xl">${item.icon}</span>
+            <div>
+              <span class="font-black text-xs sm:text-sm text-brandBlack block">#${item.keyword}</span>
+              <span class="text-[10px] font-bold text-slate-500 block truncate max-w-[160px]">${item.topicTitle}</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-brandBlack group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      `).join('');
+    }
+
+    function jumpToNote(topicId) {
+      switchTab('notes');
+      setTimeout(() => {
+        const el = document.getElementById(`card-${topicId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add('ring-4', 'ring-brandYellow');
+          setTimeout(() => el.classList.remove('ring-4', 'ring-brandYellow'), 2000);
+        }
+      }, 150);
+    }
+
+    /* --------------------------------------------------------------------------
+       13. INITIALIZATION ON WINDOW LOAD
+       -------------------------------------------------------------------------- */
+    window.addEventListener('load', () => {
+      animateMascot();
+      renderRevisionChain();
+      renderVisualNotes();
+      updateFlashcardUI();
+      renderQuizQuestion();
+      renderGlossary();
+    });
+  </script>
+</body>
+</html>

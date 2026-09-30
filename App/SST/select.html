@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 9th SST Dashboard - Let's Study Now</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlack: '#1E1E1E',
+            brandYellow: '#FACC15',
+            brandYellowLight: '#FEF08A',
+            brandBlue: '#38BDF8',
+            brandBlueDark: '#0EA5E9',
+            brandPink: '#F472B6',
+            brandGreen: '#34D399',
+            brandLime: '#A3E635',
+            brandPurple: '#C084FC',
+            brandOrange: '#FB923C'
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'cartoon-sm': '3px 3px 0px #1E1E1E',
+            'cartoon': '5px 5px 0px #1E1E1E',
+            'cartoon-lg': '8px 8px 0px #1E1E1E',
+            'cartoon-hover': '8px 8px 0px #1E1E1E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #1E1E1E;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Neo-Brutalist Border Classes */
+    .border-cartoon {
+      border: 3.5px solid #1E1E1E;
+    }
+    .border-cartoon-thin {
+      border: 2px solid #1E1E1E;
+    }
+
+    /* Interactive Tactile Hover Effects */
+    .hover-pop {
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.2s ease;
+    }
+    .hover-pop:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0px #1E1E1E;
+    }
+    .hover-pop:active {
+      transform: translateY(2px) translateX(2px);
+      box-shadow: 2px 2px 0px #1E1E1E;
+    }
+
+    /* Polka Dot Cartoon Background Pattern */
+    .bg-cartoon-dots {
+      background-image: radial-gradient(#1E1E1E 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-color: #F8FAFC;
+    }
+
+    /* Mascot Cursor Follower - Strictly Non-Interactive */
+    #mascot-container {
+      position: fixed;
+      pointer-events: none !important;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    /* Cursor Star Sparkles */
+    .particle {
+      position: fixed;
+      pointer-events: none !important;
+      animation: particleFade 0.75s forwards ease-out;
+      z-index: 9998;
+    }
+    @keyframes particleFade {
+      0% { opacity: 1; transform: scale(1) translate(0, 0); }
+      100% { opacity: 0; transform: scale(0.2) translate(var(--tx), var(--ty)); }
+    }
+
+    /* Floating Animations */
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    .animate-float {
+      animation: floatGentle 4s ease-in-out infinite;
+    }
+    .animate-float-delayed {
+      animation: floatGentle 5s ease-in-out infinite 2s;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FACC15;
+      border-left: 3px solid #1E1E1E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E1E1E;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cartoon-dots min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <!-- Mascot Cursor Follower -->
+  <div id="mascot-container" class="hidden md:flex flex-col items-center justify-center pointer-events-none">
+    <div class="relative w-14 h-14 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center">
+      <!-- Pupil Tracking Eyes -->
+      <div class="flex space-x-1.5">
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-left" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-right" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+      </div>
+      <!-- Mouth -->
+      <div class="absolute bottom-2 w-3.5 h-1.5 border-b-2 border-brandBlack rounded-full"></div>
+      <!-- Antenna -->
+      <div class="absolute -top-2.5 w-1 h-2.5 bg-brandBlack rounded-full"></div>
+      <div class="absolute -top-3.5 w-3 h-3 bg-brandBlue border-cartoon-thin rounded-full animate-pulse"></div>
+    </div>
+    <span class="mt-1 bg-brandBlack text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">
+      StudyBuddy 🤖
+    </span>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-50 bg-white border-b-4 border-brandBlack shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+          <i class="fa-solid fa-graduation-cap text-xl text-brandBlack"></i>
+        </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-brandBlack block leading-none">Let's Study Now</span>
+          <span class="text-[10px] sm:text-[11px] font-extrabold text-brandBlueDark uppercase tracking-wider">SST Visual Hub</span>
+        </div>
+      </a>
+
+      <!-- Header Action Utilities -->
+      <div class="flex items-center space-x-2">
+        <!-- Home Link Button -->
+        <a href="../index.html" class="px-3 py-2 bg-brandPurple text-white font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-house"></i>
+          <span class="hidden sm:inline">Home</span>
+        </a>
+
+        <!-- Sound Effect Toggle -->
+        <button id="sound-btn" onclick="toggleAudioFX()" class="px-3 py-2 bg-brandYellow text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span class="hidden sm:inline" id="sound-status-text">Sound ON</span>
+        </button>
+
+        <!-- WhatsApp Support Link -->
+        <a href="https://wa.me/919425361092?text=Hi!%20I%20am%20exploring%20Class%209th%20SST%20Dashboard!" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-brandGreen text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span class="hidden sm:inline">+91 9425361092</span>
+          <span class="sm:hidden">WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    
+    <!-- Hero Banner Header -->
+    <section class="bg-brandBlue border-cartoon rounded-3xl p-6 sm:p-10 shadow-cartoon-lg relative overflow-hidden">
+      <!-- Background Graphic Decor -->
+      <div class="absolute -right-6 -bottom-8 opacity-20 pointer-events-none animate-float">
+        <i class="fa-solid fa-earth-americas text-[220px] text-brandBlack"></i>
+      </div>
+      <div class="absolute right-1/3 top-4 text-2xl opacity-30 animate-float-delayed pointer-events-none">🏛️</div>
+      <div class="absolute left-1/4 bottom-4 text-2xl opacity-30 animate-float pointer-events-none">📜</div>
+
+      <div class="max-w-3xl space-y-5 relative z-10">
+        
+        <!-- Badge Header -->
+        <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3.5 py-1.5 rounded-full shadow-cartoon-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse"></span>
+          <span class="text-xs font-black text-brandBlack uppercase tracking-wide">
+            Official Curriculum • Interactive Visual Hub
+          </span>
+        </div>
+
+        <!-- Main Chapter Heading -->
+        <h1 class="text-3xl sm:text-5xl font-black text-brandBlack leading-tight">
+          Class 9th SST <span class="bg-brandYellow border-cartoon px-3 py-0.5 rounded-2xl text-2xl sm:text-4xl shadow-cartoon-sm inline-block my-1">(last Update - 2026-27)</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-base sm:text-xl font-black text-brandBlack bg-white p-4 rounded-2xl border-cartoon shadow-cartoon-sm leading-relaxed">
+          Pick a chapter to start learning in an interesting visual way! 🎒🌍
+        </p>
+
+        <!-- Quick Stats Bar -->
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <div class="bg-brandYellow border-cartoon px-3.5 py-1.5 rounded-xl font-black text-xs shadow-cartoon-sm flex items-center space-x-1.5">
+            <i class="fa-solid fa-book-open"></i>
+            <span>4 Chapters Ready</span>
+          </div>
+          <div class="bg-brandGreen border-cartoon px-3.5 py-1.5 rounded-xl font-black text-xs shadow-cartoon-sm flex items-center space-x-1.5">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Interactive Tools Ready</span>
+          </div>
+          <div class="bg-white border-cartoon px-3.5 py-1.5 rounded-xl font-black text-xs shadow-cartoon-sm flex items-center space-x-1.5">
+            <i class="fa-solid fa-heart text-pink-500"></i>
+            <span>Ashva Group Supported</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 1: CHAPTER SELECTION GRID -->
+    <section id="chapters-section" class="space-y-6 scroll-mt-24">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+        <div>
+          <div class="inline-flex items-center space-x-2 bg-brandYellow border-cartoon px-3 py-1 rounded-full text-xs font-black shadow-cartoon-sm mb-2">
+            <span>📚 SECTION 1</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-brandBlack flex items-center space-x-2">
+            <span>Chapter Modules</span>
+            <span>📍</span>
+          </h2>
+          <p class="text-xs sm:text-sm font-bold text-slate-700 mt-1">Select any chapter below to open visual notes, animated flowcharts & recap guides!</p>
+        </div>
+        <span class="bg-brandGreen text-brandBlack border-cartoon font-black px-4 py-2 rounded-2xl text-xs shadow-cartoon-sm w-max">
+          4 Chapters Available 🟢
+        </span>
+      </div>
+
+      <!-- Chapter Cards Grid (4 Specified Chapters) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Chapter 4 -->
+        <a href="Ch-4.html" onclick="playSound('pop')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer relative overflow-hidden group flex flex-col justify-between space-y-6">
+          <div class="flex items-start justify-between">
+            <div class="w-14 h-14 bg-brandYellow border-cartoon rounded-2xl flex items-center justify-center text-3xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              🦴
+            </div>
+            <span class="bg-brandGreen text-brandBlack border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm">
+              Available • Start 🚀
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <span class="bg-brandYellowLight border-cartoon-thin text-[11px] font-black px-2.5 py-0.5 rounded-lg text-brandBlack uppercase tracking-wide">
+              History & Anthropology
+            </span>
+            <h3 class="text-2xl font-black text-brandBlack group-hover:text-brandBlueDark transition-colors">
+              Chapter 4: Early Humans and Beginning of Civilization
+            </h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Explore stone tools, paleolithic life, discovery of fire, farming settlements, and early river valley civilizations in animated visual storylines.
+            </p>
+          </div>
+
+          <div class="w-full bg-brandYellow group-hover:bg-brandBlue transition-colors border-cartoon py-3 rounded-2xl font-black text-sm shadow-cartoon-sm flex items-center justify-center space-x-2 text-brandBlack">
+            <span>Start Chapter 4</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Chapter 5 -->
+        <a href="Ch-5.html" onclick="playSound('pop')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer relative overflow-hidden group flex flex-col justify-between space-y-6">
+          <div class="flex items-start justify-between">
+            <div class="w-14 h-14 bg-brandPink text-white border-cartoon rounded-2xl flex items-center justify-center text-3xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              👑
+            </div>
+            <span class="bg-brandGreen text-brandBlack border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm">
+              Available • Start 🚀
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <span class="bg-pink-100 border-cartoon-thin text-[11px] font-black px-2.5 py-0.5 rounded-lg text-brandBlack uppercase tracking-wide">
+              Ancient & Medieval History
+            </span>
+            <h3 class="text-2xl font-black text-brandBlack group-hover:text-brandBlueDark transition-colors">
+              Chapter 5: State and Society up to 1000 CE
+            </h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Learn about early Mahajanapadas, Mauryan & Gupta empires, trade routes, social structures, and cultural heritage up to 1000 CE.
+            </p>
+          </div>
+
+          <div class="w-full bg-brandPink group-hover:bg-brandBlue text-white group-hover:text-brandBlack transition-colors border-cartoon py-3 rounded-2xl font-black text-sm shadow-cartoon-sm flex items-center justify-center space-x-2">
+            <span>Start Chapter 5</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Chapter 6 -->
+        <a href="Ch-6.html" onclick="playSound('pop')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer relative overflow-hidden group flex flex-col justify-between space-y-6">
+          <div class="flex items-start justify-between">
+            <div class="w-14 h-14 bg-brandBlue border-cartoon rounded-2xl flex items-center justify-center text-3xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              ⚖️
+            </div>
+            <span class="bg-brandGreen text-brandBlack border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm">
+              Available • Start 🚀
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <span class="bg-sky-100 border-cartoon-thin text-[11px] font-black px-2.5 py-0.5 rounded-lg text-brandBlack uppercase tracking-wide">
+              Civics & Political Science
+            </span>
+            <h3 class="text-2xl font-black text-brandBlack group-hover:text-brandBlueDark transition-colors">
+              Chapter 6: Understanding Democracy
+            </h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Discover what democracy is, why democracy is essential, key features, rights of citizens, and real-life political case studies.
+            </p>
+          </div>
+
+          <div class="w-full bg-brandBlue group-hover:bg-brandYellow transition-colors border-cartoon py-3 rounded-2xl font-black text-sm shadow-cartoon-sm flex items-center justify-center space-x-2 text-brandBlack">
+            <span>Start Chapter 6</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Chapter 7 -->
+        <a href="Ch-7.html" onclick="playSound('pop')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer relative overflow-hidden group flex flex-col justify-between space-y-6">
+          <div class="flex items-start justify-between">
+            <div class="w-14 h-14 bg-brandLime border-cartoon rounded-2xl flex items-center justify-center text-3xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              🗳️
+            </div>
+            <span class="bg-brandGreen text-brandBlack border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm">
+              Available • Start 🚀
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <span class="bg-lime-100 border-cartoon-thin text-[11px] font-black px-2.5 py-0.5 rounded-lg text-brandBlack uppercase tracking-wide">
+              Democratic Politics
+            </span>
+            <h3 class="text-2xl font-black text-brandBlack group-hover:text-brandBlueDark transition-colors">
+              Chapter 7: Elections
+            </h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Understand why elections are necessary, electoral competition, voter lists, polling day procedures, and the Election Commission.
+            </p>
+          </div>
+
+          <div class="w-full bg-brandLime group-hover:bg-brandBlue transition-colors border-cartoon py-3 rounded-2xl font-black text-sm shadow-cartoon-sm flex items-center justify-center space-x-2 text-brandBlack">
+            <span>Start Chapter 7</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: SPECIAL STUDY TOOLS SECTION -->
+    <section id="tools-section" class="space-y-6 scroll-mt-24">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+        <div>
+          <div class="inline-flex items-center space-x-2 bg-brandPink text-white border-cartoon px-3 py-1 rounded-full text-xs font-black shadow-cartoon-sm mb-2">
+            <span>🚀 SECTION 2</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-brandBlack flex items-center space-x-2">
+            <span>Interactive Learning Tools</span>
+            <span>⚡</span>
+          </h2>
+          <p class="text-xs sm:text-sm font-bold text-slate-700 mt-1">Select a study tool below to pick a chapter and launch rapid practice!</p>
+        </div>
+        <span class="bg-brandYellow text-brandBlack border-cartoon font-black px-4 py-2 rounded-2xl text-xs shadow-cartoon-sm w-max">
+          3 Active • 1 Locked
+        </span>
+      </div>
+
+      <!-- 4 Tool Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Tool 1: Practice Questions -->
+        <div onclick="openToolDashboard('Practice Questions', '❓')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer space-y-4 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandPink text-white border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              ❓
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Practice Questions</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Self-evaluating quizzes with instant solution reveals to test your exam preparation.
+            </p>
+          </div>
+          <button class="w-full bg-brandPink text-white border-cartoon py-2.5 rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5 group-hover:bg-brandBlack transition-colors">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-angles-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Tool 2: Visual Cards -->
+        <div onclick="openToolDashboard('Visual Cards', '🎴')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer space-y-4 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandYellow border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              🎴
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Visual Cards</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              Interactive 3D flip flashcards for high-yield memory retention & active recall.
+            </p>
+          </div>
+          <button class="w-full bg-brandYellow text-brandBlack border-cartoon py-2.5 rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5 group-hover:bg-brandBlue transition-colors">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-angles-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Tool 3: Rapid Revision -->
+        <div onclick="openToolDashboard('Rapid Revision', '⚡')" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer space-y-4 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="w-12 h-12 bg-brandBlue border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+              ⚡
+            </div>
+            <h3 class="text-xl font-black text-brandBlack">Rapid Revision</h3>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">
+              5-minute bullet recaps summarizing key terms, dates, and core concepts.
+            </p>
+          </div>
+          <button class="w-full bg-brandBlue text-brandBlack border-cartoon py-2.5 rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5 group-hover:bg-brandGreen transition-colors">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-angles-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Tool 4: Notes (NOT AVAILABLE) -->
+        <div onclick="showNotesToast()" class="bg-slate-100 border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop cursor-pointer opacity-80 space-y-4 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 bg-slate-200 border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm">
+                📝
+              </div>
+              <span class="bg-red-400 text-white border-cartoon text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-cartoon-sm flex items-center space-x-1">
+                <i class="fa-solid fa-lock text-[9px]"></i>
+                <span>Not available</span>
+              </span>
+            </div>
+            <h3 class="text-xl font-black text-slate-700">Notes</h3>
+            <p class="text-xs font-bold text-slate-500 leading-relaxed">
+              Detailed downloadable PDF cheat sheets and mind maps coming in the next update.
+            </p>
+          </div>
+          <div class="w-full bg-slate-200 border-cartoon py-2.5 rounded-xl font-extrabold text-xs text-slate-600 text-center shadow-cartoon-sm">
+            Locked • Coming Soon!
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Community Support Drive -->
+    <section class="bg-brandYellow border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon relative overflow-hidden">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="bg-white border-cartoon text-[11px] font-black px-3 py-1 rounded-full shadow-cartoon-sm inline-block">
+            💬 COMMUNITY DASHBOARD FEEDBACK
+          </span>
+          <h3 class="text-2xl font-black text-brandBlack">Need more chapters or custom practice modules?</h3>
+          <p class="text-xs sm:text-sm font-bold text-slate-800">
+            Send us your suggestions or request chapters on WhatsApp! Supported by Ashva Group.
+          </p>
+        </div>
+        <a href="https://wa.me/919425361092?text=Hi!%20I%20have%20a%20suggestion%20for%20the%20SST%20Dashboard!" target="_blank" rel="noopener noreferrer" class="bg-brandGreen text-brandBlack border-cartoon px-6 py-3 rounded-2xl font-black text-sm shadow-cartoon hover-pop inline-flex items-center space-x-2 shrink-0">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          <span>WhatsApp +91 9425361092</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUB-DASHBOARD MODAL SYSTEM (For Practice Questions, Visual Cards & Rapid Revision) -->
+  <div id="tool-modal-backdrop" class="fixed inset-0 bg-brandBlack/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="tool-modal-card" class="bg-white border-cartoon rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-cartoon-lg transform scale-90 transition-transform duration-300 space-y-6">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b-4 border-brandBlack pb-4">
+        <div class="flex items-center space-x-3">
+          <div id="modal-icon-badge" class="w-12 h-12 bg-brandYellow border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm">
+            ❓
+          </div>
+          <div>
+            <h3 id="modal-tool-title" class="text-xl sm:text-2xl font-black text-brandBlack leading-tight">
+              Practice Questions
+            </h3>
+            <span class="text-xs font-black text-brandBlueDark">Select Chapter Dashboard</span>
+          </div>
+        </div>
+
+        <button onclick="closeToolDashboard()" class="w-10 h-10 bg-brandPink text-white border-cartoon rounded-xl shadow-cartoon flex items-center justify-center font-black hover-pop">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Chapter Selection Options Grid -->
+      <div class="space-y-3">
+        <p class="text-xs font-bold text-slate-700">Choose a chapter to open this study tool:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          
+          <!-- Ch. 1 -->
+          <div onclick="launchSubChapter('Ch. 1')" class="bg-slate-100 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="w-7 h-7 bg-white border-cartoon-thin rounded-lg flex items-center justify-center font-black text-xs">1</span>
+              <span class="font-black text-sm text-brandBlack">Ch. 1</span>
+            </div>
+            <span class="bg-slate-200 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-slate-700">Soon</span>
+          </div>
+
+          <!-- Ch. 2 -->
+          <div onclick="launchSubChapter('Ch. 2')" class="bg-slate-100 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="w-7 h-7 bg-white border-cartoon-thin rounded-lg flex items-center justify-center font-black text-xs">2</span>
+              <span class="font-black text-sm text-brandBlack">Ch. 2</span>
+            </div>
+            <span class="bg-slate-200 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-slate-700">Soon</span>
+          </div>
+
+          <!-- Ch. 3 -->
+          <div onclick="launchSubChapter('Ch. 3')" class="bg-slate-100 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="w-7 h-7 bg-white border-cartoon-thin rounded-lg flex items-center justify-center font-black text-xs">3</span>
+              <span class="font-black text-sm text-brandBlack">Ch. 3</span>
+            </div>
+            <span class="bg-slate-200 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-slate-700">Soon</span>
+          </div>
+
+          <!-- Ch. 4 (Available) -->
+          <a href="Ch-4.html" onclick="playSound('pop')" class="bg-brandGreen hover:bg-brandYellow border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between text-brandBlack">
+            <div class="flex items-center space-x-2">
+              <span class="w-7 h-7 bg-white border-cartoon-thin rounded-lg flex items-center justify-center font-black text-xs">4</span>
+              <span class="font-black text-sm">Ch. 4</span>
+            </div>
+            <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-brandBlack">Ready 🚀</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="bg-yellow-50 border-cartoon-thin p-3 rounded-xl flex items-center justify-between text-xs font-bold text-slate-800">
+        <span>💡 Ch. 4 is fully unlocked! Ch 1-3 launching soon.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer class="bg-white border-t-4 border-brandBlack mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex items-center justify-center space-x-3">
+        <div class="w-10 h-10 bg-brandYellow border-cartoon rounded-xl flex items-center justify-center text-xl shadow-cartoon-sm">
+          🎓
+        </div>
+        <span class="text-2xl font-black text-brandBlack">Let's Study Now</span>
+      </div>
+
+      <p class="text-sm sm:text-base font-black text-brandBlack">
+        Made with ❤️ by Class 9th Students for Class 9th Students
+      </p>
+
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Supported by Ashva Group
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Developer - Arnav Shrivastava
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Data Manager - Ishi Chourasia
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs font-bold text-slate-500 flex flex-wrap items-center justify-between gap-4">
+        <span>© 2026 Let's Study Now. Completely Free for Students.</span>
+        <a href="https://wa.me/919425361092" target="_blank" rel="noopener noreferrer" class="hover:underline text-brandBlack font-black">
+          WhatsApp Support (+91 9425361092)
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Notification Modal -->
+  <div id="toast-modal" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-brandYellow border-cartoon p-4 rounded-2xl shadow-cartoon-lg flex items-center space-x-3 max-w-sm">
+      <div id="toast-icon-box" class="w-10 h-10 bg-white border-cartoon rounded-xl flex items-center justify-center text-xl shrink-0">
+        🚀
+      </div>
+      <div>
+        <h4 id="toast-title" class="font-black text-brandBlack text-sm">Notes Coming Soon!</h4>
+        <p id="toast-body" class="text-xs font-bold text-slate-800">Notes for SST are being crafted by students and will be live soon!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client JavaScript -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. SYNTHESIZED WEB AUDIO SOUND GENERATOR (100% self-contained)
+       -------------------------------------------------------------------------- */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(350, now);
+          osc.frequency.exponentialRampToValueAtTime(700, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'modal') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(300, now);
+          osc.frequency.exponentialRampToValueAtTime(600, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'lock') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.setValueAtTime(150, now + 0.08);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        }
+      } catch (e) {
+        // Fallback for audio policy constraints
+      }
+    }
+
+    function toggleAudioFX() {
+      soundEnabled = !soundEnabled;
+      const statusText = document.getElementById('sound-status-text');
+      const soundIcon = document.getElementById('sound-icon');
+
+      if (soundEnabled) {
+        if (statusText) statusText.innerText = 'Sound ON';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        playSound('pop');
+      } else {
+        if (statusText) statusText.innerText = 'Sound OFF';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       2. MASCOT "StudyBuddy" CURSOR FOLLOW & STAR DUST PARTICLES
+       -------------------------------------------------------------------------- */
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let mascotX = mouseX;
+    let mascotY = mouseY;
+
+    const mascot = document.getElementById('mascot-container');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.85) {
+        spawnStarParticle(mouseX, mouseY);
+      }
+    });
+
+    function spawnStarParticle(x, y) {
+      const particle = document.createElement('div');
+      particle.className = 'particle font-black text-brandYellow text-xs select-none pointer-events-none';
+      particle.innerText = ['✨', '⭐', '⚡', '🌟'][Math.floor(Math.random() * 4)];
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+
+      const tx = (Math.random() - 0.5) * 40;
+      const ty = (Math.random() - 0.5) * 40;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 750);
+    }
+
+    function animateMascot() {
+      mascotX += (mouseX - mascotX) * 0.12;
+      mascotY += (mouseY - mascotY) * 0.12;
+
+      if (mascot && window.innerWidth >= 768) {
+        mascot.style.transform = `translate3d(${mascotX + 16}px, ${mascotY + 16}px, 0)`;
+
+        const rect = mascot.getBoundingClientRect();
+        const mascotCenterX = rect.left + rect.width / 2;
+        const mascotCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - mascotCenterY, mouseX - mascotCenterX);
+        const dist = Math.min(2.5, Math.hypot(mouseX - mascotCenterX, mouseY - mascotCenterY) / 30);
+
+        const px = Math.cos(angle) * dist;
+        const py = Math.sin(angle) * dist;
+
+        if (pupilLeft && pupilRight) {
+          pupilLeft.style.transform = `translate(${px}px, ${py}px)`;
+          pupilRight.style.transform = `translate(${px}px, ${py}px)`;
+        }
+      }
+
+      requestAnimationFrame(animateMascot);
+    }
+
+    /* --------------------------------------------------------------------------
+       3. INTERACTIVE DASHBOARD MODAL & TOAST SYSTEM
+       -------------------------------------------------------------------------- */
+    let currentTool = '';
+    let toastTimeout = null;
+
+    function openToolDashboard(toolName, icon) {
+      playSound('modal');
+      currentTool = toolName;
+      const backdrop = document.getElementById('tool-modal-backdrop');
+      const card = document.getElementById('tool-modal-card');
+      const title = document.getElementById('modal-tool-title');
+      const iconBadge = document.getElementById('modal-icon-badge');
+
+      if (backdrop && card && title && iconBadge) {
+        title.innerText = `${toolName}`;
+        iconBadge.innerText = icon;
+
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        card.classList.remove('scale-90');
+        card.classList.add('scale-100');
+      }
+    }
+
+    function closeToolDashboard() {
+      playSound('pop');
+      const backdrop = document.getElementById('tool-modal-backdrop');
+      const card = document.getElementById('tool-modal-card');
+
+      if (backdrop && card) {
+        card.classList.remove('scale-100');
+        card.classList.add('scale-90');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    function launchSubChapter(chName) {
+      playSound('lock');
+      showToast(`${chName} Coming Soon! 🔒`, `${chName} for ${currentTool || 'this tool'} will be live soon! Enjoy Ch. 4 right now! 🚀`, '⏳');
+    }
+
+    function showNotesToast() {
+      playSound('lock');
+      showToast('Notes Not Available Yet! 🔒', 'Notes for SST are being prepared by student creators. Support us on WhatsApp to unlock them faster!', '📝');
+    }
+
+    function showToast(titleText, bodyText, icon) {
+      const toast = document.getElementById('toast-modal');
+      const title = document.getElementById('toast-title');
+      const body = document.getElementById('toast-body');
+      const iconBox = document.getElementById('toast-icon-box');
+
+      if (toast && title && body) {
+        title.innerText = titleText;
+        body.innerText = bodyText;
+        if (iconBox && icon) iconBox.innerText = icon;
+
+        toast.classList.remove('translate-y-32', 'opacity-0');
+
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.add('translate-y-32', 'opacity-0');
+        }, 3400);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      animateMascot();
+    });
+  </script>
+</body>
+</html>

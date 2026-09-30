@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 7: Elections - Let's Study Now</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlack: '#1E1E1E',
+            brandYellow: '#FACC15',
+            brandYellowLight: '#FEF08A',
+            brandBlue: '#38BDF8',
+            brandBlueDark: '#0EA5E9',
+            brandPink: '#F472B6',
+            brandGreen: '#34D399',
+            brandLime: '#A3E635',
+            brandPurple: '#C084FC',
+            brandOrange: '#FB923C'
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'cartoon-sm': '3px 3px 0px #1E1E1E',
+            'cartoon': '5px 5px 0px #1E1E1E',
+            'cartoon-lg': '8px 8px 0px #1E1E1E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #1E1E1E;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Neo-Brutalist Border Utility Classes */
+    .border-cartoon {
+      border: 3.5px solid #1E1E1E;
+    }
+    .border-cartoon-thin {
+      border: 2px solid #1E1E1E;
+    }
+
+    /* Tactile Hover Effects */
+    .hover-pop {
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.2s ease;
+    }
+    .hover-pop:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0px #1E1E1E;
+    }
+    .hover-pop:active {
+      transform: translateY(2px) translateX(2px);
+      box-shadow: 2px 2px 0px #1E1E1E;
+    }
+
+    /* Polka Dot Cartoon Background Pattern */
+    .bg-cartoon-dots {
+      background-image: radial-gradient(#1E1E1E 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-color: #F8FAFC;
+    }
+
+    /* Floating Mascot Container */
+    #mascot-container {
+      position: fixed;
+      pointer-events: none !important;
+      z-index: 9999;
+      bottom: 20px;
+      right: 20px;
+      will-change: transform;
+    }
+
+    /* Cursor Sparkle Particles */
+    .particle {
+      position: fixed;
+      pointer-events: none !important;
+      animation: particleFade 0.75s forwards ease-out;
+      z-index: 9998;
+    }
+    @keyframes particleFade {
+      0% { opacity: 1; transform: scale(1) translate(0, 0); }
+      100% { opacity: 0; transform: scale(0.2) translate(var(--tx), var(--ty)); }
+    }
+
+    /* 3D Flashcard Flip Setup */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Custom Neo-Brutalist Scrollbar */
+    ::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FACC15;
+      border: 2px solid #1E1E1E;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E1E1E;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cartoon-dots min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <!-- Mascot Cursor Follower -->
+  <div id="mascot-container" class="hidden md:flex flex-col items-center justify-center pointer-events-none">
+    <div id="mascot-bubble" class="bg-white border-cartoon px-3 py-1 rounded-xl text-[10px] font-black shadow-cartoon-sm mb-1 text-brandBlack animate-bounce whitespace-nowrap">
+      Welcome to Elections! 🗳️
+    </div>
+    <div class="relative w-14 h-14 bg-brandBlue border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center">
+      <!-- Pupil Tracking Eyes -->
+      <div class="flex space-x-1.5">
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-left" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-right" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+      </div>
+      <!-- Crown / Mouth -->
+      <div class="absolute bottom-2 w-3.5 h-1.5 border-b-2 border-brandBlack rounded-full"></div>
+      <div class="absolute -top-3 w-6 h-3 bg-brandYellow border-cartoon-thin rounded-t-md flex items-center justify-around px-0.5">
+        <span class="w-1 h-1 bg-brandPink rounded-full"></span>
+        <span class="w-1 h-1 bg-brandBlue rounded-full"></span>
+        <span class="w-1 h-1 bg-brandGreen rounded-full"></span>
+      </div>
+    </div>
+    <span class="mt-1 bg-brandBlack text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">
+      StudyBuddy 🤖
+    </span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-white border-b-4 border-brandBlack shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo & Breadcrumb -->
+      <div class="flex items-center space-x-3">
+        <a href="../index.html" class="flex items-center space-x-2 group">
+          <div class="w-11 h-11 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+            <i class="fa-solid fa-check-to-slot text-xl text-brandBlack"></i>
+          </div>
+          <div class="hidden sm:block">
+            <span class="text-xl font-black tracking-tight text-brandBlack block leading-none">Let's Study Now</span>
+            <span class="text-[10px] font-extrabold text-brandBlueDark uppercase tracking-wider">Class 9th SST • Ch 7</span>
+          </div>
+        </a>
+
+        <!-- Breadcrumb Links -->
+        <nav class="hidden md:flex items-center space-x-1 text-xs font-black pl-3 border-l-2 border-slate-200">
+          <a href="../index.html" class="hover:underline text-slate-600">Home</a>
+          <span class="text-slate-400">/</span>
+          <a href="select.html" class="hover:underline text-slate-600">SST Select</a>
+          <span class="text-slate-400">/</span>
+          <span class="text-brandBlack bg-brandYellowLight px-2 py-0.5 rounded-md border-cartoon-thin text-[11px]">Ch 7</span>
+        </nav>
+      </div>
+
+      <!-- Chapter Prev/Next & Audio Controls -->
+      <div class="flex items-center space-x-2">
+        <a href="Ch-6.html" class="px-2.5 py-1.5 bg-white text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1 hover-pop" title="Previous Chapter">
+          <i class="fa-solid fa-chevron-left"></i>
+          <span class="hidden sm:inline">Ch 6</span>
+        </a>
+
+        <a href="select.html" class="px-3 py-1.5 bg-brandGreen text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-border-all"></i>
+          <span class="hidden sm:inline">SST Select</span>
+        </a>
+
+        <a href="select.html" class="px-2.5 py-1.5 bg-white text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1 hover-pop" title="SST Select">
+          <span class="hidden sm:inline">SST</span>
+          <i class="fa-solid fa-border-all"></i>
+        </a>
+
+        <button id="sound-btn" onclick="toggleAudioFX()" class="px-3 py-1.5 bg-brandYellow text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span class="hidden sm:inline" id="sound-status-text">Sound ON</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Hero Banner Header -->
+    <section class="bg-brandBlue border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+        
+        <div class="space-y-3 max-w-3xl">
+          <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3 py-1 rounded-full shadow-cartoon-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse"></span>
+            <span class="text-xs font-black text-brandBlack uppercase tracking-wide">
+              Democratic Politics & Elections
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-brandBlack leading-tight">
+            Chapter 7: Elections 🗳️
+          </h1>
+
+          <p class="text-sm sm:text-base font-bold text-slate-800 bg-white/80 p-3 rounded-2xl border-cartoon-thin shadow-cartoon-sm">
+            Explore why elections matter, how electoral systems work, and the institutions and rules that support free and fair elections! 🗳️⚖️
+          </p>
+        </div>
+
+        <!-- Overall Chapter Mastery Tracker -->
+        <div class="w-full lg:w-72 bg-white border-cartoon p-4 rounded-2xl shadow-cartoon shrink-0 space-y-2">
+          <div class="flex items-center justify-between text-xs font-black">
+            <span>Chapter Mastery</span>
+            <span id="mastery-percentage" class="text-brandBlueDark text-sm">0%</span>
+          </div>
+          <div class="w-full h-4 bg-slate-200 rounded-full border-cartoon-thin overflow-hidden p-0.5">
+            <div id="mastery-bar" class="h-full bg-brandGreen rounded-full transition-all duration-500 w-0"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-600 pt-1">
+            <span id="notes-read-count">0/14 Notes Read</span>
+            <span id="quiz-score-count">Quiz: --</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- One-Line Revision Chain Section -->
+    <section class="bg-white border-cartoon rounded-3xl p-5 shadow-cartoon space-y-3">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center space-x-2">
+          <span class="w-7 h-7 bg-brandYellow text-brandBlack border-cartoon-thin rounded-xl flex items-center justify-center text-xs font-black">🔗</span>
+          <h2 class="text-base sm:text-lg font-black text-brandBlack">One-Line Revision Chain</h2>
+        </div>
+        <span class="text-[11px] font-bold text-slate-500">Tap any node to jump directly to its topic!</span>
+      </div>
+
+      <div class="overflow-x-auto pb-2 pt-1 scrollbar-thin">
+        <div id="revision-chain-container" class="flex items-center space-x-2 min-w-max">
+          <!-- Flowchart Nodes Injected by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs & Search Controls -->
+    <section class="space-y-4">
+      
+      <!-- Quick Navigation Tabs -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <button id="tab-btn-notes" onclick="switchTab('notes')" class="tab-btn active px-4 py-2.5 bg-brandYellow text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>📖 Visual Notes</span>
+          <span class="bg-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">12 Topics</span>
+        </button>
+
+        <button id="tab-btn-flashcards" onclick="switchTab('flashcards')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎴 Flashcards</span>
+          <span class="bg-brandBlue border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">3D Flip</span>
+        </button>
+
+        <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎯 Practice Quiz</span>
+          <span class="bg-brandPink text-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">MCQs</span>
+        </button>
+
+        <button id="tab-btn-glossary" onclick="switchTab('glossary')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🏷️ Key Terms</span>
+          <span class="bg-brandGreen border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">Glossary</span>
+        </button>
+      </div>
+
+      <!-- Real-time Search & Category Quick Filter -->
+      <div id="search-bar-container" class="bg-white border-cartoon rounded-2xl p-3 shadow-cartoon flex flex-col sm:flex-row items-center justify-between gap-3">
+        
+        <div class="relative w-full sm:w-80">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="topic-search-input" oninput="handleSearch(this.value)" placeholder="Search elections, FPTP, ECI, constituencies..." class="w-full pl-9 pr-8 py-2 bg-slate-50 border-cartoon-thin rounded-xl text-xs font-bold text-brandBlack focus:outline-none focus:bg-yellow-50">
+          <button onclick="clearSearch()" id="clear-search-btn" class="hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-brandBlack">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Category Badges -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+          <span class="text-xs font-black mr-1 text-slate-500">Filter:</span>
+          <button onclick="filterCategory('all')" class="cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black">All</button>
+          <button onclick="filterCategory('core')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100">Core Concepts</button>
+          <button onclick="filterCategory('systems')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-pink-100">Electoral Systems</button>
+          <button onclick="filterCategory('institutions')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-blue-100">Institutions & Law</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 1: VISUAL NOTES SECTION -->
+    <section id="notes-tab-content" class="tab-content space-y-6">
+      <div id="notes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 12 Topic Cards Injected by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: FLASHCARDS SECTION -->
+    <section id="flashcards-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-2xl mx-auto space-y-6">
+        
+        <!-- Flashcard Control Bar -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between text-xs font-black">
+          <div class="flex items-center space-x-2">
+            <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl">Card <span id="card-index-num">1</span> of 12</span>
+            <span id="card-mastered-badge" class="hidden bg-brandGreen border-cartoon-thin px-2 py-1 rounded-xl text-[10px]">Mastered ✅</span>
+          </div>
+
+          <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-brandPurple text-white border-cartoon rounded-xl shadow-cartoon-sm hover-pop">
+            <i class="fa-solid fa-shuffle mr-1"></i> Shuffle
+          </button>
+        </div>
+
+        <!-- 3D Flip Card Scene -->
+        <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipFlashcard()">
+          <div id="flashcard-inner" class="relative w-full h-full transform-style-3d transition-transform duration-500 rounded-3xl border-cartoon shadow-cartoon-lg">
+            
+            <!-- Front Face -->
+            <div class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-between backface-hidden border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Concept Front</span>
+                <i class="fa-solid fa-rotate text-slate-400 text-lg"></i>
+              </div>
+              
+              <div class="text-center space-y-3">
+                <div id="card-front-icon" class="text-5xl">🗳️</div>
+                <h3 id="card-front-title" class="text-2xl font-black text-brandBlack">1. Meaning of Democracy</h3>
+                <p id="card-front-prompt" class="text-xs font-bold text-slate-500">Tap card to flip & reveal key summary!</p>
+              </div>
+
+              <div class="text-center text-[11px] font-black text-brandBlueDark uppercase tracking-wider">
+                Tap anywhere to flip 🔄
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div class="absolute inset-0 bg-brandYellowLight rounded-3xl p-8 flex flex-col justify-between backface-hidden rotate-y-180 border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandGreen border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Explanation</span>
+                <span class="text-xs font-bold text-slate-600">Chapter 7 Concept</span>
+              </div>
+
+              <div class="space-y-3 overflow-y-auto max-h-48 pr-1">
+                <h4 id="card-back-title" class="text-xl font-black text-brandBlack">Meaning of Democracy</h4>
+                <p id="card-back-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+                  Democracy is a system where people choose their representatives and influence governance.
+                </p>
+                <div id="card-back-keywords" class="flex flex-wrap gap-1 pt-2">
+                  <!-- Keywords injected here -->
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-300">
+                <button onclick="event.stopPropagation(); toggleCardMastered()" id="mastered-toggle-btn" class="px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100">
+                  Mark as Mastered 🌟
+                </button>
+                <span class="text-[10px] font-black text-slate-500">Tap to flip back</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between gap-4">
+          <button onclick="prevFlashcard()" class="flex-1 py-3 bg-white border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <button onclick="flipFlashcard()" class="px-6 py-3 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+            Flip 🔄
+          </button>
+
+          <button onclick="nextFlashcard()" class="flex-1 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: PRACTICE QUIZ SECTION -->
+    <section id="quiz-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- Quiz Header Scoreboard -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs font-black text-slate-500 block">Self-Evaluating MCQ Practice</span>
+            <h3 class="text-lg font-black text-brandBlack">Question <span id="quiz-curr-q">1</span> of 10</h3>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <div class="bg-brandGreen border-cartoon-thin px-3 py-1.5 rounded-xl font-black text-xs">
+              Score: <span id="quiz-score">0</span>/<span id="quiz-total">10</span>
+            </div>
+            <button onclick="resetQuiz()" class="px-3 py-1.5 bg-slate-100 border-cartoon-thin rounded-xl font-black text-xs hover:bg-yellow-100">
+              <i class="fa-solid fa-rotate-right"></i> Restart
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Card Box -->
+        <div id="quiz-card-box" class="bg-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg space-y-6">
+          <div class="space-y-2">
+            <span id="quiz-topic-tag" class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black inline-block">
+              Topic: Meaning of Democracy
+            </span>
+            <h3 id="quiz-question-text" class="text-xl sm:text-2xl font-black text-brandBlack leading-snug">
+              What is the fundamental basis of democracy?
+            </h3>
+          </div>
+
+          <!-- Options Container -->
+          <div id="quiz-options-container" class="space-y-3">
+            <!-- Options injected dynamically -->
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="quiz-explanation-box" class="hidden bg-yellow-50 border-cartoon p-4 rounded-2xl space-y-2">
+            <div class="flex items-center space-x-2 text-brandBlack font-black text-xs uppercase">
+              <i class="fa-solid fa-circle-info text-brandBlueDark"></i>
+              <span>Explanation & Note Summary</span>
+            </div>
+            <p id="quiz-explanation-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+              Democracy relies on popular participation, political equality, and accountability of government to the people.
+            </p>
+          </div>
+
+          <!-- Next Question Action Button -->
+          <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden w-full py-3.5 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop text-brandBlack">
+            Next Question 🚀
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: GLOSSARY SECTION -->
+    <section id="glossary-tab-content" class="tab-content hidden space-y-6">
+      
+      <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+          <div>
+            <h3 class="text-2xl font-black text-brandBlack">Key Terms & Concept Glossary 🏷️</h3>
+            <p class="text-xs font-bold text-slate-600 mt-1">Tap any key term below to jump directly to its topic in Visual Notes!</p>
+          </div>
+          <span id="glossary-count-badge" class="bg-brandYellow border-cartoon font-black px-3 py-1 rounded-xl text-xs w-max">
+            Keyword Index
+          </span>
+        </div>
+
+        <!-- Glossary Tag Grid -->
+        <div id="glossary-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+          <!-- Glossary Items injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Next Module Banner -->
+    <section class="bg-brandBlack text-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center sm:text-left">
+        <span class="bg-brandYellow text-brandBlack border-cartoon-thin text-[10px] font-black px-2.5 py-0.5 rounded-full inline-block">
+          MODULE COMPLETE
+        </span>
+        <h3 class="text-xl sm:text-2xl font-black">Chapter 7 Complete — Ready for Revision?</h3>
+        <p class="text-xs font-bold text-slate-300">Proceed to Chapter 8 or return to the SST dashboard!</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="select.html" class="px-6 py-3 bg-brandGreen text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm flex items-center space-x-2">
+          <span>Chapter 7 Complete ✓</span>
+        </a>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-3 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+    <footer class="bg-white border-t-4 border-brandBlack mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex items-center justify-center space-x-3">
+        <div class="w-10 h-10 bg-brandYellow border-cartoon rounded-xl flex items-center justify-center text-xl shadow-cartoon-sm">
+          🎓
+        </div>
+        <span class="text-2xl font-black text-brandBlack">Let's Study Now</span>
+      </div>
+
+      <p class="text-sm sm:text-base font-black text-brandBlack">
+        Made with ❤️ by Class 9th Students for Class 9th Students
+      </p>
+
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Supported by Ashva Group
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Developer - Arnav Shrivastava
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Data Manager - Ishi Chourasia
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs font-bold text-slate-500 flex flex-wrap items-center justify-between gap-4">
+        <span>© 2026 Let's Study Now. Completely Free for Students.</span>
+        <a href="https://wa.me/919425361092" target="_blank" rel="noopener noreferrer" class="hover:underline text-brandBlack font-black">
+          WhatsApp Support (+91 9425361092)
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    /* --------------------------------------------------------------------------
+       1. DATASET: ALL 12 TOPICS FOR CHAPTER 7
+       -------------------------------------------------------------------------- */
+    const CHAPTER_TOPICS = [
+      {
+        id: "topic-1",
+        category: "core",
+        icon: "🗳️",
+        title: "1. Why Do Elections Matter?",
+        summary: "Elections are a process through which citizens exercise their democratic right to choose representatives. Regular and periodic elections allow people to participate in government, give representatives a public mandate, and provide a way to hold them accountable.",
+        keyPoints: [
+          "Citizens use elections to choose representatives.",
+          "Regular and periodic elections enable participation in government.",
+          "Elections provide representatives with a public mandate and a way to hold them accountable."
+        ],
+        keywords: ["Elections", "democracy", "voting", "representatives", "participation", "accountability", "public mandate"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-2",
+        category: "core",
+        icon: "🗳️",
+        title: "2. Direct and Indirect Elections",
+        summary: "In a direct election, citizens directly vote for their representatives, as in elections to the Lok Sabha, Vidhan Sabha and local bodies. In an indirect election, elected representatives or an electoral college participate in choosing another office-holder, such as the President.",
+        keyPoints: [
+          "Direct elections involve citizens directly voting for representatives.",
+          "Lok Sabha, Vidhan Sabha and local body elections are direct elections.",
+          "Indirect elections involve elected representatives or an electoral college choosing another office-holder."
+        ],
+        keywords: ["Direct election", "indirect election", "voters", "representatives", "Lok Sabha", "Vidhan Sabha"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-3",
+        category: "systems",
+        icon: "⚙️",
+        title: "3. Electoral Systems",
+        summary: "An electoral system determines how votes are converted into seats or elected positions. India mainly uses First-Past-The-Post (FPTP) for the Lok Sabha and Vidhan Sabha, while Proportional Representation (PR) using the single transferable vote is used for certain indirect elections such as the Rajya Sabha and President.",
+        keyPoints: [
+          "An electoral system converts votes into seats or elected positions.",
+          "FPTP is mainly used for the Lok Sabha and Vidhan Sabha.",
+          "PR using the Single Transferable Vote is used for certain indirect elections."
+        ],
+        keywords: ["Electoral system", "FPTP", "Proportional Representation", "PR", "votes", "seats"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-4",
+        category: "systems",
+        icon: "🏁",
+        title: "4. First-Past-The-Post System",
+        summary: "Under the First-Past-The-Post system, voters choose a candidate in a constituency, and the candidate receiving the highest number of votes wins. The winner does not necessarily need more than half of all votes. This system is used for elections to the Lok Sabha and Vidhan Sabha.",
+        keyPoints: [
+          "Voters choose a candidate in a constituency.",
+          "The candidate receiving the highest number of votes wins.",
+          "A winner does not necessarily need more than half of all votes."
+        ],
+        keywords: ["FPTP", "constituency", "candidate", "highest votes", "winner", "Lok Sabha", "Vidhan Sabha"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-5",
+        category: "systems",
+        icon: "📊",
+        title: "5. Proportional Representation",
+        summary: "Proportional Representation (PR) aims to distribute representation according to the proportion of votes received. In India, the Single Transferable Vote (STV) method is used for certain elections, including those for the Rajya Sabha and President.",
+        keyPoints: [
+          "PR aims to distribute representation according to the proportion of votes received.",
+          "India uses the Single Transferable Vote method for certain elections.",
+          "Examples include elections for the Rajya Sabha and President."
+        ],
+        keywords: ["Proportional Representation", "PR", "STV", "representation", "Rajya Sabha", "President"],
+        color: "bg-purple-100"
+      },
+      {
+        id: "topic-6",
+        category: "systems",
+        icon: "🗺️",
+        title: "6. Electoral Constituencies and Delimitation",
+        summary: "For elections, the country is divided into electoral constituencies, each represented by an elected member. Delimitation involves determining or redrawing constituency boundaries to help ensure appropriate representation. The Delimitation Commission performs this task according to constitutional provisions.",
+        keyPoints: [
+          "The country is divided into electoral constituencies for elections.",
+          "Delimitation determines or redraws constituency boundaries.",
+          "The Delimitation Commission performs this task according to constitutional provisions."
+        ],
+        keywords: ["Constituency", "delimitation", "Delimitation Commission", "boundaries", "representation"],
+        color: "bg-pink-100"
+      },
+      {
+        id: "topic-7",
+        category: "core",
+        icon: "📋",
+        title: "7. Electoral Rolls and Universal Adult Franchise",
+        summary: "An electoral roll is the official list of eligible voters. Universal adult franchise means that adult citizens who meet the legal requirements have the right to vote, giving citizens an equal political voice in elections.",
+        keyPoints: [
+          "An electoral roll is the official list of eligible voters.",
+          "Universal adult franchise gives eligible adult citizens the right to vote.",
+          "It gives citizens an equal political voice in elections."
+        ],
+        keywords: ["Electoral roll", "voters", "universal adult franchise", "voting rights", "political equality"],
+        color: "bg-lime-100"
+      },
+      {
+        id: "topic-8",
+        category: "institutions",
+        icon: "📜",
+        title: "8. Representation of the People Acts",
+        summary: "The Representation of the People Acts of 1950 and 1951 provide important legal foundations for India's electoral system. They deal with matters such as electoral rolls, constituencies, elections, nominations, campaigns, electoral offences and disputes.",
+        keyPoints: [
+          "The Representation of the People Acts were enacted in 1950 and 1951.",
+          "They cover electoral rolls, constituencies, elections and nominations.",
+          "They also address campaigns, electoral offences and disputes."
+        ],
+        keywords: ["RPA 1950", "RPA 1951", "electoral rolls", "constituencies", "nominations", "campaigns", "offences"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-9",
+        category: "institutions",
+        icon: "🏛️",
+        title: "9. Election Commission of India",
+        summary: "The Election Commission of India (ECI) is an independent constitutional authority responsible for the superintendence, direction and control of elections. It plays a central role in organising elections and maintaining the conditions necessary for a free and fair electoral process.",
+        keyPoints: [
+          "The ECI is an independent constitutional authority.",
+          "It has responsibility for the superintendence, direction and control of elections.",
+          "It plays a central role in organising elections and supporting a free and fair process."
+        ],
+        keywords: ["ECI", "Election Commission", "Constitution", "elections", "supervision", "free and fair elections"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-10",
+        category: "institutions",
+        icon: "📣",
+        title: "10. Political Parties and Candidates",
+        summary: "Political parties and candidates provide choices to voters during elections. Political parties present their programmes and policies, nominate candidates and participate in campaigns, allowing citizens to compare different political alternatives.",
+        keyPoints: [
+          "Political parties and candidates provide choices to voters.",
+          "Parties present programmes and policies and nominate candidates.",
+          "Campaigns allow citizens to compare different political alternatives."
+        ],
+        keywords: ["Political parties", "candidates", "programmes", "policies", "campaign", "voters", "choice"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-11",
+        category: "institutions",
+        icon: "⚖️",
+        title: "11. Free and Fair Elections",
+        summary: "A free and fair election requires clear rules, equal application of electoral laws, genuine choices for voters and an impartial electoral process. It also requires effective coordination between the ECI, administration, political parties, candidates, voters and other stakeholders.",
+        keyPoints: [
+          "Clear rules and equal application of electoral laws are essential.",
+          "Voters need genuine choices and an impartial electoral process.",
+          "The ECI, administration, parties, candidates, voters and other stakeholders all have roles."
+        ],
+        keywords: ["Free and fair", "rules", "impartiality", "voters", "ECI", "administration", "stakeholders"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-12",
+        category: "core",
+        icon: "🚧",
+        title: "12. Challenges to Elections",
+        summary: "Elections can face challenges such as money power, misinformation, unfair practices and unequal access to political resources. Such problems can affect the fairness of the electoral process, which is why laws, institutions and responsible participation are important.",
+        keyPoints: [
+          "Money power and misinformation can challenge elections.",
+          "Unfair practices and unequal access to political resources can affect fairness.",
+          "Laws, institutions and responsible participation are important for electoral integrity."
+        ],
+        keywords: ["Challenges", "money power", "misinformation", "unfair practices", "electoral integrity", "reforms"],
+        color: "bg-pink-100"
+      }
+    ];
+
+
+    /* --------------------------------------------------------------------------
+       2. REVISION CHAIN FLOWCHART STEPS
+       -------------------------------------------------------------------------- */
+    const REVISION_CHAIN = [
+      { label: "Why Elections", topicId: "topic-1" },
+      { label: "Direct / Indirect", topicId: "topic-2" },
+      { label: "Electoral Systems", topicId: "topic-3" },
+      { label: "FPTP", topicId: "topic-4" },
+      { label: "PR / STV", topicId: "topic-5" },
+      { label: "Constituencies", topicId: "topic-6" },
+      { label: "Electoral Rolls", topicId: "topic-7" },
+      { label: "RPA", topicId: "topic-8" },
+      { label: "ECI", topicId: "topic-9" },
+      { label: "Parties & Candidates", topicId: "topic-10" },
+      { label: "Free & Fair", topicId: "topic-11" },
+      { label: "Challenges", topicId: "topic-12" }
+    ];
+
+
+    /* --------------------------------------------------------------------------
+       3. PRACTICE QUIZ DATASET (10 MCQs)
+       -------------------------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        topic: "Why Do Elections Matter?",
+        question: "What is one important purpose of regular elections?",
+        options: [
+          "To remove all citizen participation",
+          "To let citizens choose representatives and hold them accountable",
+          "To prevent representatives from receiving a public mandate",
+          "To replace democratic participation with hereditary rule"
+        ],
+        correct: 1,
+        explanation: "Elections allow citizens to choose representatives, participate in government, give representatives a public mandate, and hold them accountable."
+      },
+      {
+        topic: "Direct and Indirect Elections",
+        question: "What happens in a direct election?",
+        options: [
+          "An electoral college chooses every office-holder",
+          "Citizens directly vote for their representatives",
+          "Only appointed officials can vote",
+          "Candidates are selected without voting"
+        ],
+        correct: 1,
+        explanation: "In a direct election, citizens directly vote for their representatives, as in Lok Sabha, Vidhan Sabha and local body elections."
+      },
+      {
+        topic: "Electoral Systems",
+        question: "What does an electoral system determine?",
+        options: [
+          "How votes are converted into seats or elected positions",
+          "How political parties write their constitutions",
+          "How courts interpret every election dispute",
+          "How citizens receive government services"
+        ],
+        correct: 0,
+        explanation: "An electoral system determines how votes are converted into seats or elected positions."
+      },
+      {
+        topic: "First-Past-The-Post",
+        question: "Under FPTP, who wins a constituency?",
+        options: [
+          "The candidate receiving the highest number of votes",
+          "The candidate receiving exactly half of all votes",
+          "The candidate nominated by the largest party",
+          "The candidate chosen by the Election Commission"
+        ],
+        correct: 0,
+        explanation: "Under First-Past-The-Post, the candidate receiving the highest number of votes wins and does not necessarily need more than half of all votes."
+      },
+      {
+        topic: "Proportional Representation",
+        question: "What is the main aim of Proportional Representation?",
+        options: [
+          "To distribute representation according to the proportion of votes received",
+          "To ensure only one candidate can stand",
+          "To eliminate all indirect elections",
+          "To make every constituency have the same candidate"
+        ],
+        correct: 0,
+        explanation: "PR aims to distribute representation according to the proportion of votes received. India uses STV for certain elections."
+      },
+      {
+        topic: "Constituencies and Delimitation",
+        question: "What does delimitation involve?",
+        options: [
+          "Writing election campaign speeches",
+          "Determining or redrawing constituency boundaries",
+          "Selecting political party leaders",
+          "Counting only postal ballots"
+        ],
+        correct: 1,
+        explanation: "Delimitation involves determining or redrawing constituency boundaries, with the Delimitation Commission performing this task according to constitutional provisions."
+      },
+      {
+        topic: "Electoral Rolls",
+        question: "What is an electoral roll?",
+        options: [
+          "A list of political party programmes",
+          "The official list of eligible voters",
+          "A list of election campaign slogans",
+          "A list of elected representatives only"
+        ],
+        correct: 1,
+        explanation: "An electoral roll is the official list of eligible voters."
+      },
+      {
+        topic: "Representation of the People Acts",
+        question: "What do the Representation of the People Acts of 1950 and 1951 provide?",
+        options: [
+          "Important legal foundations for India's electoral system",
+          "Rules only for local festivals",
+          "A replacement for the Constitution",
+          "Rules only for political speeches"
+        ],
+        correct: 0,
+        explanation: "The Representation of the People Acts of 1950 and 1951 deal with electoral rolls, constituencies, elections, nominations, campaigns, offences and disputes."
+      },
+      {
+        topic: "Election Commission of India",
+        question: "What is the Election Commission of India responsible for?",
+        options: [
+          "The superintendence, direction and control of elections",
+          "Writing programmes for every political party",
+          "Selecting voters' personal preferences",
+          "Replacing elected representatives"
+        ],
+        correct: 0,
+        explanation: "The ECI is an independent constitutional authority responsible for the superintendence, direction and control of elections."
+      },
+      {
+        topic: "Free and Fair Elections",
+        question: "Which combination supports a free and fair election?",
+        options: [
+          "Unclear rules and unequal application of law",
+          "Clear rules, genuine choices and an impartial electoral process",
+          "No voter choices and unrestricted campaign resources",
+          "Different electoral laws for different candidates"
+        ],
+        correct: 1,
+        explanation: "Free and fair elections require clear rules, equal application of electoral laws, genuine choices and an impartial electoral process."
+      }
+    ];
+
+
+    /* --------------------------------------------------------------------------
+       4. WEB AUDIO SYNTHESIZER (No external audio files)
+       -------------------------------------------------------------------------- */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'flip') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(280, now);
+          osc.frequency.exponentialRampToValueAtTime(560, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'correct') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.09); // E5
+          osc.frequency.setValueAtTime(783.99, now + 0.18); // G5
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'wrong') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(200, now);
+          osc.frequency.setValueAtTime(150, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        }
+      } catch (e) {}
+    }
+
+    function toggleAudioFX() {
+      soundEnabled = !soundEnabled;
+      const statusText = document.getElementById('sound-status-text');
+      const soundIcon = document.getElementById('sound-icon');
+      if (soundEnabled) {
+        if (statusText) statusText.innerText = 'Sound ON';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        playSound('pop');
+      } else {
+        if (statusText) statusText.innerText = 'Sound OFF';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    }
+
+    /* Text to Speech Narration */
+    function readAloud(text) {
+      if (!soundEnabled) return;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+        playSound('pop');
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       5. MASCOT CURSOR TRACKING & SPARKLES
+       -------------------------------------------------------------------------- */
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let mascotX = mouseX;
+    let mascotY = mouseY;
+
+    const mascot = document.getElementById('mascot-container');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.88) spawnParticle(mouseX, mouseY);
+    });
+
+    function spawnParticle(x, y) {
+      const p = document.createElement('div');
+      p.className = 'particle font-black text-brandYellow text-xs select-none pointer-events-none';
+      p.innerText = ['✨', '⭐', '🗳️', '📜', '⚖️'][Math.floor(Math.random() * 5)];
+      p.style.left = `${x}px`;
+      p.style.top = `${y}px`;
+
+      const tx = (Math.random() - 0.5) * 40;
+      const ty = (Math.random() - 0.5) * 40;
+      p.style.setProperty('--tx', `${tx}px`);
+      p.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 750);
+    }
+
+    function animateMascot() {
+      mascotX += (mouseX - mascotX) * 0.12;
+      mascotY += (mouseY - mascotY) * 0.12;
+
+      if (mascot && window.innerWidth >= 768) {
+        const rect = mascot.getBoundingClientRect();
+        const mascotCenterX = rect.left + rect.width / 2;
+        const mascotCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - mascotCenterY, mouseX - mascotCenterX);
+        const dist = Math.min(2.5, Math.hypot(mouseX - mascotCenterX, mouseY - mascotCenterY) / 30);
+
+        const px = Math.cos(angle) * dist;
+        const py = Math.sin(angle) * dist;
+
+        if (pupilLeft && pupilRight) {
+          pupilLeft.style.transform = `translate(${px}px, ${py}px)`;
+          pupilRight.style.transform = `translate(${px}px, ${py}px)`;
+        }
+      }
+
+      requestAnimationFrame(animateMascot);
+    }
+
+    /* --------------------------------------------------------------------------
+       6. STATE MANAGEMENT & PROGRESS TRACKER
+       -------------------------------------------------------------------------- */
+    let readNotes = new Set();
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function toggleNoteRead(topicId) {
+      playSound('pop');
+      if (readNotes.has(topicId)) {
+        readNotes.delete(topicId);
+      } else {
+        readNotes.add(topicId);
+      }
+      updateNoteCardUI(topicId);
+      updateMasteryUI();
+    }
+
+    function updateNoteCardUI(topicId) {
+      const card = document.getElementById(`card-${topicId}`);
+      const btn = document.getElementById(`read-btn-${topicId}`);
+      if (!card || !btn) return;
+
+      if (readNotes.has(topicId)) {
+        card.classList.add('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-brandGreen text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>Learned ✅</span>`;
+      } else {
+        card.classList.remove('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-regular fa-circle"></i> <span>Mark as Learned</span>`;
+      }
+    }
+
+    function updateMasteryUI() {
+      const total = CHAPTER_TOPICS.length;
+      const count = readNotes.size;
+      const percentage = Math.round((count / total) * 100);
+
+      const bar = document.getElementById('mastery-bar');
+      const text = document.getElementById('mastery-percentage');
+      const countText = document.getElementById('notes-read-count');
+
+      if (bar) bar.style.width = `${percentage}%`;
+      if (text) text.innerText = `${percentage}%`;
+      if (countText) countText.innerText = `${count}/${total} Notes Read`;
+    }
+
+    /* --------------------------------------------------------------------------
+       7. TAB SWITCHING LOGIC
+       -------------------------------------------------------------------------- */
+    function switchTab(tabName) {
+      playSound('pop');
+      const tabs = ['notes', 'flashcards', 'quiz', 'glossary'];
+      
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`${t}-tab-content`);
+        if (btn && content) {
+          if (t === tabName) {
+            btn.className = "tab-btn active px-4 py-2.5 bg-brandYellow text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.remove('hidden');
+          } else {
+            btn.className = "tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.add('hidden');
+          }
+        }
+      });
+
+      // Mascot bubble update
+      const bubble = document.getElementById('mascot-bubble');
+      if (bubble) {
+        if (tabName === 'notes') bubble.innerText = "Explore all 12 Visual Notes! 📖";
+        if (tabName === 'flashcards') bubble.innerText = "Tap cards to flip & test memory! 🎴";
+        if (tabName === 'quiz') bubble.innerText = "Test your knowledge with MCQs! 🎯";
+        if (tabName === 'glossary') bubble.innerText = "Key terms & concept definitions! 🏷️";
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       8. ONE-LINE REVISION CHAIN FLOWCHART RENDERER
+       -------------------------------------------------------------------------- */
+    function renderRevisionChain() {
+      const container = document.getElementById('revision-chain-container');
+      if (!container) return;
+
+      container.innerHTML = REVISION_CHAIN.map((item, idx) => `
+        <button onclick="jumpToNote('${item.topicId}')" class="px-3.5 py-1.5 bg-yellow-100 hover:bg-brandYellow border-cartoon rounded-xl text-xs font-black text-brandBlack hover-pop flex items-center space-x-1.5 shrink-0 transition-colors">
+          <span>${item.label}</span>
+          ${idx < REVISION_CHAIN.length - 1 ? '<span class="text-brandBlueDark ml-1">➔</span>' : '🏁'}
+        </button>
+      `).join('');
+    }
+
+    /* --------------------------------------------------------------------------
+       9. VISUAL NOTES RENDERER & FILTERS
+       -------------------------------------------------------------------------- */
+    function renderVisualNotes() {
+      const container = document.getElementById('notes-grid');
+      if (!container) return;
+
+      const filtered = CHAPTER_TOPICS.filter(t => {
+        const matchesCat = currentCategory === 'all' || t.category === currentCategory;
+        const matchesQuery = searchQuery === '' || 
+          t.title.toLowerCase().includes(searchQuery) ||
+          t.summary.toLowerCase().includes(searchQuery) ||
+          t.keywords.some(k => k.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-white border-cartoon rounded-3xl p-8 text-center space-y-3">
+            <div class="text-4xl">🔍</div>
+            <h3 class="text-xl font-black text-brandBlack">No topics found!</h3>
+            <p class="text-xs font-bold text-slate-600">Try clearing your search query or picking a different filter category.</p>
+            <button onclick="clearSearch()" class="px-4 py-2 bg-brandYellow border-cartoon rounded-xl font-black text-xs hover-pop">
+              Clear Search Filter
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(t => `
+        <div id="card-${t.id}" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between group relative overflow-hidden">
+          
+          <div class="space-y-3">
+            <!-- Header Icon & Narration TTS -->
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 ${t.color} border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+                ${t.icon}
+              </div>
+              
+              <button onclick="readAloud('${t.title}. ${t.summary}')" title="Listen Narration" class="w-9 h-9 bg-brandYellow border-cartoon-thin rounded-xl shadow-cartoon-sm flex items-center justify-center text-brandBlack hover:bg-brandBlue transition-colors">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+
+            <!-- Title & Summary -->
+            <div class="space-y-1">
+              <h3 class="text-lg font-black text-brandBlack leading-snug">${t.title}</h3>
+              <p class="text-xs font-bold text-slate-600 leading-relaxed">${t.summary}</p>
+            </div>
+
+            <!-- Bullet Points -->
+            <ul class="space-y-2 pt-2 border-t border-slate-200">
+              ${t.keyPoints.map(pt => `
+                <li class="flex items-start space-x-2 text-xs font-bold text-slate-800">
+                  <span class="text-brandBlueDark font-black mt-0.5">•</span>
+                  <span>${pt}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Keyword Badges & Read Toggle Button -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <div class="flex flex-wrap gap-1">
+              ${t.keywords.map(kw => `
+                <span class="bg-slate-100 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded-lg text-slate-700">
+                  #${kw}
+                </span>
+              `).join('')}
+            </div>
+
+            <button id="read-btn-${t.id}" onclick="toggleNoteRead('${t.id}')" class="w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>Mark as Learned</span>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+
+      // Refresh check states for rendered cards
+      filtered.forEach(t => updateNoteCardUI(t.id));
+    }
+
+    function filterCategory(cat) {
+      playSound('pop');
+      currentCategory = cat;
+      
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
+          btn.className = "cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black";
+        } else {
+          btn.className = "cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100";
+        }
+      });
+
+      renderVisualNotes();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) {
+        if (searchQuery.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      renderVisualNotes();
+    }
+
+    function clearSearch() {
+      playSound('pop');
+      const input = document.getElementById('topic-search-input');
+      if (input) input.value = '';
+      searchQuery = '';
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      renderVisualNotes();
+    }
+
+    /* --------------------------------------------------------------------------
+       10. 3D FLASHCARDS ENGINE
+       -------------------------------------------------------------------------- */
+    let currentCardIdx = 0;
+    let isFlipped = false;
+    let masteredCards = new Set();
+    let flashcardDeck = [...CHAPTER_TOPICS];
+
+    function updateFlashcardUI() {
+      isFlipped = false;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) inner.classList.remove('rotate-y-180');
+
+      const card = flashcardDeck[currentCardIdx];
+      if (!card) return;
+
+      document.getElementById('card-index-num').innerText = currentCardIdx + 1;
+      document.getElementById('card-front-icon').innerText = card.icon;
+      document.getElementById('card-front-title').innerText = card.title;
+      document.getElementById('card-back-title').innerText = card.title;
+      document.getElementById('card-back-text').innerText = card.summary + ' ' + card.keyPoints.join(' ');
+
+      // Mastered indicator badge
+      const badge = document.getElementById('card-mastered-badge');
+      const masteredBtn = document.getElementById('mastered-toggle-btn');
+      
+      if (masteredCards.has(card.id)) {
+        if (badge) badge.classList.remove('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mastered ✅";
+          masteredBtn.className = "px-3 py-1 bg-brandGreen border-cartoon-thin rounded-xl text-xs font-black";
+        }
+      } else {
+        if (badge) badge.classList.add('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mark as Mastered 🌟";
+          masteredBtn.className = "px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100";
+        }
+      }
+
+      // Keywords on back face
+      const kwBox = document.getElementById('card-back-keywords');
+      if (kwBox) {
+        kwBox.innerHTML = card.keywords.map(kw => `
+          <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-brandBlack">#${kw}</span>
+        `).join('');
+      }
+    }
+
+    function flipFlashcard() {
+      playSound('flip');
+      isFlipped = !isFlipped;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) {
+        if (isFlipped) inner.classList.add('rotate-y-180');
+        else inner.classList.remove('rotate-y-180');
+      }
+    }
+
+    function nextFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx + 1) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx - 1 + flashcardDeck.length) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function shuffleFlashcards() {
+      playSound('pop');
+      flashcardDeck.sort(() => Math.random() - 0.5);
+      currentCardIdx = 0;
+      updateFlashcardUI();
+    }
+
+    function toggleCardMastered() {
+      playSound('pop');
+      const card = flashcardDeck[currentCardIdx];
+      if (masteredCards.has(card.id)) {
+        masteredCards.delete(card.id);
+      } else {
+        masteredCards.add(card.id);
+      }
+      updateFlashcardUI();
+    }
+
+    /* Keyboard navigation support for flashcards */
+    document.addEventListener('keydown', (e) => {
+      const flashTab = document.getElementById('flashcards-tab-content');
+      if (flashTab && !flashTab.classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') nextFlashcard();
+        if (e.key === 'ArrowLeft') prevFlashcard();
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          flipFlashcard();
+        }
+      }
+    });
+
+    /* --------------------------------------------------------------------------
+       11. PRACTICE QUIZ ENGINE
+       -------------------------------------------------------------------------- */
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let answered = false;
+
+    function renderQuizQuestion() {
+      answered = false;
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      if (!q) return;
+
+      document.getElementById('quiz-curr-q').innerText = currentQuizIdx + 1;
+      document.getElementById('quiz-topic-tag').innerText = `Topic: ${q.topic}`;
+      document.getElementById('quiz-question-text').innerText = q.question;
+
+      const container = document.getElementById('quiz-options-container');
+      const expBox = document.getElementById('quiz-explanation-box');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (expBox) expBox.classList.add('hidden');
+      if (nextBtn) nextBtn.classList.add('hidden');
+
+      if (container) {
+        container.innerHTML = q.options.map((opt, idx) => `
+          <button id="opt-btn-${idx}" onclick="selectQuizOption(${idx})" class="w-full text-left p-4 bg-white hover:bg-yellow-50 border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack hover-pop transition-colors flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 bg-brandYellow border-cartoon-thin rounded-xl flex items-center justify-center text-xs shrink-0">${String.fromCharCode(65 + idx)}</span>
+              <span>${opt}</span>
+            </div>
+            <i id="opt-icon-${idx}" class="fa-regular fa-circle text-slate-300"></i>
+          </button>
+        `).join('');
+      }
+    }
+
+    function selectQuizOption(selectedIdx) {
+      if (answered) return;
+      answered = true;
+
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      const expBox = document.getElementById('quiz-explanation-box');
+      const expText = document.getElementById('quiz-explanation-text');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (selectedIdx === q.correct) {
+        playSound('correct');
+        quizScore++;
+        document.getElementById('quiz-score').innerText = quizScore;
+        
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      } else {
+        playSound('wrong');
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-red-400 text-white border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-xmark text-white text-lg";
+        }
+
+        // Highlight correct answer in green
+        const correctBtn = document.getElementById(`opt-btn-${q.correct}`);
+        if (correctBtn) {
+          correctBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${q.correct}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      }
+
+      // Show explanation
+      if (expBox && expText) {
+        expText.innerText = q.explanation;
+        expBox.classList.remove('hidden');
+      }
+
+      if (nextBtn) {
+        if (currentQuizIdx === QUIZ_QUESTIONS.length - 1) {
+          nextBtn.innerText = "Finish Quiz 🎉";
+        } else {
+          nextBtn.innerText = "Next Question 🚀";
+        }
+        nextBtn.classList.remove('hidden');
+      }
+
+      // Update Header Score summary
+      const scoreBadge = document.getElementById('quiz-score-count');
+      if (scoreBadge) scoreBadge.innerText = `Quiz: ${quizScore}/${QUIZ_QUESTIONS.length}`;
+    }
+
+    function nextQuestion() {
+      playSound('pop');
+      if (currentQuizIdx < QUIZ_QUESTIONS.length - 1) {
+        currentQuizIdx++;
+        renderQuizQuestion();
+      } else {
+        // Quiz Complete Summary
+        const box = document.getElementById('quiz-card-box');
+        if (box) {
+          const scorePercent = Math.round((quizScore / QUIZ_QUESTIONS.length) * 100);
+          box.innerHTML = `
+            <div class="text-center space-y-4 py-6">
+              <div class="text-6xl animate-bounce">🗳️</div>
+              <h3 class="text-3xl font-black text-brandBlack">Quiz Completed!</h3>
+              <p class="text-base font-bold text-slate-700">You scored <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl text-brandBlack">${quizScore} out of ${QUIZ_QUESTIONS.length}</span> (${scorePercent}%)</p>
+              <div class="pt-2">
+                <button onclick="resetQuiz()" class="px-6 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+                  Try Quiz Again 🔄
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function resetQuiz() {
+      playSound('pop');
+      currentQuizIdx = 0;
+      quizScore = 0;
+      document.getElementById('quiz-score').innerText = 0;
+      const totalEl = document.getElementById('quiz-total');
+      if (totalEl) totalEl.innerText = QUIZ_QUESTIONS.length;
+      
+      const box = document.getElementById('quiz-card-box');
+      if (box && !box.querySelector('#quiz-question-text')) {
+        location.reload(); // Quick restore if summary was active
+        return;
+      }
+      renderQuizQuestion();
+    }
+
+    /* --------------------------------------------------------------------------
+       12. KEY TERMS GLOSSARY RENDERER
+       -------------------------------------------------------------------------- */
+    function renderGlossary() {
+      const container = document.getElementById('glossary-grid');
+      if (!container) return;
+
+      const allKeywords = [];
+      CHAPTER_TOPICS.forEach(t => {
+        t.keywords.forEach(kw => {
+          allKeywords.push({ keyword: kw, topicTitle: t.title, topicId: t.id, icon: t.icon });
+        });
+      });
+
+      const badge = document.getElementById('glossary-count-badge');
+      if (badge) badge.innerText = `${allKeywords.length} Key Terms`;
+
+      container.innerHTML = allKeywords.map(item => `
+        <div onclick="jumpToNote('${item.topicId}')" class="bg-slate-50 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between group">
+          <div class="flex items-center space-x-2.5">
+            <span class="text-xl">${item.icon}</span>
+            <div>
+              <span class="font-black text-xs sm:text-sm text-brandBlack block">#${item.keyword}</span>
+              <span class="text-[10px] font-bold text-slate-500 block truncate max-w-[160px]">${item.topicTitle}</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-brandBlack group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      `).join('');
+    }
+
+    function jumpToNote(topicId) {
+      switchTab('notes');
+      setTimeout(() => {
+        const el = document.getElementById(`card-${topicId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add('ring-4', 'ring-brandYellow');
+          setTimeout(() => el.classList.remove('ring-4', 'ring-brandYellow'), 2000);
+        }
+      }, 150);
+    }
+
+    /* --------------------------------------------------------------------------
+       13. INITIALIZATION ON WINDOW LOAD
+       -------------------------------------------------------------------------- */
+    window.addEventListener('load', () => {
+      animateMascot();
+      renderRevisionChain();
+      renderVisualNotes();
+      updateFlashcardUI();
+      renderQuizQuestion();
+      const totalEl = document.getElementById('quiz-total');
+      if (totalEl) totalEl.innerText = QUIZ_QUESTIONS.length;
+      renderGlossary();
+    });
+  </script>
+</body>
+</html>

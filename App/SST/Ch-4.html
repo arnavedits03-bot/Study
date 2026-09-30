@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4: Early Humans and Beginning of Civilization - Let's Study Now</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlack: '#1E1E1E',
+            brandYellow: '#FACC15',
+            brandYellowLight: '#FEF08A',
+            brandBlue: '#38BDF8',
+            brandBlueDark: '#0EA5E9',
+            brandPink: '#F472B6',
+            brandGreen: '#34D399',
+            brandLime: '#A3E635',
+            brandPurple: '#C084FC',
+            brandOrange: '#FB923C'
+          },
+          fontFamily: {
+            fredoka: ['Fredoka', 'cursive', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'cartoon-sm': '3px 3px 0px #1E1E1E',
+            'cartoon': '5px 5px 0px #1E1E1E',
+            'cartoon-lg': '8px 8px 0px #1E1E1E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #1E1E1E;
+      overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Neo-Brutalist Border Classes */
+    .border-cartoon {
+      border: 3.5px solid #1E1E1E;
+    }
+    .border-cartoon-thin {
+      border: 2px solid #1E1E1E;
+    }
+
+    /* Interactive Tactile Hover Effects */
+    .hover-pop {
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.2s ease;
+    }
+    .hover-pop:hover {
+      transform: translateY(-4px);
+      box-shadow: 7px 7px 0px #1E1E1E;
+    }
+    .hover-pop:active {
+      transform: translateY(2px) translateX(2px);
+      box-shadow: 2px 2px 0px #1E1E1E;
+    }
+
+    /* Polka Dot Cartoon Background Pattern */
+    .bg-cartoon-dots {
+      background-image: radial-gradient(#1E1E1E 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      background-color: #F8FAFC;
+    }
+
+    /* Mascot Cursor Follower */
+    #mascot-container {
+      position: fixed;
+      pointer-events: none !important;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    /* Cursor Star Sparkles */
+    .particle {
+      position: fixed;
+      pointer-events: none !important;
+      animation: particleFade 0.75s forwards ease-out;
+      z-index: 9998;
+    }
+    @keyframes particleFade {
+      0% { opacity: 1; transform: scale(1) translate(0, 0); }
+      100% { opacity: 0; transform: scale(0.2) translate(var(--tx), var(--ty)); }
+    }
+
+    /* 3D Flashcard Flip Mechanics */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FACC15;
+      border-left: 3px solid #1E1E1E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E1E1E;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-cartoon-dots min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <!-- Mascot Cursor Follower -->
+  <div id="mascot-container" class="hidden md:flex flex-col items-center justify-center pointer-events-none">
+    <!-- Speech Bubble -->
+    <div id="mascot-bubble" class="bg-white border-cartoon px-3 py-1 rounded-xl text-[10px] font-black shadow-cartoon-sm mb-1 text-brandBlack animate-bounce whitespace-nowrap">
+      Let's explore Chapter 4! 🏹
+    </div>
+    <div class="relative w-14 h-14 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center">
+      <!-- Pupil Tracking Eyes -->
+      <div class="flex space-x-1.5">
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-left" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+        <div class="w-3.5 h-4.5 bg-white border-cartoon-thin rounded-full relative overflow-hidden flex items-center justify-center">
+          <div id="pupil-right" class="w-1.5 h-1.5 bg-brandBlack rounded-full absolute transition-all duration-75"></div>
+        </div>
+      </div>
+      <!-- Mouth -->
+      <div class="absolute bottom-2 w-3.5 h-1.5 border-b-2 border-brandBlack rounded-full"></div>
+      <!-- Antenna -->
+      <div class="absolute -top-2.5 w-1 h-2.5 bg-brandBlack rounded-full"></div>
+      <div class="absolute -top-3.5 w-3 h-3 bg-brandBlue border-cartoon-thin rounded-full animate-pulse"></div>
+    </div>
+    <span class="mt-1 bg-brandBlack text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white shadow-sm">
+      StudyBuddy 🤖
+    </span>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-50 bg-white border-b-4 border-brandBlack shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+          <i class="fa-solid fa-graduation-cap text-xl text-brandBlack"></i>
+        </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-brandBlack block leading-none">Let's Study Now</span>
+          <span class="text-[10px] sm:text-[11px] font-extrabold text-brandBlueDark uppercase tracking-wider">Class 9th SST • Ch 4</span>
+        </div>
+      </a>
+
+      <!-- Header Links & Utilities -->
+      <div class="flex items-center space-x-2">
+        <a href="select.html" class="px-3 py-2 bg-brandGreen text-brandBlack font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span class="hidden sm:inline">SST Select</span>
+        </a>
+
+        <a href="../index.html" class="px-3 py-2 bg-brandPurple text-white font-black border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i class="fa-solid fa-house"></i>
+          <span class="hidden sm:inline">Home</span>
+        </a>
+
+        <button id="sound-btn" onclick="toggleAudioFX()" class="px-3 py-2 bg-brandYellow text-brandBlack font-extrabold border-cartoon rounded-xl shadow-cartoon text-xs flex items-center space-x-1.5 hover-pop">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span class="hidden sm:inline" id="sound-status-text">Sound ON</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Hero Banner Header -->
+    <section class="bg-brandYellow border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+        
+        <div class="space-y-3 max-w-3xl">
+          <div class="inline-flex items-center space-x-2 bg-white border-cartoon px-3 py-1 rounded-full shadow-cartoon-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandGreen animate-pulse"></span>
+            <span class="text-xs font-black text-brandBlack uppercase tracking-wide">
+              History & Anthropology Module
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-brandBlack leading-tight">
+            Chapter 4: Early Humans and Beginning of Civilization 🦴
+          </h1>
+
+          <p class="text-sm sm:text-base font-bold text-slate-800 bg-white/80 p-3 rounded-2xl border-cartoon-thin shadow-cartoon-sm">
+            Journey from nomadic hunter-gatherers to settled farming villages and the world's great river valley civilizations! 🏞️🔥
+          </p>
+        </div>
+
+        <!-- Overall Mastery Tracker -->
+        <div class="w-full lg:w-72 bg-white border-cartoon p-4 rounded-2xl shadow-cartoon shrink-0 space-y-2">
+          <div class="flex items-center justify-between text-xs font-black">
+            <span>Chapter Mastery</span>
+            <span id="mastery-percentage" class="text-brandBlueDark text-sm">0%</span>
+          </div>
+          <div class="w-full h-4 bg-slate-200 rounded-full border-cartoon-thin overflow-hidden p-0.5">
+            <div id="mastery-bar" class="h-full bg-brandGreen rounded-full transition-all duration-500 w-0"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-600 pt-1">
+            <span id="notes-read-count">0/12 Notes Read</span>
+            <span id="quiz-score-count">Quiz: --</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation Tabs & Search Controls -->
+    <section class="space-y-4">
+      
+      <!-- Quick Navigation Tabs -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <button id="tab-btn-notes" onclick="switchTab('notes')" class="tab-btn active px-4 py-2.5 bg-brandBlue text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>📖 Visual Notes</span>
+          <span class="bg-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">12 Topics</span>
+        </button>
+
+        <button id="tab-btn-flashcards" onclick="switchTab('flashcards')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎴 Flashcards</span>
+          <span class="bg-brandYellow border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">3D Flip</span>
+        </button>
+
+        <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🎯 Practice Quiz</span>
+          <span class="bg-brandPink text-white border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">12 MCQs</span>
+        </button>
+
+        <button id="tab-btn-glossary" onclick="switchTab('glossary')" class="tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2">
+          <span>🏷️ Key Terms</span>
+          <span class="bg-brandGreen border-cartoon-thin px-2 py-0.5 rounded-full text-[10px]">Glossary</span>
+        </button>
+      </div>
+
+      <!-- Real-time Search & Category Quick Filter -->
+      <div id="search-bar-container" class="bg-white border-cartoon rounded-2xl p-3 shadow-cartoon flex flex-col sm:flex-row items-center justify-between gap-3">
+        
+        <div class="relative w-full sm:w-80">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="topic-search-input" oninput="handleSearch(this.value)" placeholder="Search topics, fire, tools, Harappan..." class="w-full pl-9 pr-8 py-2 bg-slate-50 border-cartoon-thin rounded-xl text-xs font-bold text-brandBlack focus:outline-none focus:bg-yellow-50">
+          <button onclick="clearSearch()" id="clear-search-btn" class="hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-brandBlack">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Quick Filter Badges -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+          <span class="text-xs font-black mr-1 text-slate-500">Filter:</span>
+          <button onclick="filterCategory('all')" class="cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black">All</button>
+          <button onclick="filterCategory('early')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100">Early Humans</button>
+          <button onclick="filterCategory('neolithic')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-green-100">Neolithic</button>
+          <button onclick="filterCategory('civilization')" class="cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-blue-100">Civilizations</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 1: VISUAL NOTES SECTION -->
+    <section id="notes-tab-content" class="tab-content space-y-6">
+      <div id="notes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 12 Topic Cards Injected by JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: FLASHCARDS SECTION -->
+    <section id="flashcards-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-2xl mx-auto space-y-6">
+        
+        <!-- Flashcard Control Bar -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between text-xs font-black">
+          <div class="flex items-center space-x-2">
+            <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl">Card <span id="card-index-num">1</span> of 12</span>
+            <span id="card-mastered-badge" class="hidden bg-brandGreen border-cartoon-thin px-2 py-1 rounded-xl text-[10px]">Mastered ✅</span>
+          </div>
+
+          <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-brandPurple text-white border-cartoon rounded-xl shadow-cartoon-sm hover-pop">
+            <i class="fa-solid fa-shuffle mr-1"></i> Shuffle
+          </button>
+        </div>
+
+        <!-- 3D Flip Card Scene -->
+        <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipFlashcard()">
+          <div id="flashcard-inner" class="relative w-full h-full transform-style-3d transition-transform duration-500 rounded-3xl border-cartoon shadow-cartoon-lg">
+            
+            <!-- Front Face -->
+            <div class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col justify-between backface-hidden border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Question / Concept</span>
+                <i class="fa-solid fa-rotate text-slate-400 text-lg"></i>
+              </div>
+              
+              <div class="text-center space-y-3">
+                <div id="card-front-icon" class="text-5xl">🏹</div>
+                <h3 id="card-front-title" class="text-2xl font-black text-brandBlack">Early Humans</h3>
+                <p id="card-front-prompt" class="text-xs font-bold text-slate-500">Tap card to reveal full explanation & key points!</p>
+              </div>
+
+              <div class="text-center text-[11px] font-black text-brandBlueDark uppercase tracking-wider">
+                Tap anywhere to flip 🔄
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div class="absolute inset-0 bg-brandYellowLight rounded-3xl p-8 flex flex-col justify-between backface-hidden rotate-y-180 border-cartoon">
+              <div class="flex items-center justify-between">
+                <span class="bg-brandGreen border-cartoon-thin px-3 py-1 rounded-full text-xs font-black">Explanation</span>
+                <span class="text-xs font-bold text-slate-600">Mastery Card</span>
+              </div>
+
+              <div class="space-y-3 overflow-y-auto max-h-48 pr-1">
+                <h4 id="card-back-title" class="text-xl font-black text-brandBlack">Hunter-Gatherers & Nomadic Life</h4>
+                <p id="card-back-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+                  Early humans lived a nomadic life, moving constantly in search of wild animals, fruits, roots, and natural cave shelters.
+                </p>
+                <div id="card-back-keywords" class="flex flex-wrap gap-1 pt-2">
+                  <!-- Keyword badges injected here -->
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-slate-300">
+                <button onclick="event.stopPropagation(); toggleCardMastered()" id="mastered-toggle-btn" class="px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100">
+                  Mark as Mastered 🌟
+                </button>
+                <span class="text-[10px] font-black text-slate-500">Tap to flip back</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex items-center justify-between gap-4">
+          <button onclick="prevFlashcard()" class="flex-1 py-3 bg-white border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <button onclick="flipFlashcard()" class="px-6 py-3 bg-brandYellow border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+            Flip 🔄
+          </button>
+
+          <button onclick="nextFlashcard()" class="flex-1 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop flex items-center justify-center space-x-2">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: PRACTICE QUIZ SECTION -->
+    <section id="quiz-tab-content" class="tab-content hidden space-y-6">
+      <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- Quiz Header Scoreboard -->
+        <div class="bg-white border-cartoon rounded-2xl p-4 shadow-cartoon flex items-center justify-between gap-3">
+          <div>
+            <span class="text-xs font-black text-slate-500 block">Self-Evaluating MCQ Quiz</span>
+            <h3 class="text-lg font-black text-brandBlack">Question <span id="quiz-curr-q">1</span> of 12</h3>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <div class="bg-brandGreen border-cartoon-thin px-3 py-1.5 rounded-xl font-black text-xs">
+              Score: <span id="quiz-score">0</span>/12
+            </div>
+            <button onclick="resetQuiz()" class="px-3 py-1.5 bg-slate-100 border-cartoon-thin rounded-xl font-black text-xs hover:bg-yellow-100">
+              <i class="fa-solid fa-rotate-right"></i> Restart
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Card Box -->
+        <div id="quiz-card-box" class="bg-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg space-y-6">
+          <div class="space-y-2">
+            <span id="quiz-topic-tag" class="bg-brandBlue border-cartoon-thin px-3 py-1 rounded-full text-xs font-black inline-block">
+              Topic: Early Humans
+            </span>
+            <h3 id="quiz-question-text" class="text-xl sm:text-2xl font-black text-brandBlack leading-snug">
+              Why did early humans lead a nomadic life?
+            </h3>
+          </div>
+
+          <!-- Options Container -->
+          <div id="quiz-options-container" class="space-y-3">
+            <!-- Options injected dynamically -->
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="quiz-explanation-box" class="hidden bg-yellow-50 border-cartoon p-4 rounded-2xl space-y-2">
+            <div class="flex items-center space-x-2 text-brandBlack font-black text-xs uppercase">
+              <i class="fa-solid fa-circle-info text-brandBlueDark"></i>
+              <span>Explanation & Note Summary</span>
+            </div>
+            <p id="quiz-explanation-text" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed">
+              Early humans moved continuously because food resources in one area would deplete, and animals migrated.
+            </p>
+          </div>
+
+          <!-- Next Question Action Button -->
+          <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden w-full py-3.5 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop text-brandBlack">
+            Next Question 🚀
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: GLOSSARY SECTION -->
+    <section id="glossary-tab-content" class="tab-content hidden space-y-6">
+      
+      <div class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-4 border-brandBlack pb-4">
+          <div>
+            <h3 class="text-2xl font-black text-brandBlack">Key Terms & Concept Glossary 🏷️</h3>
+            <p class="text-xs font-bold text-slate-600 mt-1">Tap any key term below to jump directly to its topic in Visual Notes!</p>
+          </div>
+          <span class="bg-brandYellow border-cartoon font-black px-3 py-1 rounded-xl text-xs w-max">
+            28 Keywords
+          </span>
+        </div>
+
+        <!-- Glossary Tag Cloud Grid -->
+        <div id="glossary-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+          <!-- Glossary Items injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Community & Next Chapter Bar -->
+    <section class="bg-brandBlack text-white border-cartoon rounded-3xl p-6 sm:p-8 shadow-cartoon-lg flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center sm:text-left">
+        <span class="bg-brandYellow text-brandBlack border-cartoon-thin text-[10px] font-black px-2.5 py-0.5 rounded-full inline-block">
+          NEXT MODULE
+        </span>
+        <h3 class="text-xl sm:text-2xl font-black">Ready for Chapter 5?</h3>
+        <p class="text-xs font-bold text-slate-300">State and Society up to 1000 CE (Mahajanapadas, Mauryans & Guptas)</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="Ch-5.html" onclick="playSound('pop')" class="px-6 py-3 bg-brandGreen text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm flex items-center space-x-2">
+          <span>Chapter 5 →</span>
+        </a>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-3 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon hover-pop text-sm">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t-4 border-brandBlack mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+      
+      <div class="flex items-center justify-center space-x-3">
+        <div class="w-10 h-10 bg-brandYellow border-cartoon rounded-xl flex items-center justify-center text-xl shadow-cartoon-sm">
+          🎓
+        </div>
+        <span class="text-2xl font-black text-brandBlack">Let's Study Now</span>
+      </div>
+
+      <p class="text-sm sm:text-base font-black text-brandBlack">
+        Made with ❤️ by Class 9th Students for Class 9th Students
+      </p>
+
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Supported by Ashva Group
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Developer - Arnav Shrivastava
+      </div>
+      <div class="inline-block bg-brandYellow border-cartoon-thin px-4 py-1 rounded-full text-xs font-black shadow-cartoon-sm">
+        Data Manager - Ishi Chourasia
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs font-bold text-slate-500 flex flex-wrap items-center justify-between gap-4">
+        <span>© 2026 Let's Study Now. Completely Free for Students.</span>
+        <a href="https://wa.me/919425361092" target="_blank" rel="noopener noreferrer" class="hover:underline text-brandBlack font-black">
+          WhatsApp Support (+91 9425361092)
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+    const CHAPTER_TOPICS = [
+      {
+        id: "topic-1",
+        category: "early",
+        icon: "🏹",
+        title: "1. Early Humans: Hunter-Gatherers & Nomadic Life",
+        summary: "Early humans lived a nomadic life, moving constantly in search of food and natural shelter.",
+        keyPoints: [
+          "Lived as hunter-gatherers, collecting wild fruits, edible roots, and hunting animals.",
+          "Led a nomadic life without permanent homes, following animal migrations and seasonal crops.",
+          "Took shelter in natural caves, rock shelters, and dense tree leaves for protection from weather and predators."
+        ],
+        keywords: ["hunterGatherers", "nomadicLife", "foodGathering", "hunting", "caves", "shelters"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-2",
+        category: "early",
+        icon: "🪨",
+        title: "2. Stone Tools & Technology",
+        summary: "Creation of stone tools marked the beginning of human technological advancement.",
+        keyPoints: [
+          "Crafted tools out of flint and hard stones for hunting, skinning animals, cutting meat, and digging roots.",
+          "Over thousands of years, tools evolved from crude hand axes to fine, sharp microliths and blades.",
+          "Specialized tools enabled more efficient food gathering and self-defense against wild animals."
+        ],
+        keywords: ["stoneTools", "cutting", "hunting", "scraping", "digging", "technology"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-3",
+        category: "early",
+        icon: "🔥",
+        title: "3. Discovery and Control of Fire",
+        summary: "Controlling fire was a monumental turning point for human survival and evolution.",
+        keyPoints: [
+          "Accidental discovery through striking flint stones or natural forest fires.",
+          "Provided warmth in cold regions and kept dangerous wild animals away at night.",
+          "Allowed humans to cook raw meat, making food easier to digest and safer from bacteria."
+        ],
+        keywords: ["fire", "cooking", "warmth", "protection", "survival"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-4",
+        category: "early",
+        icon: "🏕️",
+        title: "4. Early Human Settlements",
+        summary: "Shift from nomadic wandering to staying in favorable geographic regions.",
+        keyPoints: [
+          "Availability of fresh river water and abundant plants encouraged groups to stay longer in one region.",
+          "Favorable climates and fertile surroundings reduced the immediate need to move constantly.",
+          "Initial temporary camps laid the foundation for long-term community living."
+        ],
+        keywords: ["nomadic", "settlements", "water", "fertileLand", "climate"],
+        color: "bg-lime-100"
+      },
+      {
+        id: "topic-5",
+        category: "neolithic",
+        icon: "🌾",
+        title: "5. Beginning of Agriculture & Domestication",
+        summary: "Humanity transitioned from food gathering to intentional food production.",
+        keyPoints: [
+          "Learned to cultivate wild crops like wheat, barley, and rice by observing seeds sprouting in soil.",
+          "Domesticated animals such as sheep, goats, cattle, and dogs for milk, meat, and work.",
+          "A steady food supply removed the survival threat of hunting failures."
+        ],
+        keywords: ["agriculture", "cultivation", "domestication", "foodProduction", "permanentSettlements"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-6",
+        category: "neolithic",
+        icon: "🔄",
+        title: "6. The Neolithic Revolution",
+        summary: "A fundamental transformation in human lifestyle, economy, and social structure.",
+        keyPoints: [
+          "Shifted humanity from consumers of nature to active producers of food.",
+          "Sparked permanent settled communities, rapid population growth, and healthier living conditions.",
+          "Paved the way for specialized non-farming occupations like pottery, weaving, and tool-making."
+        ],
+        keywords: ["neolithicRevolution", "farming", "domestication", "settledLife", "occupations"],
+        color: "bg-pink-100"
+      },
+      {
+        id: "topic-7",
+        category: "neolithic",
+        icon: "🏡",
+        title: "7. Early Villages & Social Cooperation",
+        summary: "Formation of permanent mud-brick houses and organized community life.",
+        keyPoints: [
+          "Built permanent mud-brick houses arranged closely for mutual security.",
+          "Developed division of labor: some farmed, others made pottery, woven cloth, or metal tools.",
+          "Fostered social cooperation, shared rituals, and early village governance."
+        ],
+        keywords: ["villages", "permanentHouses", "occupations", "cooperation", "divisionOfLabour"],
+        color: "bg-purple-100"
+      },
+      {
+        id: "topic-8",
+        category: "civilization",
+        icon: "🏛️",
+        title: "8. Beginning of Civilisation",
+        summary: "Rise of complex societies with cities, government, writing, and trade.",
+        keyPoints: [
+          "Surplus agricultural production allowed cities to grow with dense populations.",
+          "Organized governments emerged to manage law, defense, taxation, and large public works.",
+          "Invention of writing systems for trade records, administration, and cultural preservation."
+        ],
+        keywords: ["cities", "government", "writing", "trade", "administration", "specialisedOccupations"],
+        color: "bg-yellow-100"
+      },
+      {
+        id: "topic-9",
+        category: "civilization",
+        icon: "🌊",
+        title: "9. River Valleys and Civilisations",
+        summary: "Great early civilizations all blossomed in fertile river valleys.",
+        keyPoints: [
+          "Rivers provided annual silt deposits creating ultra-fertile agricultural soil.",
+          "Abundant freshwater enabled large-scale irrigation farming for dense populations.",
+          "Rivers served as natural highways for boat transport, trade, and cultural interaction."
+        ],
+        keywords: ["riverValleys", "fertileSoil", "irrigation", "agriculture", "transport", "trade"],
+        color: "bg-sky-100"
+      },
+      {
+        id: "topic-10",
+        category: "civilization",
+        icon: "📜",
+        title: "10. Mesopotamian Civilisation",
+        summary: "Flourished between the Tigris and Euphrates Rivers in modern-day Iraq.",
+        keyPoints: [
+          "Known as the 'Cradle of Civilization', featuring famous city-states like Ur and Babylon.",
+          "Invented Cuneiform—one of the world's earliest wedge-shaped writing systems on clay tablets.",
+          "Developed advanced irrigation canals, legal codes, and thriving international trade."
+        ],
+        keywords: ["mesopotamia", "tigris", "euphrates", "cityStates", "cuneiform", "irrigation", "trade"],
+        color: "bg-orange-100"
+      },
+      {
+        id: "topic-11",
+        category: "civilization",
+        icon: "📐",
+        title: "11. Egyptian Civilisation",
+        summary: "Thrived along the fertile banks of the Nile River in North Africa.",
+        keyPoints: [
+          "Depended completely on the annual flooding of the Nile River for rich agricultural harvests.",
+          "Ruled by divine kings called Pharaohs who managed centralized government and tax collection.",
+          "Created Hieroglyphic script and constructed monumental pyramids and stone temples."
+        ],
+        keywords: ["nile", "pharaoh", "agriculture", "hieroglyphs", "administration", "monuments"],
+        color: "bg-green-100"
+      },
+      {
+        id: "topic-12",
+        category: "civilization",
+        icon: "🧱",
+        title: "12. Harappan Civilisation (Indus Valley)",
+        summary: "Renowned for unparalleled urban planning and grid city systems.",
+        keyPoints: [
+          "Flourished around the Indus River basin with major cities like Harappa and Mohenjo-daro.",
+          "Featured grid-pattern streets, baked-brick houses, and covered underground drainage systems.",
+          "Engaged in craft specialization, standard weights/measures, and long-distance sea trade."
+        ],
+        keywords: ["harappan", "plannedCities", "drainage", "bricks", "crafts", "trade"],
+        color: "bg-pink-100"
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       2. QUIZ DATASET (12 MCQs matching all topics)
+       -------------------------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        topic: "Early Humans",
+        question: "Why were early humans called 'hunter-gatherers'?",
+        options: [
+          "They built large factories and farms.",
+          "They hunted wild animals and gathered wild plants, fruits, and roots.",
+          "They traded goods across oceans.",
+          "They lived only in mud houses."
+        ],
+        correct: 1,
+        explanation: "Early humans depended entirely on hunting wild animals and gathering wild plants/fruits for survival before farming was invented."
+      },
+      {
+        topic: "Stone Tools",
+        question: "Which material was primarily used by early humans to craft cutting and hunting tools?",
+        options: ["Iron", "Bronze", "Flint and Hard Stone", "Plastic"],
+        correct: 2,
+        explanation: "Flint and hard stones were flaked to create sharp edges for cutting meat, skinning animals, and digging roots."
+      },
+      {
+        topic: "Control of Fire",
+        question: "Which of the following was NOT a benefit of controlling fire for early humans?",
+        options: [
+          "Cooking food to make it tender and safer",
+          "Keeping wild dangerous animals away at night",
+          "Manufacturing steel tools",
+          "Providing warmth in cold weather"
+        ],
+        correct: 2,
+        explanation: "Steel manufacturing requires modern blast furnaces; fire in prehistoric times was used for cooking, warmth, and animal protection."
+      },
+      {
+        topic: "Early Settlements",
+        question: "What primary geographic factor encouraged nomadic groups to start settling in one area?",
+        options: ["High snow mountains", "Availability of freshwater and fertile land", "Dense desert dunes", "Volcanic craters"],
+        correct: 1,
+        explanation: "Fresh river water and fertile land provided continuous food and water, reducing the need to wander constantly."
+      },
+      {
+        topic: "Agriculture",
+        question: "What marked the beginning of agriculture during prehistoric times?",
+        options: [
+          "Cultivating plants and domesticating animals",
+          "Buying imported canned food",
+          "Hunting all animals into extinction",
+          "Living exclusively in caves"
+        ],
+        correct: 0,
+        explanation: "Intentionally sowing seeds to grow crops (like wheat and barley) and domesticating animals created reliable food production."
+      },
+      {
+        topic: "Neolithic Revolution",
+        question: "Why is the Neolithic period called a 'Revolution'?",
+        options: [
+          "Humans stopped using water.",
+          "Humans transformed from food gatherers to food producers.",
+          "Humans fought wars with laser tools.",
+          "Everyone moved back into natural caves."
+        ],
+        correct: 1,
+        explanation: "The shift from hunting-gathering to agriculture and settled village life fundamentally changed human history forever."
+      },
+      {
+        topic: "Early Villages",
+        question: "What social development occurred as early villages grew?",
+        options: [
+          "Division of labor and specialized occupations like pottery & weaving",
+          "Complete isolation of every individual",
+          "Destruction of all permanent houses",
+          "Disappearance of farming"
+        ],
+        correct: 0,
+        explanation: "With food surpluses, not everyone needed to farm; people specialized as potters, weavers, tool-makers, and builders."
+      },
+      {
+        topic: "Civilization",
+        question: "Which key feature distinguishes a civilization from a simple farming village?",
+        options: [
+          "Absence of any rules",
+          "Cities, organized government, writing, and social hierarchy",
+          "Living only in tree tops",
+          "No division of labor"
+        ],
+        correct: 1,
+        explanation: "Civilizations feature large urban centers, formal government, writing records, complex trade, and structured administration."
+      },
+      {
+        topic: "River Valleys",
+        question: "Why did all major ancient civilizations start near river valleys?",
+        options: [
+          "Rivers provided fertile soil from silt, freshwater, irrigation, and easy transport",
+          "Rivers prevented anyone from trading",
+          "Rivers had no fish or plants",
+          "Rivers were the coldest places on earth"
+        ],
+        correct: 0,
+        explanation: "River silt fertilized crops, freshwater sustained large populations, and riverways enabled transport and trade."
+      },
+      {
+        topic: "Mesopotamia",
+        question: "Between which two rivers did the Mesopotamian civilization flourish?",
+        options: [
+          "Nile and Amazon",
+          "Tigris and Euphrates",
+          "Indus and Ganges",
+          "Yellow and Yangtze"
+        ],
+        correct: 1,
+        explanation: "Mesopotamia means 'land between rivers', specifically referring to the Tigris and Euphrates in modern Iraq."
+      },
+      {
+        topic: "Egyptian Civilization",
+        question: "What was the ruler of ancient Egypt called?",
+        options: ["Emperor", "Pharaoh", "Sultan", "President"],
+        correct: 1,
+        explanation: "The divine king and administrative ruler of ancient Egypt was known as the Pharaoh."
+      },
+      {
+        topic: "Harappan Civilization",
+        question: "What made the Harappan (Indus Valley) civilization famous in ancient history?",
+        options: [
+          "Build giant stone pyramids",
+          "Remarkably planned grid cities with covered underground drainage systems",
+          "Lack of any trade or streets",
+          "Living entirely on wooden rafts"
+        ],
+        correct: 1,
+        explanation: "Harappa and Mohenjo-daro had advanced urban grid layouts, uniform baked-brick houses, and clean covered drains."
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       3. AUDIO SYNTHESIZER & TEXT-TO-SPEECH (Web Audio API)
+       -------------------------------------------------------------------------- */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+    }
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(400, now);
+          osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'flip') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(250, now);
+          osc.frequency.exponentialRampToValueAtTime(500, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'correct') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        } else if (type === 'wrong') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(180, now);
+          osc.frequency.setValueAtTime(130, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        }
+      } catch (e) {}
+    }
+
+    function toggleAudioFX() {
+      soundEnabled = !soundEnabled;
+      const statusText = document.getElementById('sound-status-text');
+      const soundIcon = document.getElementById('sound-icon');
+      if (soundEnabled) {
+        if (statusText) statusText.innerText = 'Sound ON';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-high';
+        playSound('pop');
+      } else {
+        if (statusText) statusText.innerText = 'Sound OFF';
+        if (soundIcon) soundIcon.className = 'fa-solid fa-volume-xmark';
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+    }
+
+    /* Text to Speech Read Aloud */
+    function readAloud(text) {
+      if (!soundEnabled) return;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+        playSound('pop');
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       4. MASCOT CURSOR TRACKING & SPARKLE TRAIL
+       -------------------------------------------------------------------------- */
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let mascotX = mouseX;
+    let mascotY = mouseY;
+
+    const mascot = document.getElementById('mascot-container');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (Math.random() > 0.88) spawnParticle(mouseX, mouseY);
+    });
+
+    function spawnParticle(x, y) {
+      const p = document.createElement('div');
+      p.className = 'particle font-black text-brandYellow text-xs select-none pointer-events-none';
+      p.innerText = ['✨', '⭐', '🦴', '🌾', '🔥'][Math.floor(Math.random() * 5)];
+      p.style.left = `${x}px`;
+      p.style.top = `${y}px`;
+
+      const tx = (Math.random() - 0.5) * 40;
+      const ty = (Math.random() - 0.5) * 40;
+      p.style.setProperty('--tx', `${tx}px`);
+      p.style.setProperty('--ty', `${ty}px`);
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 750);
+    }
+
+    function animateMascot() {
+      mascotX += (mouseX - mascotX) * 0.12;
+      mascotY += (mouseY - mascotY) * 0.12;
+
+      if (mascot && window.innerWidth >= 768) {
+        mascot.style.transform = `translate3d(${mascotX + 16}px, ${mascotY + 16}px, 0)`;
+
+        const rect = mascot.getBoundingClientRect();
+        const mascotCenterX = rect.left + rect.width / 2;
+        const mascotCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - mascotCenterY, mouseX - mascotCenterX);
+        const dist = Math.min(2.5, Math.hypot(mouseX - mascotCenterX, mouseY - mascotCenterY) / 30);
+
+        const px = Math.cos(angle) * dist;
+        const py = Math.sin(angle) * dist;
+
+        if (pupilLeft && pupilRight) {
+          pupilLeft.style.transform = `translate(${px}px, ${py}px)`;
+          pupilRight.style.transform = `translate(${px}px, ${py}px)`;
+        }
+      }
+
+      requestAnimationFrame(animateMascot);
+    }
+
+    /* --------------------------------------------------------------------------
+       5. STATE MANAGEMENT & MASTERY TRACKER
+       -------------------------------------------------------------------------- */
+    let readNotes = new Set();
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function toggleNoteRead(topicId) {
+      playSound('pop');
+      if (readNotes.has(topicId)) {
+        readNotes.delete(topicId);
+      } else {
+        readNotes.add(topicId);
+      }
+      updateNoteCardUI(topicId);
+      updateMasteryUI();
+    }
+
+    function updateNoteCardUI(topicId) {
+      const card = document.getElementById(`card-${topicId}`);
+      const btn = document.getElementById(`read-btn-${topicId}`);
+      if (!card || !btn) return;
+
+      if (readNotes.has(topicId)) {
+        card.classList.add('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-brandGreen text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>Learned ✅</span>`;
+      } else {
+        card.classList.remove('ring-4', 'ring-brandGreen');
+        btn.className = "w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5";
+        btn.innerHTML = `<i class="fa-regular fa-circle"></i> <span>Mark as Learned</span>`;
+      }
+    }
+
+    function updateMasteryUI() {
+      const total = CHAPTER_TOPICS.length;
+      const count = readNotes.size;
+      const percentage = Math.round((count / total) * 100);
+
+      const bar = document.getElementById('mastery-bar');
+      const text = document.getElementById('mastery-percentage');
+      const countText = document.getElementById('notes-read-count');
+
+      if (bar) bar.style.width = `${percentage}%`;
+      if (text) text.innerText = `${percentage}%`;
+      if (countText) countText.innerText = `${count}/${total} Notes Read`;
+    }
+
+    /* --------------------------------------------------------------------------
+       6. TAB SWITCHING LOGIC
+       -------------------------------------------------------------------------- */
+    function switchTab(tabName) {
+      playSound('pop');
+      const tabs = ['notes', 'flashcards', 'quiz', 'glossary'];
+      
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`${t}-tab-content`);
+        if (btn && content) {
+          if (t === tabName) {
+            btn.className = "tab-btn active px-4 py-2.5 bg-brandBlue text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.remove('hidden');
+          } else {
+            btn.className = "tab-btn px-4 py-2.5 bg-white text-brandBlack font-black border-cartoon rounded-2xl shadow-cartoon text-xs sm:text-sm hover-pop flex items-center space-x-2";
+            content.classList.add('hidden');
+          }
+        }
+      });
+
+      // Mascot Tip bubble update
+      const bubble = document.getElementById('mascot-bubble');
+      if (bubble) {
+        if (tabName === 'notes') bubble.innerText = "Explore all 12 Visual Notes! 📖";
+        if (tabName === 'flashcards') bubble.innerText = "Tap cards to flip & test memory! 🎴";
+        if (tabName === 'quiz') bubble.innerText = "Test your knowledge with 12 MCQs! 🎯";
+        if (tabName === 'glossary') bubble.innerText = "Key terms & concept definitions! 🏷️";
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       7. VISUAL NOTES RENDERER & FILTERS
+       -------------------------------------------------------------------------- */
+    function renderVisualNotes() {
+      const container = document.getElementById('notes-grid');
+      if (!container) return;
+
+      const filtered = CHAPTER_TOPICS.filter(t => {
+        const matchesCat = currentCategory === 'all' || t.category === currentCategory;
+        const matchesQuery = searchQuery === '' || 
+          t.title.toLowerCase().includes(searchQuery) ||
+          t.summary.toLowerCase().includes(searchQuery) ||
+          t.keywords.some(k => k.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full bg-white border-cartoon rounded-3xl p-8 text-center space-y-3">
+            <div class="text-4xl">🔍</div>
+            <h3 class="text-xl font-black text-brandBlack">No topics found!</h3>
+            <p class="text-xs font-bold text-slate-600">Try clearing your search query or picking a different filter category.</p>
+            <button onclick="clearSearch()" class="px-4 py-2 bg-brandYellow border-cartoon rounded-xl font-black text-xs hover-pop">
+              Clear Search Filter
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(t => `
+        <div id="card-${t.id}" class="bg-white border-cartoon rounded-3xl p-6 shadow-cartoon hover-pop space-y-4 flex flex-col justify-between group relative overflow-hidden">
+          
+          <div class="space-y-3">
+            <!-- Header Icon & TTS Speech Button -->
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 ${t.color} border-cartoon rounded-2xl flex items-center justify-center text-2xl shadow-cartoon-sm group-hover:rotate-12 transition-transform">
+                ${t.icon}
+              </div>
+              
+              <button onclick="readAloud('${t.title}. ${t.summary}')" title="Listen Read-Aloud" class="w-9 h-9 bg-brandYellow border-cartoon-thin rounded-xl shadow-cartoon-sm flex items-center justify-center text-brandBlack hover:bg-brandBlue transition-colors">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+
+            <!-- Title & Summary -->
+            <div class="space-y-1">
+              <h3 class="text-lg font-black text-brandBlack leading-snug">${t.title}</h3>
+              <p class="text-xs font-bold text-slate-600 leading-relaxed">${t.summary}</p>
+            </div>
+
+            <!-- Key Bullet Points -->
+            <ul class="space-y-2 pt-2 border-t border-slate-200">
+              ${t.keyPoints.map(pt => `
+                <li class="flex items-start space-x-2 text-xs font-bold text-slate-800">
+                  <span class="text-brandBlueDark font-black mt-0.5">•</span>
+                  <span>${pt}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Keyword Badges & Read Toggle Button -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <div class="flex flex-wrap gap-1">
+              ${t.keywords.map(kw => `
+                <span class="bg-slate-100 border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded-lg text-slate-700">
+                  #${kw}
+                </span>
+              `).join('')}
+            </div>
+
+            <button id="read-btn-${t.id}" onclick="toggleNoteRead('${t.id}')" class="w-full py-2 bg-white hover:bg-yellow-100 text-brandBlack border-cartoon rounded-xl font-black text-xs shadow-cartoon-sm flex items-center justify-center space-x-1.5">
+              <i class="fa-regular fa-circle"></i>
+              <span>Mark as Learned</span>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+
+      // Refresh check states for rendered cards
+      filtered.forEach(t => updateNoteCardUI(t.id));
+    }
+
+    function filterCategory(cat) {
+      playSound('pop');
+      currentCategory = cat;
+      
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
+          btn.className = "cat-filter-btn active px-2.5 py-1 bg-brandBlack text-white border-cartoon-thin rounded-xl text-[11px] font-black";
+        } else {
+          btn.className = "cat-filter-btn px-2.5 py-1 bg-white border-cartoon-thin rounded-xl text-[11px] font-black hover:bg-yellow-100";
+        }
+      });
+
+      renderVisualNotes();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) {
+        if (searchQuery.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      renderVisualNotes();
+    }
+
+    function clearSearch() {
+      playSound('pop');
+      const input = document.getElementById('topic-search-input');
+      if (input) input.value = '';
+      searchQuery = '';
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      renderVisualNotes();
+    }
+
+    /* --------------------------------------------------------------------------
+       8. 3D FLASHCARDS ENGINE
+       -------------------------------------------------------------------------- */
+    let currentCardIdx = 0;
+    let isFlipped = false;
+    let masteredCards = new Set();
+    let flashcardDeck = [...CHAPTER_TOPICS];
+
+    function updateFlashcardUI() {
+      isFlipped = false;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) inner.classList.remove('rotate-y-180');
+
+      const card = flashcardDeck[currentCardIdx];
+      if (!card) return;
+
+      document.getElementById('card-index-num').innerText = currentCardIdx + 1;
+      document.getElementById('card-front-icon').innerText = card.icon;
+      document.getElementById('card-front-title').innerText = card.title;
+      document.getElementById('card-back-title').innerText = card.title;
+      document.getElementById('card-back-text').innerText = card.summary + ' ' + card.keyPoints.join(' ');
+
+      // Mastered badge indicator
+      const badge = document.getElementById('card-mastered-badge');
+      const masteredBtn = document.getElementById('mastered-toggle-btn');
+      
+      if (masteredCards.has(card.id)) {
+        if (badge) badge.classList.remove('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mastered ✅";
+          masteredBtn.className = "px-3 py-1 bg-brandGreen border-cartoon-thin rounded-xl text-xs font-black";
+        }
+      } else {
+        if (badge) badge.classList.add('hidden');
+        if (masteredBtn) {
+          masteredBtn.innerText = "Mark as Mastered 🌟";
+          masteredBtn.className = "px-3 py-1 bg-white border-cartoon-thin rounded-xl text-xs font-black hover:bg-green-100";
+        }
+      }
+
+      // Keywords on back
+      const kwBox = document.getElementById('card-back-keywords');
+      if (kwBox) {
+        kwBox.innerHTML = card.keywords.map(kw => `
+          <span class="bg-white border-cartoon-thin text-[10px] font-black px-2 py-0.5 rounded text-brandBlack">#${kw}</span>
+        `).join('');
+      }
+    }
+
+    function flipFlashcard() {
+      playSound('flip');
+      isFlipped = !isFlipped;
+      const inner = document.getElementById('flashcard-inner');
+      if (inner) {
+        if (isFlipped) inner.classList.add('rotate-y-180');
+        else inner.classList.remove('rotate-y-180');
+      }
+    }
+
+    function nextFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx + 1) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      playSound('pop');
+      currentCardIdx = (currentCardIdx - 1 + flashcardDeck.length) % flashcardDeck.length;
+      updateFlashcardUI();
+    }
+
+    function shuffleFlashcards() {
+      playSound('pop');
+      flashcardDeck.sort(() => Math.random() - 0.5);
+      currentCardIdx = 0;
+      updateFlashcardUI();
+    }
+
+    function toggleCardMastered() {
+      playSound('pop');
+      const card = flashcardDeck[currentCardIdx];
+      if (masteredCards.has(card.id)) {
+        masteredCards.delete(card.id);
+      } else {
+        masteredCards.add(card.id);
+      }
+      updateFlashcardUI();
+    }
+
+    /* --------------------------------------------------------------------------
+       9. PRACTICE QUIZ ENGINE
+       -------------------------------------------------------------------------- */
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let answered = false;
+
+    function renderQuizQuestion() {
+      answered = false;
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      if (!q) return;
+
+      document.getElementById('quiz-curr-q').innerText = currentQuizIdx + 1;
+      document.getElementById('quiz-topic-tag').innerText = `Topic: ${q.topic}`;
+      document.getElementById('quiz-question-text').innerText = q.question;
+
+      const container = document.getElementById('quiz-options-container');
+      const expBox = document.getElementById('quiz-explanation-box');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (expBox) expBox.classList.add('hidden');
+      if (nextBtn) nextBtn.classList.add('hidden');
+
+      if (container) {
+        container.innerHTML = q.options.map((opt, idx) => `
+          <button id="opt-btn-${idx}" onclick="selectQuizOption(${idx})" class="w-full text-left p-4 bg-white hover:bg-yellow-50 border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack hover-pop transition-colors flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 bg-brandYellow border-cartoon-thin rounded-xl flex items-center justify-center text-xs shrink-0">${String.fromCharCode(65 + idx)}</span>
+              <span>${opt}</span>
+            </div>
+            <i id="opt-icon-${idx}" class="fa-regular fa-circle text-slate-300"></i>
+          </button>
+        `).join('');
+      }
+    }
+
+    function selectQuizOption(selectedIdx) {
+      if (answered) return;
+      answered = true;
+
+      const q = QUIZ_QUESTIONS[currentQuizIdx];
+      const expBox = document.getElementById('quiz-explanation-box');
+      const expText = document.getElementById('quiz-explanation-text');
+      const nextBtn = document.getElementById('quiz-next-btn');
+
+      if (selectedIdx === q.correct) {
+        playSound('correct');
+        quizScore++;
+        document.getElementById('quiz-score').innerText = quizScore;
+        
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      } else {
+        playSound('wrong');
+        const selectedBtn = document.getElementById(`opt-btn-${selectedIdx}`);
+        if (selectedBtn) {
+          selectedBtn.className = "w-full text-left p-4 bg-red-400 text-white border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm flex items-center justify-between";
+          document.getElementById(`opt-icon-${selectedIdx}`).className = "fa-solid fa-circle-xmark text-white text-lg";
+        }
+
+        // Highlight correct option in green
+        const correctBtn = document.getElementById(`opt-btn-${q.correct}`);
+        if (correctBtn) {
+          correctBtn.className = "w-full text-left p-4 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon-sm font-black text-xs sm:text-sm text-brandBlack flex items-center justify-between";
+          document.getElementById(`opt-icon-${q.correct}`).className = "fa-solid fa-circle-check text-brandBlack text-lg";
+        }
+      }
+
+      // Show explanation
+      if (expBox && expText) {
+        expText.innerText = q.explanation;
+        expBox.classList.remove('hidden');
+      }
+
+      if (nextBtn) {
+        if (currentQuizIdx === QUIZ_QUESTIONS.length - 1) {
+          nextBtn.innerText = "Finish Quiz 🎉";
+        } else {
+          nextBtn.innerText = "Next Question 🚀";
+        }
+        nextBtn.classList.remove('hidden');
+      }
+
+      // Update Header Score summary
+      const scoreBadge = document.getElementById('quiz-score-count');
+      if (scoreBadge) scoreBadge.innerText = `Quiz: ${quizScore}/12`;
+    }
+
+    function nextQuestion() {
+      playSound('pop');
+      if (currentQuizIdx < QUIZ_QUESTIONS.length - 1) {
+        currentQuizIdx++;
+        renderQuizQuestion();
+      } else {
+        // Quiz Complete Summary Modal/View
+        const box = document.getElementById('quiz-card-box');
+        if (box) {
+          const scorePercent = Math.round((quizScore / QUIZ_QUESTIONS.length) * 100);
+          box.innerHTML = `
+            <div class="text-center space-y-4 py-6">
+              <div class="text-6xl animate-bounce">🏆</div>
+              <h3 class="text-3xl font-black text-brandBlack">Quiz Completed!</h3>
+              <p class="text-base font-bold text-slate-700">You scored <span class="bg-brandYellow border-cartoon-thin px-3 py-1 rounded-xl text-brandBlack">${quizScore} out of ${QUIZ_QUESTIONS.length}</span> (${scorePercent}%)</p>
+              <div class="pt-2">
+                <button onclick="resetQuiz()" class="px-6 py-3 bg-brandGreen border-cartoon rounded-2xl shadow-cartoon font-black text-sm hover-pop">
+                  Try Quiz Again 🔄
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function resetQuiz() {
+      playSound('pop');
+      currentQuizIdx = 0;
+      quizScore = 0;
+      document.getElementById('quiz-score').innerText = 0;
+      
+      const box = document.getElementById('quiz-card-box');
+      if (box && !box.querySelector('#quiz-question-text')) {
+        location.reload(); // Quick restore if summary was active
+        return;
+      }
+      renderQuizQuestion();
+    }
+    function renderGlossary() {
+      const container = document.getElementById('glossary-grid');
+      if (!container) return;
+
+      const allKeywords = [];
+      CHAPTER_TOPICS.forEach(t => {
+        t.keywords.forEach(kw => {
+          allKeywords.push({ keyword: kw, topicTitle: t.title, topicId: t.id, icon: t.icon });
+        });
+      });
+
+      container.innerHTML = allKeywords.map(item => `
+        <div onclick="jumpToNote('${item.topicId}')" class="bg-slate-50 hover:bg-yellow-100 border-cartoon rounded-2xl p-3.5 shadow-cartoon-sm hover-pop cursor-pointer flex items-center justify-between group">
+          <div class="flex items-center space-x-2.5">
+            <span class="text-xl">${item.icon}</span>
+            <div>
+              <span class="font-black text-xs sm:text-sm text-brandBlack block">#${item.keyword}</span>
+              <span class="text-[10px] font-bold text-slate-500 block truncate max-w-[160px]">${item.topicTitle}</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-right text-xs text-slate-400 group-hover:text-brandBlack group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      `).join('');
+    }
+
+    function jumpToNote(topicId) {
+      switchTab('notes');
+      setTimeout(() => {
+        const el = document.getElementById(`card-${topicId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add('ring-4', 'ring-brandYellow');
+          setTimeout(() => el.classList.remove('ring-4', 'ring-brandYellow'), 2000);
+        }
+      }, 150);
+    }
+    window.addEventListener('load', () => {
+      animateMascot();
+      renderVisualNotes();
+      updateFlashcardUI();
+      renderQuizQuestion();
+      renderGlossary();
+    });
+  </script>
+</body>
+</html>
